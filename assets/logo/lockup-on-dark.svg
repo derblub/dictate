@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 464 72" width="464" height="72"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="1" stop-color="#22d3ee"/></linearGradient></defs>
+  <rect x="0" y="0" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.12"/>
+  <rect x="26" y="0" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.12"/>
+  <rect x="52" y="0" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.12"/>
+  <rect x="78" y="0" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.12"/>
+  <rect x="104" y="0" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.12"/>
+  <rect x="0" y="26" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.5"/>
+  <rect x="26" y="26" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.5"/>
+  <rect x="52" y="26" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.5"/>
+  <rect x="78" y="26" width="20" height="20" rx="2" fill="url(#g)"/>
+  <rect x="104" y="26" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.5"/>
+  <rect x="0" y="52" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.12"/>
+  <rect x="26" y="52" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.12"/>
+  <rect x="52" y="52" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.12"/>
+  <rect x="78" y="52" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.12"/>
+  <rect x="104" y="52" width="20" height="20" rx="2" fill="#ffffff" fill-opacity="0.12"/>
+  <text x="164" y="62" font-family="Google Sans Flex, sans-serif" font-weight="600" font-size="84" letter-spacing="-2" fill="#f4f4f5">dictate</text>
+</svg>

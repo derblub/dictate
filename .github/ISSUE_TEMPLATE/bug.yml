@@ -1,0 +1,40 @@
+name: Bug
+description: A crash, text that lands wrong or not at all, a panel or window that misbehaves.
+labels: ["bug"]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you did, what you expected and what happened instead. Error messages and the overlay's hint are welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Focus a terminal (foot)
+        2. Hold Mod+E and say a sentence
+        3. Release
+  - type: textarea
+    id: log
+    attributes:
+      label: Log
+      description: The relevant part of `journalctl --user -u dictate -u dictate-ui`. Without `DICTATE_DEBUG` it contains no dictated text; check it for anything private before you paste it.
+      render: text
+  - type: input
+    id: version
+    attributes:
+      label: dictate version or commit
+      placeholder: output of git rev-parse --short HEAD
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: System
+      description: Distribution, niri version, GPU and driver, CUDA version.
+      placeholder: Arch Linux, niri 26.04, RTX 3060 with driver 580, CUDA 13.5
+    validations:
+      required: true

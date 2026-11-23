@@ -1,0 +1,73 @@
+// dictate unter niri (PLAN-wayland.md, Block W1): Kürzel und Regeln für dictate-ui.
+// Installation: nach ~/.config/niri/dictate-binds.kdl kopieren und in config.kdl einbinden mit
+//     include "dictate-binds.kdl"
+// (die include-Zeile setzt Daniel bzw. die Installation nur mit seiner Bestätigung). Ein zweiter binds-Block ist
+// gültig (gemessen in W0). Nur `spawn` mit Argumentliste, nie `spawn-sh` (Sicherheitsregel 4). `repeat=false`: ein
+// gehaltenes Mod+E löst nur einmal aus; das Loslassen erkennt dictate-ui selbst (Tastenzustand, nur EVIOCGKEY).
+// Mod+Space bleibt bei niri (Spalte als Tabs); die Befehlspalette hat Mod+Alt+Space (W5, Vorlage E1). Mod+I öffnet und
+// schließt das Panel der Textaktionen (W3), Mod+Shift+I das der Diagnose (W4); alle drei teilen sich das Fenster
+// `dictate-panel`, ein Panel zur Zeit (ein anderes Kürzel schließt das offene).
+
+binds {
+    Mod+E repeat=false hotkey-overlay-title="dictate: hold to speak" { spawn "dictate-ui" "hold"; }
+    Mod+Shift+E repeat=false hotkey-overlay-title="dictate: hands-free on/off" { spawn "dictate-ui" "toggle"; }
+    Mod+Ctrl+E repeat=false hotkey-overlay-title="dictate: cancel" { spawn "dictate-ui" "cancel"; }
+    Mod+Ctrl+Shift+E repeat=false hotkey-overlay-title="dictate: settings" { spawn "dictate-settings"; }
+    Mod+I repeat=false hotkey-overlay-title="dictate: text actions on the selection" { spawn "dictate-ui" "actions"; }
+    Mod+Shift+I repeat=false hotkey-overlay-title="dictate: diagnose this computer" { spawn "dictate-ui" "diagnose"; }
+    Mod+Alt+Space repeat=false hotkey-overlay-title="dictate: command palette" { spawn "dictate-ui" "palette"; }
+}
+
+// Overlay: Layer-Fläche ohne Fokus; Ecken wie dictate-ui sie zeichnet (Radius 12 wie Noctalias Panels), damit
+// Schatten und Unschärfe von niri, falls eingeschaltet, zur Form passen
+layer-rule {
+    match namespace="^dictate-overlay$"
+    geometry-corner-radius 12
+}
+
+// Panels (ab W3): schwebend, fokussiert (S4: ohne open-focused bleibt ein Panel hinter einem Vollbildfenster
+// verborgen und Tastatureingaben gehen ins Vollbildfenster), mittig, 720 breit. Die Höhe bestimmt das Panel: beim
+// Öffnen seine eigene, danach setzt dictate-ui sie passend zum Inhalt über niri-IPC (Entscheidung 13, damit der
+// Resize-Shader wirkt). Die Breite setzt dictate-ui je Quelle selbst (Textaktionen 720, Diagnose 800; niri übernimmt sie
+// für das schwebende Fenster), 720 hier ist nur der Rückfall. Ecken wie das Panel sie zeichnet (12)
+window-rule {
+    match app-id="^dictate-panel$"
+    open-floating true
+    open-focused true
+    default-column-width {
+        fixed 720
+    }
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+// Befehlspalette, Screenshot des Bildschirms oder eines Bereichs (W5, Entscheidung 17): dictate-ui macht das Panel erst
+// unsichtbar, löst dann die Aufnahme aus und schließt es danach. Dafür setzt es den Titel „dictate: leaving“; niri wendet
+// die Regel beim Titelwechsel an. Ohne sie füllte niri (bei prefer-no-csd) die Fläche des durchsichtigen Panels mit der
+// Farbe des Fokusrings, dazu Ring und Schatten im Bild (gemessen in D3). app-id und Titel setzt jedes Programm selbst,
+// ein fremdes Fenster könnte die Regel also für sich nutzen; das ist keine neue Grenze, weil ein Programm mit den Rechten
+// des Users diese Datei ohnehin schreiben kann (W5 Durchsicht N2, hingenommen)
+window-rule {
+    match app-id="^dictate-panel$" title="^dictate: leaving$"
+    opacity 0.0
+    focus-ring {
+        off
+    }
+    border {
+        off
+    }
+    shadow {
+        off
+    }
+}
+
+// Einstellungsfenster (Mod+Ctrl+Shift+E, W7): schwebend wie ein Dialog statt als Spalte zwischen den Fenstern, in
+// seiner eigenen Größe (dictate-settings öffnet mit 1180×860, mindestens 820×560); die app_id setzt
+// `src/bin/dictate-settings.rs` (`with_app_id`). Ecken wie die Panels (12, W6 Lesart L42): egui zeichnet eine eckige
+// Fläche, niri rundet und schneidet sie zu; nur zusammen mit einem dictate-settings ab W6 installieren
+window-rule {
+    match app-id="^dictate-settings$"
+    open-floating true
+    geometry-corner-radius 12
+    clip-to-geometry true
+}

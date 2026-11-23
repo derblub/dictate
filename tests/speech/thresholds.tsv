@@ -1,0 +1,48 @@
+# Schwellen für den Vorlese-Testsatz (tests/speech_testset.rs, scripts/check.sh --only speech).
+# Spalten: id, max_cer (höchste Zeichenfehlerrate, die die Mehrheit der Läufe einhalten muss), check (harte Prüfung: exact = getippter Text samt
+# Zeilenumbrüchen und Satzzeichen gleich der Erwartung; ends = erstes und letztes Wort vorhanden; - = keine).
+# marks = nur Satzzeichen und Zeilenumbrüche in derselben Reihenfolge wie erwartet, die Wörter bewertet die CER.
+# t11/t12 prüfen die Sprachbefehle mit marks statt exact: „Lieber Grüße“ statt „Liebe Grüße“ (Hörfehler, 23.10.2026)
+# ist kein Fehler des Befehls und wird über die CER bewertet.
+# Abgeleitet aus der Ausgangsmessung vom 23.10.2026: Brio-Aufnahmen, 6 Läufe je Satz in 3 Modell-Ladungen
+# (Gesamt-CER 0.0121, 0.0158, 0.0125), Ergebnisse /home/data/stt-test/logs/speech/baseline-2026-10-23{,-b}.tsv und
+# logs/check/20261023-125518/speech.tsv. Regel: je Satz höchste gemessene CER + 0,05, Gesamt höchste + 0,02, auf 0,01
+# aufgerundet. Einzelne Wörter kippen zwischen Läufen (Streaming-Zeitpunkte, GPU-Last), daher die höchste statt der
+# typischen Rate. Neu ableiten, wenn sich Aufnahmen, Modell oder Pipeline absichtlich ändern.
+# Bewertung (seit 23.10.2026): jeder Satz läuft bis zu 3-mal (DICTATE_SPEECH_RUNS), in Runden über den ganzen Satz.
+# Ein Satz besteht, wenn die Mehrheit seiner Läufe CER <= max_cer einhält (= Median-CER <= max_cer) und, getrennt
+# davon, die Mehrheit die harte Prüfung besteht. Er läuft nicht weiter, sobald die Mehrheit feststeht (zwei gleiche
+# Ergebnisse); das ändert kein Urteil gegenüber drei vollen Läufen. Die höchste CER je Satz steht nur im Bericht.
+# Gesamt-CER über die ersten zwei Runden (die läuft jeder Satz, also keine Auswahl nach Ausgang) gegen total.
+# Warum: ein einzelner Lauf ist eine Stichprobe; Streaming-Zeitpunkte und GPU-Last lassen einzelne Wörter kippen.
+# Mit einem Lauf würde ein Satz, der in 10 % der Läufe ein Wort verliert, den Schritt in jedem zehnten vollen Lauf
+# rot machen; die Mehrheit aus drei schlägt erst an, wenn ein Fehler in mindestens der Hälfte der Läufe auftritt
+# (Fehlalarm bei p = 10 % je Satz: 2,8 % statt 10 %), ein reproduzierbarer Fehler fällt weiterhin sofort auf. Die
+# Schwellen bleiben unverändert: sie sind aus der höchsten gemessenen CER abgeleitet, also schon für jeden einzelnen
+# Lauf der Ausgangsmessung erfüllt. DICTATE_SPEECH_RUNS=1 = ein Lauf, jeder muss bestehen (schneller, für Agenten).
+# t03 verlor am 23.10.2026 live 2 von 16 Mal Wörter („nehmen“ statt „übernehmen“): das VAD-Fenster strich bereits
+# erkannte Sprache (Silero ohne Vorlauf mitten im Satz), behoben in src/stream.rs (update_vad vereinigt); das war ein
+# Fehler der Pipeline, kein Messrauschen, und ist mit dem Fix kein Grund für eine andere Schwelle.
+# Ausgangsmessung: t11 scheiterte an exact (Whisper macht aus „Komma“ selbst ein Komma, „neue Zeile“ entfernte es:
+# „Liebe Grüße\nDaniel.“). Behoben am 23.10.2026 in src/pipeline/commands.rs (Satzzeichen vor einem Umbruchbefehl
+# bleiben); die Schwellen bleiben unverändert.
+id	max_cer	check
+total	0.04	-
+t01	0.05	ends
+t02	0.05	ends
+t03	0.05	-
+t04	0.05	-
+t05	0.14	-
+t06	0.11	-
+t07	0.05	-
+t08	0.05	-
+t09	0.05	-
+t10	0.07	-
+t11	0.12	marks
+t12	0.05	marks
+t13	0.05	ends
+t14	0.11	-
+t15	0.07	-
+t16	0.09	-
+t17	0.05	-
+t18	0.09	-

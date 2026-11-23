@@ -1,0 +1,16 @@
+[package]
+name = "wl-release-probe"
+version = "0.0.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+publish = false
+description = "Spike S1 (W0): Loslassen von Mod+E über EVIOCGKEY (nur ioctl, nie read)"
+
+# Eigener Workspace: nicht Teil von dictate.
+[workspace]
+
+[[bin]]
+name = "keystate"
+path = "src/main.rs"
+
+[dependencies]

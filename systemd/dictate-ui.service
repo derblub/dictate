@@ -1,0 +1,17 @@
+[Unit]
+Description=dictate - Wayland overlay and hold-to-speak (niri)
+# Nur in einer Wayland-Sitzung (niri-session importiert WAYLAND_DISPLAY in den User-Manager); ohne sie startet der
+# Dienst nicht. Er hängt am Daemon über dessen Socket, nicht über systemd.
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+ConditionEnvironment=WAYLAND_DISPLAY
+
+[Service]
+Type=simple
+ExecStart=%h/.cargo/bin/dictate-ui run
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=graphical-session.target

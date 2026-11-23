@@ -1,0 +1,5 @@
+[toolchain]
+# eframe/egui 0.37 brauchen Rust >= 1.95; das Default-Toolchain des Systems bleibt unberührt
+channel = "1.95.0"
+components = ["clippy", "rustfmt"]
+profile = "minimal"

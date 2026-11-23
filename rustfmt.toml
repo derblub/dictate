@@ -1,0 +1,3 @@
+# Breite wie im bestehenden Code (Doku-Kommentare umbrechen wir von Hand bei 120); kurze Ausdrücke bleiben einzeilig.
+max_width = 160
+use_small_heuristics = "Max"

@@ -1,0 +1,20 @@
+name: Feature request
+description: An idea for dictation, the text actions, the command palette or the diagnosis.
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: The problem
+      description: What were you trying to do when dictate fell short?
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+      description: How would you like it to work? A shortcut, a sketch of a panel or an example is welcome.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What you do today instead

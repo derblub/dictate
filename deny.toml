@@ -1,0 +1,36 @@
+# Copyright (C) 2026 Daniel Kurdoghlian
+# Pushing Pixels, Vienna <https://pushingpixels.at>
+# SPDX-License-Identifier: GPL-3.0-or-later
+#
+# cargo-deny, nur die Lizenzprüfung (Schritt `licenses` in scripts/check.sh, U2 in PLAN-lizenz.md). Erlaubt sind nur
+# Lizenzen, die mit GPL-3.0-or-later vereinbar sind (Belege in PLAN-lizenz.md Abschnitt 2) und die heute im
+# Graphen vorkommen. Eine neue Lizenz kommt erst nach Prüfung dazu. OFL-1.1 und Ubuntu-font-1.0 fehlen absichtlich:
+# `default_fonts` von egui bleibt aus (Daniel, 23.11.2026), ein Rückweg über eine Abhängigkeit fällt hier auf.
+
+[graph]
+targets = ["x86_64-unknown-linux-gnu"]
+# Testabhängigkeiten gehen nicht ins Binary (darunter epaint_default_fonts für die Schrifttests)
+exclude-dev = true
+
+[licenses]
+allow = [
+    "0BSD",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "CDLA-Permissive-2.0",
+    "GPL-3.0-or-later",
+    "ISC",
+    "MIT",
+    "MPL-2.0",
+    "Unicode-3.0",
+    "Unlicense",
+    "Zlib",
+]
+confidence-threshold = 0.93
+# Eine erlaubte Lizenz, die niemand mehr nutzt, soll auffallen (Liste bleibt knapp)
+unused-allowed-license = "deny"
+
+[licenses.private]
+ignore = false

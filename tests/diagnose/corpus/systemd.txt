@@ -1,0 +1,500 @@
+systemd[1]: Reached target sleep.target - Sleep.
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=3h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd-fsck[50430]: /dev/nvme0n1p1: 784 files, 9364/587889 clusters
+systemd[1]: dev-disk-by\x2duuid-8c7b5901\x2d12cd\x2d438a\x2dad3c\x2d155befddb1a0.device: Job dev-disk-by\x2duuid-dd519d58\x2d6970\x2d496f\x2da80f\x2d9de188b6932e.device/start timed out.
+systemd-journald[53453]: /var/log/journal/12a17eb9294e494a6d3802a974b7f324/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+pacman: [ALPM] installed python-urllib3 (11.11.31-4)
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+systemd[1]: user@1000.service: Consumed 5min 48.457s CPU time, 8.2G memory peak.
+systemd-coredump[79920]: ELF object binary architecture: AMD x86-64
+Unit: cups.service  Result=exit-code  ExecMainStatus=114  NRestarts=6  InvocationID=9d079fb6ef36114bfa4ba36b3707cbc7
+systemd[1]: Started docker-0912fe01166fb75141f94ffb1b13715162c036c5c0fd9bc29ae35a28bd6a455d.scope - libcontainer container 75e077a06c909c1ed617937f90d2dbaf9f06870ff9fdb79fc09a7f3379967a60.
+systemd-timesyncd[82066]: Initial clock synchronization to Tue 2026-11-04 08:54:49.130000 CET.
+systemd-journald[65410]: /var/log/journal/a06da0702ad5a6ecf9a623f88690529a/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=11h UNIT=shadow.timer ACTIVATES=shadow.service
+pacman: [ALPM] upgraded mesa (1:28.1.34-4 -> 1:10.17.37-3)
+pacman: [ALPM] installed python-urllib3 (29.12.9-3)
+systemd-coredump[36552]: ELF object binary architecture: AMD x86-64
+systemd-logind[59276]: New session 19 of user root.
+systemd-timesyncd[788]: Initial clock synchronization to Tue 2026-11-04 08:58:32.525168 CET.
+systemd[1]: user@1000.service: Consumed 25min 12.454s CPU time, 5.8G memory peak.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 8.
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":60.812}}}
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 7.
+systemd[1]: Started docker-dd1bff0e9127ed9019e38192d2413ed4a789968944f88bdbfd809a2c73b2b3cb.scope - libcontainer container e7a64bd9985589b8092c3946cc39e286005d4f74e6a49efd1c2e9fa837ccecf4.
+systemd-coredump[99902]: #9  0x00007f86c867647d strlen (libc.so.6 + 0xea36b)
+systemd[1]: Started docker-f277d45c5ce2134f18e14fce82de8f086a67d885dd29337444a40f8aa2901922.scope - libcontainer container 89b47b524997f6858c2c3be3f5530d9e72d5f1f94ad52d76b32b68a00d7a84e6.
+systemd-coredump[52396]: ELF object binary architecture: AMD x86-64
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=2h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd-coredump[47023]: Module libc.so.6 from rpm glibc-2.41-1 with build-id e7c3b284c9a14419e4d520f043ad4f1de377163b
+pacman: [ALPM] installed python-idna (3.5.4-4)
+pacman: [ALPM] upgraded pipewire (21.18.0.arch1-1 -> 2.2.26.arch1-1)
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":64.441}}}
+systemd-journald[68348]: /var/log/journal/dcee73e146d4b946ad30888b1ed86623/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+systemd-coredump[43230]: Module libc.so.6 from rpm glibc-2.41-1 with build-id 5762fa051a9a43f9cc655ee45fcf4e9c0dfe8592
+systemd[1]: var-lib-docker-overlay2-36e9b99377dfc67ae828ed588fc7ee060f0d06b57d69050f0cb764a420028a97-merged.mount: Deactivated successfully.
+systemd[1]: Reached target sleep.target - Sleep.
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":48.241}}}
+systemd[1]: Reached target sleep.target - Sleep.
+pacman: [ALPM] upgraded docker (1:2.0.38-3 -> 1:28.8.16-2)
+systemd[1]: run-docker-runtime\x2drunc-moby-3ccca2bed33e8fc566ae18816731f1f7f247d906c7e7825da4f72b599ca8c6c0-runc.HebL72.mount: Deactivated successfully.
+systemd-coredump[11573]: Module libc.so.6 from rpm glibc-2.41-1 with build-id b2c403db6c4f1916095317e079aae29f7435f384
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+systemd[1]: Reached target sleep.target - Sleep.
+pacman: [ALPM] upgraded mesa (5.3.23.arch1-1 -> 10.14.36.arch1-1)
+systemd[1]: Reached target sleep.target - Sleep.
+systemd-fsck[2269]: /dev/nvme0n1p1: 737 files, 2096/359596 clusters
+systemd[1]: Started session-14.scope - Session 25 of User root.
+Unit: tailscaled.service  Result=exit-code  ExecMainStatus=161  NRestarts=2  InvocationID=8563a44f7e3ea444995d1be5626c7340
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=5h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd[1]: Started docker-6e6c92cd51dd765aae1afe8d202c3be6d55fee9207b615a04eb9d0d4a7bcce93.scope - libcontainer container c4e321ec6acd82b52919282a7003c8e4281f5eb90f6e042b162cc0c01df95559.
+systemd[1]: run-docker-runtime\x2drunc-moby-f7a530fa1f0309a3d99e770256a798de5c625a897a131ae89f70191916acf34e-runc.Dd8L45.mount: Deactivated successfully.
+systemd[1]: var-lib-docker-overlay2-6575a343e1d3e66e4ae20ab1c7df8d9a744eb32b4f10b848299df0ca9f47e75a-merged.mount: Deactivated successfully.
+systemd[1]: Started docker-a945e24dfe685597fc28977c70e57771698f8d35f285f74cf121876deef811f2.scope - libcontainer container 06dc670609a8e99aee8d440edcc5ee3dcfa397b9fea25568667c44eabf6294ca.
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+lsblk: nvme0n1 931.5G disk beceb0ad-bf53-4f59-8bce-99bf9cc7b107 ext4 /
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+systemd[1]: Started docker-1eb3ebd496fb86103b89f11c5882f294d43b735747d9e522a5dc97ffa7593df9.scope - libcontainer container dd68e77e2617440a424e9265e41f9d2b5d20d38dd542c22dca40b71f056a3f0a.
+systemd-journald[41534]: Data hash table of /var/log/journal/4020d11ce19969a5e13b55a7a510fd90/system.journal has a fill level at 75.0 (33952 of 719704 items, 54M file size, 989 bytes per hash table item), suggesting rotation.
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-c8b01634\x2d3243\x2d4b26\x2db729\x2dcee65c78abed.service: Deactivated successfully.
+coredump: {"time":1765550159222594,"pid":43110,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/python3.13","size":72397660}
+systemd[1]: run-docker-runtime\x2drunc-moby-6313f04f947853e88176ecdd95718f38ceccd6d6279fa0cad227b90690a8b869-runc.DacOd7.mount: Deactivated successfully.
+coredump: {"time":1747326649789892,"pid":95370,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/dataroom","size":9021810}
+pacman: [ALPM] upgraded glibc (1:17.10.4-4 -> 1:23.1.8-2)
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":89.357}}}
+systemd-coredump[28975]: ELF object binary architecture: AMD x86-64
+systemd[1]: Mounting mnt-nas.mount - /mnt/nas...
+pacman: [ALPM] installed python-requests (10.13.13-1)
+systemd-coredump[95228]: #10  0x00007fe790a6d035 strlen (libc.so.6 + 0xbf31c)
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=7h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd[1]: docker.service: Main process exited, code=exited, status=1/FAILURE
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+systemd-coredump[87868]: Process 16060 (dataroom) of user 1000 dumped core.
+systemd[1]: Started session-5.scope - Session 23 of User root.
+systemd[1]: Mounting mnt-nas.mount - /mnt/nas...
+systemd-coredump[37094]: ELF object binary architecture: AMD x86-64
+pacman: [ALPM] installed python-urllib3 (1.3.1-1)
+pacman: [ALPM] upgraded systemd (21.12.18.arch1-1 -> 29.14.30.arch1-1)
+pacman: [ALPM] upgraded mesa (1:14.2.9-1 -> 1:11.0.2-1)
+systemd-journald[37495]: /var/log/journal/ca37b59c5f27bb3548306f7f564e343a/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+Unit: tailscaled.service  Result=exit-code  ExecMainStatus=170  NRestarts=1  InvocationID=9227e62cd689bd43d76284ef9e352077
+systemd[1]: docker.service: Main process exited, code=exited, status=2/FAILURE
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=17h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd-fsck[31920]: /dev/nvme0n1p1: 234 files, 15196/279464 clusters
+systemd-logind[1301]: New session 30 of user root.
+systemd-journald[41166]: Data hash table of /var/log/journal/cc8401d813d075ed1b1fc20182449c4d/system.journal has a fill level at 75.0 (48568 of 481967 items, 49M file size, 513 bytes per hash table item), suggesting rotation.
+systemd-coredump[37514]: Process 75492 (dataroom) of user 1000 dumped core.
+systemd[1]: var-lib-docker-overlay2-2ae8d7c4829637e3e0d2d1bb31528031a1fcea0f938a8f8f4f6ac81a9fd76fa4-merged.mount: Deactivated successfully.
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":54.192}}}
+systemd[1]: Started docker-509331864d136e016e477b3eb70a643b5c74b3cb1c53104f55c5e827d925aa85.scope - libcontainer container e0ca3594f58be7d60983ff6904f4b1045b14d50b816c6ddda3748fe4266be208.
+Unit: temp-logger.service  Result=exit-code  ExecMainStatus=103  NRestarts=0  InvocationID=aa53ce259b0bf9f26870f864d198c42b
+systemd-coredump[49824]: #2  0x00007fcc4c2266ba strlen (libc.so.6 + 0x38391)
+systemd-coredump[56820]: ELF object binary architecture: AMD x86-64
+Unit: cups.service  Result=exit-code  ExecMainStatus=191  NRestarts=5  InvocationID=7cb68110dbedde974be045065478bad9
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+systemd[1]: Started docker-4f5585028495f73747c2e1d16400aeb834c27b0e62145506aa08dccc6893d1a9.scope - libcontainer container 73d7d19c662061500d6aa18af41b35248922b37e6120317c4d876c08bca37ad6.
+systemd-fsck[49789]: /dev/nvme0n1p1: 314 files, 78122/187620 clusters
+lsblk: nvme0n1 931.5G disk b89ecc1e-f3a3-4638-97df-936999964f33 ext4 /
+systemd-coredump[93324]: Process 82467 (dataroom) of user 1000 dumped core.
+systemd-logind[46550]: New session 16 of user root.
+systemd[1]: Mounting mnt-nas.mount - /mnt/nas...
+systemd[1]: user@1000.service: Consumed 23min 20.699s CPU time, 1.5G memory peak.
+systemd-fsck[20080]: /dev/nvme0n1p1: 835 files, 32260/155482 clusters
+systemd[1]: Started session-21.scope - Session 27 of User root.
+systemd-logind[280]: New session 14 of user root.
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=9h UNIT=shadow.timer ACTIVATES=shadow.service
+pacman: [ALPM] upgraded glibc (1:19.14.9-4 -> 1:5.5.16-3)
+systemd[1]: dev-disk-by\x2duuid-05adbe12\x2d86c3\x2d4f46\x2db16a\x2d5f0cc9dd9755.device: Job dev-disk-by\x2duuid-7387e7a2\x2d0b54\x2d4982\x2d8680\x2dffda9780852c.device/start timed out.
+coredump: {"time":1774606752951704,"pid":25066,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/dataroom","size":89467885}
+systemd[1]: Reached target sleep.target - Sleep.
+systemd[1]: Started session-18.scope - Session 9 of User root.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 1.
+systemd[1]: var-lib-docker-overlay2-09ebe1c3ebae3b9371fcb3925e79a8520cb158cf0d330d49c39b7a110d8136be-merged.mount: Deactivated successfully.
+systemd-logind[24164]: New session 6 of user root.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 4.
+systemd[1]: Mounting mnt-nas.mount - /mnt/nas...
+systemd-timesyncd[6722]: Initial clock synchronization to Tue 2026-11-04 08:25:44.327963 CET.
+systemd-journald[49851]: /var/log/journal/7c828ade0027e43086658e4a051ad047/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+pacman: [ALPM] installed python-idna (13.6.16-3)
+systemd[1]: dev-disk-by\x2duuid-7daed18f\x2d0f0a\x2d4683\x2db5be\x2d75be8cf56a44.device: Job dev-disk-by\x2duuid-49d5790a\x2d6c3c\x2d4b08\x2d9219\x2d9806d9db98d4.device/start timed out.
+pacman: [ALPM] upgraded nvidia-utils (1:30.18.19-3 -> 1:29.10.34-4)
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-3f2b3bc2\x2d6a28\x2d4806\x2d9a62\x2d65c64b67199e.service: Deactivated successfully.
+systemd-fsck[56399]: /dev/nvme0n1p1: 774 files, 96644/381347 clusters
+systemd[1]: var-lib-docker-overlay2-2d1ec90712e3d289a08dab470881f3d85be412c82f5227056a6a1ddb839a840e-merged.mount: Deactivated successfully.
+lsblk: nvme0n1 931.5G disk 4e070e92-5d79-461b-97af-479d32f33052 ext4 /
+systemd[1]: var-lib-docker-overlay2-b24a33ad7d10c9aeb2202fb8def3e3bfa21fc56057747ab5804de056585ab901-merged.mount: Deactivated successfully.
+systemd-coredump[24423]: ELF object binary architecture: AMD x86-64
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-9fac0f11\x2d0131\x2d44b8\x2d8719\x2d3d94cb865b4c.service: Deactivated successfully.
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=18h UNIT=shadow.timer ACTIVATES=shadow.service
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=23h UNIT=shadow.timer ACTIVATES=shadow.service
+Unit: dictate.service  Result=exit-code  ExecMainStatus=17  NRestarts=8  InvocationID=e5ee158e33ff2be897d962bc6ea6ad2f
+pacman: [ALPM] installed python-certifi (10.5.23-2)
+lsblk: nvme0n1 931.5G disk 24063462-bdf1-4a24-a869-1de7874c8e2e ext4 /
+systemd-logind[90574]: New session 12 of user root.
+systemd-logind[33943]: New session 8 of user root.
+lsblk: nvme0n1 931.5G disk f2db2608-837a-4b7a-b7d7-2e3da00c5a34 ext4 /
+pacman: [ALPM] upgraded openssl (1:10.17.36-1 -> 1:15.2.2-1)
+systemd-coredump[19810]: ELF object binary architecture: AMD x86-64
+systemd[1]: Started docker-a08f0ff822607b4d768d9648ffd870bd1370d95b1a4f4106e4475f7bb9fe23d9.scope - libcontainer container 73c02b24cfbad3d7b355f101cb89356e762f69089ccb82e81fae1468b370e705.
+systemd[1]: dev-disk-by\x2duuid-a97defc7\x2d92de\x2d4d14\x2da7dc\x2d9a6106c62c43.device: Job dev-disk-by\x2duuid-ba525cf4\x2d8af6\x2d4196\x2d89e5\x2d194c8efe0cba.device/start timed out.
+systemd[1]: run-docker-runtime\x2drunc-moby-e3bb41e177522fb40119860fa881bf4653e4c4cc385116c889420dba6ebf3ad3-runc.C31O2b.mount: Deactivated successfully.
+systemd-coredump[27648]: Module libc.so.6 from rpm glibc-2.41-1 with build-id 9af5d8c49c5520ee5744edc6e3edd242c146afee
+systemd[1]: var-lib-docker-overlay2-d6873b79ea377cd9e17b856b540a6a71428ae66105c0b8696095417dd19e8989-merged.mount: Deactivated successfully.
+systemd[1]: docker.service: Main process exited, code=exited, status=3/FAILURE
+pacman: [ALPM] installed python-certifi (26.19.5-2)
+pacman: [ALPM] upgraded docker (1:26.8.5-3 -> 1:29.7.39-2)
+systemd-coredump[18722]: #0  0x00007f89ae1ad6ec strlen (libc.so.6 + 0x7061f)
+systemd[1]: Started session-6.scope - Session 21 of User root.
+systemd-coredump[97990]: Process 28189 (dataroom) of user 1000 dumped core.
+systemd[1]: var-lib-docker-overlay2-db4113a31f5e8500a752b6821eb432ef4ef754d6a1283cb7f048631784d0c8b1-merged.mount: Deactivated successfully.
+systemd[1]: docker.service: Main process exited, code=exited, status=2/FAILURE
+systemd[1]: run-docker-runtime\x2drunc-moby-199694a5fa6e611fb70c5355a3a9aa8601c8f80b32a087b03cc97f248243946e-runc.Fd6M8c.mount: Deactivated successfully.
+systemd-coredump[72804]: Process 90680 (dataroom) of user 1000 dumped core.
+systemd-journald[23743]: Data hash table of /var/log/journal/7eb6bfa35448c6ad807891042f098e9b/system.journal has a fill level at 75.0 (59288 of 548226 items, 60M file size, 148 bytes per hash table item), suggesting rotation.
+systemd-logind[77662]: New session 16 of user root.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 4.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 3.
+systemd[1]: run-docker-runtime\x2drunc-moby-54d598df6f856a8a8b8f5c514feabd1aedff101a1f9dedf352b4b4dd6184adcf-runc.F20P92.mount: Deactivated successfully.
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+systemd[1]: docker.service: Main process exited, code=exited, status=1/FAILURE
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd[1]: run-docker-runtime\x2drunc-moby-a367400ac9d19048e4b0e87ad9a601c6cf8474310a3b7f0dc710246dd014097d-runc.C86R31.mount: Deactivated successfully.
+systemd[1]: run-docker-runtime\x2drunc-moby-51f3f1314f94ad8b2a231c3487b7c64d006aecc4b60e00d68f21b631ba3068f5-runc.J7eSa4.mount: Deactivated successfully.
+systemd[1]: Mounting mnt-nas.mount - /mnt/nas...
+systemd[1]: Started docker-f69547ff7cb261fb89f35569169f4ca15586c5ec98d7d2a68dde35810437265e.scope - libcontainer container 663c9d02ec4b61bfacc376c54dee6e6df9b23ea4a0dc601daed7aa4defc9abff.
+systemd-journald[57083]: /var/log/journal/4168cbf786a48608965075f988cb27d6/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+systemd[1]: run-docker-runtime\x2drunc-moby-7e7ed3c33ab7527a9de5a934d417cd184fd0c5cc9411b0fdb5787ca3be08f1a5-runc.Ed2S79.mount: Deactivated successfully.
+pacman: [ALPM] upgraded linux (9.2.7.arch1-1 -> 15.4.18.arch1-1)
+systemd[1]: dev-disk-by\x2duuid-380f8898\x2d2beb\x2d475b\x2d956f\x2dda53161b8cda.device: Job dev-disk-by\x2duuid-9dc43682\x2db622\x2d4133\x2dbfbf\x2d3adf3b557d47.device/start timed out.
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd[1]: Reached target sleep.target - Sleep.
+systemd[1]: Started docker-bab1f7e5a9e72700d312d308eb0959aa36788f998a58e99beb2521d0333dc695.scope - libcontainer container f0afcf97037e766870702a301acfeedce5ba3144c397e0f8f51b631c3833d143.
+systemd-coredump[35847]: Process 93072 (dataroom) of user 1000 dumped core.
+systemd[1]: Reached target sleep.target - Sleep.
+systemd[1]: var-lib-docker-overlay2-3b5ac303271013787f1c6cf5613b146d5a6fc1e835466210a43a13bbfad65226-merged.mount: Deactivated successfully.
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd[1]: var-lib-docker-overlay2-a6b8ec13e9511c825a7103be83ff7472bf0e3c4c87b0f1bf3410c6e07063b292-merged.mount: Deactivated successfully.
+Unit: docker.service  Result=exit-code  ExecMainStatus=135  NRestarts=3  InvocationID=2b1b19e5e56e7b1c7f5e234c037e2fdf
+systemd[1]: dev-disk-by\x2duuid-7677abc3\x2db1b0\x2d433e\x2db191\x2d2479ddd1b603.device: Job dev-disk-by\x2duuid-f405aaa3\x2d2742\x2d4fbb\x2d9649\x2d1dcca9641c8b.device/start timed out.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 8.
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+systemd[1]: dev-disk-by\x2duuid-5b817e18\x2d9908\x2d411c\x2d89ea\x2d3cbea7c4f097.device: Job dev-disk-by\x2duuid-6ae7c40c\x2d9232\x2d46c5\x2da61b\x2d44447a843bdc.device/start timed out.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 3.
+systemd-coredump[2195]: Module libc.so.6 from rpm glibc-2.41-1 with build-id 3f2e17d3c2da8b7715fbeb6cdf6ac6c68a13ee99
+systemd-timesyncd[20556]: Initial clock synchronization to Tue 2026-11-04 08:45:22.378457 CET.
+systemd-coredump[28368]: #6  0x00007ff433a6915e strlen (libc.so.6 + 0x1d4cd)
+systemd-timesyncd[11993]: Initial clock synchronization to Tue 2026-11-04 08:32:23.754751 CET.
+coredump: {"time":1708796063882266,"pid":43659,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/python3.13","size":51861595}
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=6h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd[1]: Reached target sleep.target - Sleep.
+systemd-logind[40773]: New session 12 of user root.
+systemd[1]: Started session-25.scope - Session 5 of User root.
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=16h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd[1]: Mounting mnt-nas.mount - /mnt/nas...
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=5h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd[1]: dev-disk-by\x2duuid-aec98b87\x2df22e\x2d4909\x2d965b\x2de78f67509473.device: Job dev-disk-by\x2duuid-9beec1c3\x2da7b6\x2d4ea4\x2d8043\x2d11c21c281396.device/start timed out.
+systemd-coredump[743]: Module libc.so.6 from rpm glibc-2.41-1 with build-id 9d43f347c6116703ef7797d91f9c0fa7a217814e
+systemd-journald[58897]: Data hash table of /var/log/journal/12406f561a990be277f66140a407ee56/system.journal has a fill level at 75.0 (22016 of 423708 items, 88M file size, 587 bytes per hash table item), suggesting rotation.
+systemd-journald[52758]: /var/log/journal/336b3a59bf02e0b8c7e68bf67a7a03f4/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+systemd[1]: Reached target sleep.target - Sleep.
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd-journald[75406]: /var/log/journal/2a46ce0450818ba8e53f0d30306e8798/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+systemd-journald[12550]: /var/log/journal/4bc69b2b3fdc2f9a97c466b376d6d7c3/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+systemd-coredump[38282]: #19  0x00007f7cc91965b8 strlen (libc.so.6 + 0x88288)
+pacman: [ALPM] upgraded linux (1:21.12.40-4 -> 1:1.15.30-4)
+systemd[1]: var-lib-docker-overlay2-b202d6747da0a1e729dc2c5b43ca0d0aaa76797a43ec6238282f647a43f3eee4-merged.mount: Deactivated successfully.
+systemd[1]: Started docker-ba8df5c54cc44716573c50e09ccf0a831eebab9a5cb833b087b41da56bf26dd1.scope - libcontainer container 5f004990a42a53c15a0f6f138483b48d237a2fc1464a64ec46aa82aece14349b.
+systemd[1]: Started docker-120cb2ad8a26b63403e4809ebf5ccd659093d181126059936e9cb2e866dfb12e.scope - libcontainer container 4815fa676fc88c069d2a24dd2f3ac784dd8410541a9e8801fae1bbd3aae2c913.
+systemd[1]: dev-disk-by\x2duuid-19533574\x2d95e3\x2d40ed\x2db190\x2d3c23a091a378.device: Job dev-disk-by\x2duuid-cb94cf79\x2dd23f\x2d4e34\x2db539\x2d9903a1cf8370.device/start timed out.
+systemd-coredump[81568]: Module libc.so.6 from rpm glibc-2.41-1 with build-id db9da677d62577ac0992e7c8d650e7115b9e5ae1
+systemd-logind[3373]: New session 9 of user root.
+systemd-coredump[31997]: ELF object binary architecture: AMD x86-64
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 8.
+systemd[1]: dev-disk-by\x2duuid-398bb65d\x2d31e1\x2d4c89\x2d91db\x2dc574f870c5e4.device: Job dev-disk-by\x2duuid-3b7a55bf\x2d1690\x2d466a\x2dbf33\x2dd5f6742b3da3.device/start timed out.
+systemd-coredump[68115]: Module libc.so.6 from rpm glibc-2.41-1 with build-id 1df075fc10243d7fbb669ab959affdb218b9532f
+systemd-coredump[72987]: Process 26745 (dataroom) of user 1000 dumped core.
+pacman: [ALPM] upgraded systemd (1:25.18.14-2 -> 1:3.18.34-3)
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd[1]: Reached target sleep.target - Sleep.
+systemd-journald[28417]: /var/log/journal/bf16c210745ca884780559f6aab11299/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+systemd[1]: user@1000.service: Consumed 27min 20.348s CPU time, 4.3G memory peak.
+pacman: [ALPM] upgraded nvidia-utils (12.18.28.arch1-1 -> 12.6.34.arch1-1)
+systemd-fsck[11896]: /dev/nvme0n1p1: 244 files, 54758/565800 clusters
+systemd-fsck[73689]: /dev/nvme0n1p1: 755 files, 1818/107503 clusters
+systemd[1]: docker.service: Main process exited, code=exited, status=1/FAILURE
+systemd-fsck[45163]: /dev/nvme0n1p1: 581 files, 55664/696022 clusters
+systemd-timesyncd[58236]: Initial clock synchronization to Tue 2026-11-04 08:59:46.463578 CET.
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+coredump: {"time":1720827273452229,"pid":35579,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/python3.13","size":61893405}
+systemd[1]: docker.service: Main process exited, code=exited, status=2/FAILURE
+systemd-fsck[67559]: /dev/nvme0n1p1: 985 files, 47729/833641 clusters
+lsblk: nvme0n1 931.5G disk 637a1c28-e442-40ce-b273-f752a9259bd8 ext4 /
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 5.
+systemd[1]: Started session-8.scope - Session 28 of User root.
+pacman: [ALPM] upgraded mesa (1:13.13.34-4 -> 1:12.4.40-3)
+systemd-fsck[5663]: /dev/nvme0n1p1: 122 files, 76805/718161 clusters
+systemd[1]: dev-disk-by\x2duuid-9aea834a\x2dc276\x2d4b0d\x2d8fcc\x2d3c669a167afc.device: Job dev-disk-by\x2duuid-ed395d4c\x2d906c\x2d4211\x2db232\x2d23c92860e995.device/start timed out.
+systemd-timesyncd[22603]: Initial clock synchronization to Tue 2026-11-04 08:42:45.427968 CET.
+systemd[1]: Started docker-5c7b1779d2e1743bad788f47642eb93e063c97e5672e458d48015dbef05cb17a.scope - libcontainer container ab837fdec53382b0eb7951c8919a71fe6ab980e540e4af0d9c5f6e83c1317abf.
+systemd-fsck[61203]: /dev/nvme0n1p1: 250 files, 91018/220369 clusters
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-f087c317\x2df6b6\x2d480b\x2d928d\x2d2cc19bef2b67.service: Deactivated successfully.
+Unit: dictate.service  Result=exit-code  ExecMainStatus=116  NRestarts=9  InvocationID=0ca2c937e3ffb934b0abfadf6af932ac
+systemd-journald[92724]: /var/log/journal/424383423e83c8c7c0b57d793cce184a/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=7h UNIT=shadow.timer ACTIVATES=shadow.service
+pacman: [ALPM] upgraded pipewire (17.18.0.arch1-1 -> 9.0.26.arch1-1)
+systemd[1]: Started docker-2782d0478fe8c81656b582eb563582c8cc0565535d34e61bf3cc0c2031da2b08.scope - libcontainer container b731012e91bc6d0770e43aba8c3e8644c78ac8de77b15eb3c753294d122a6a31.
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":94.155}}}
+systemd[1]: var-lib-docker-overlay2-32f002e9a08651ec66bab00af820276b4395ee42a3f6999fef16625c4613ade3-merged.mount: Deactivated successfully.
+pacman: [ALPM] upgraded openssl (1.1.37.arch1-1 -> 26.20.37.arch1-1)
+systemd-coredump[92179]: ELF object binary architecture: AMD x86-64
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 2.
+systemd[1]: Mounting mnt-nas.mount - /mnt/nas...
+systemd-coredump[14363]: ELF object binary architecture: AMD x86-64
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+lsblk: nvme0n1 931.5G disk c22d9f05-8696-4ed5-bcd9-bec518914b22 ext4 /
+systemd[1]: Reached target sleep.target - Sleep.
+systemd[1]: dev-disk-by\x2duuid-1a3ba81e\x2df68b\x2d4ffc\x2d97e5\x2d6316fbd13afd.device: Job dev-disk-by\x2duuid-ff1b0372\x2def8b\x2d40cd\x2dbbb8\x2da8cff7fb60d5.device/start timed out.
+systemd-coredump[86594]: Module libc.so.6 from rpm glibc-2.41-1 with build-id 5f870b37a75196c00af35284b68bd92cec174832
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd[1]: run-docker-runtime\x2drunc-moby-58d940a0f9df45ad51e8a635975d3f74a70759fcfabd36ae1340c7613e60d682-runc.I0dL88.mount: Deactivated successfully.
+coredump: {"time":1760715444168426,"pid":70988,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/python3.13","size":89781936}
+pacman: [ALPM] upgraded linux (19.16.12.arch1-1 -> 30.12.16.arch1-1)
+systemd-journald[90908]: /var/log/journal/f4c80f72fe93d238710186c855ba4d85/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+systemd[1]: run-docker-runtime\x2drunc-moby-11575f2af1da8b6d4724373decba50d799225f697444d1f22e7f976f764e3518-runc.A64P47.mount: Deactivated successfully.
+Unit: temp-logger.service  Result=exit-code  ExecMainStatus=193  NRestarts=4  InvocationID=be8b412b1811223dcc686cf08d7f44ea
+Unit: dictate.service  Result=exit-code  ExecMainStatus=27  NRestarts=8  InvocationID=6def7a53f087b72b0452770365aaaab8
+Unit: docker.service  Result=exit-code  ExecMainStatus=233  NRestarts=1  InvocationID=301232edef20c4a7057e227affb719a8
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=1h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd[1]: dev-disk-by\x2duuid-e1300d38\x2d54eb\x2d47d6\x2db8e9\x2d1b19a37a3d33.device: Job dev-disk-by\x2duuid-9f35733d\x2d9118\x2d48b4\x2da5e3\x2dcf06e8ba7171.device/start timed out.
+systemd[1]: docker.service: Main process exited, code=exited, status=1/FAILURE
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-6aa3ac36\x2dfd58\x2d4270\x2db8f4\x2d4d5a57176d59.service: Deactivated successfully.
+Unit: dictate.service  Result=exit-code  ExecMainStatus=145  NRestarts=5  InvocationID=dc0f4a8673e22d69b9668b5ad8e1efcb
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 8.
+systemd-timesyncd[62004]: Initial clock synchronization to Tue 2026-11-04 08:36:33.139377 CET.
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":39.627}}}
+systemd[1]: Started session-9.scope - Session 4 of User root.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 7.
+systemd[1]: Started docker-452c9a2eab025ba4cf7657b250f3129c6bf998e0888b7bdefe485cda6fdcf7f2.scope - libcontainer container 6c2ec32f387df326344315bc69b795c9ae24565e34baaff1c01073abc4af3e1a.
+systemd-coredump[44706]: Process 2720 (dataroom) of user 1000 dumped core.
+systemd[1]: dev-disk-by\x2duuid-d03bec15\x2ddf60\x2d4f03\x2dadee\x2d412b71b65dfc.device: Job dev-disk-by\x2duuid-7b802a38\x2d6d3b\x2d43b4\x2dbdad\x2da419430e16f5.device/start timed out.
+systemd[1]: Mounting mnt-nas.mount - /mnt/nas...
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":74.751}}}
+systemd[1]: docker.service: Main process exited, code=exited, status=2/FAILURE
+lsblk: nvme0n1 931.5G disk c4b3c0fd-0e55-44db-849e-bf23f5d5e033 ext4 /
+lsblk: nvme0n1 931.5G disk 05e3e0ee-0cb6-416d-97e3-5f1aebfba32e ext4 /
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=8h UNIT=shadow.timer ACTIVATES=shadow.service
+pacman: [ALPM] upgraded linux (1:12.20.5-2 -> 1:12.17.35-3)
+systemd-timesyncd[79029]: Initial clock synchronization to Tue 2026-11-04 08:55:16.136967 CET.
+pacman: [ALPM] upgraded glibc (18.6.31.arch1-1 -> 4.6.6.arch1-1)
+systemd[1]: Started session-23.scope - Session 16 of User root.
+systemd-coredump[72587]: #13  0x00007f7c99192452 strlen (libc.so.6 + 0xb8115)
+Unit: docker.service  Result=exit-code  ExecMainStatus=189  NRestarts=2  InvocationID=ee147c7940706d3547876fee555ab8c2
+systemd[1]: run-docker-runtime\x2drunc-moby-1fe5a25fa634e294436f245de97dee88a31e246ab6a0747d0f8963c600745659-runc.I85Pe1.mount: Deactivated successfully.
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-5f814543\x2d1dec\x2d4075\x2dab23\x2df69cdfd99725.service: Deactivated successfully.
+systemd-journald[34765]: Data hash table of /var/log/journal/2052c16dc5d66b06a01d2e4363fe96a6/system.journal has a fill level at 75.0 (44806 of 706343 items, 49M file size, 968 bytes per hash table item), suggesting rotation.
+pacman: [ALPM] installed python-urllib3 (4.14.27-4)
+systemd[1]: user@1000.service: Consumed 49min 28.481s CPU time, 8.1G memory peak.
+systemd-timesyncd[64252]: Initial clock synchronization to Tue 2026-11-04 08:50:52.937137 CET.
+systemd-logind[13551]: New session 11 of user root.
+coredump: {"time":1731979751414440,"pid":68380,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/python3.13","size":64061326}
+systemd[1]: Started session-27.scope - Session 18 of User root.
+systemd-coredump[97788]: #5  0x00007f8c182c7455 strlen (libc.so.6 + 0x8711a)
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=17h UNIT=shadow.timer ACTIVATES=shadow.service
+Unit: temp-logger.service  Result=exit-code  ExecMainStatus=39  NRestarts=5  InvocationID=83283d841c2bbb6bbc2e59b3728d9156
+systemd-logind[47478]: New session 3 of user root.
+systemd-logind[27258]: New session 13 of user root.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 8.
+systemd-coredump[41499]: ELF object binary architecture: AMD x86-64
+systemd[1]: Started docker-4ab0116860c76afb87e1b9e538e6d5ac0fd12ad4b989035b64525744534ec103.scope - libcontainer container 228ce4d4482891333563aac2a137e9fc107986fafdc0eb5bcd1a4f500e86946c.
+systemd-fsck[15645]: /dev/nvme0n1p1: 877 files, 93132/532606 clusters
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":64.508}}}
+systemd-coredump[60197]: Module libc.so.6 from rpm glibc-2.41-1 with build-id ea47b04876754ee7d25ed14dda6bee99b264f78c
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-4cda22fa\x2d5744\x2d41eb\x2db467\x2d3ed6c0f2be1c.service: Deactivated successfully.
+systemd-coredump[48414]: #13  0x00007fa4970acc71 strlen (libc.so.6 + 0x48afe)
+systemd[1]: Reached target sleep.target - Sleep.
+systemd-coredump[3614]: Process 19490 (dataroom) of user 1000 dumped core.
+systemd[1]: var-lib-docker-overlay2-d18e14ecd10fdc5d560b79fdd34741ad6e887bc144f7d5f1e10cca5ebbaae901-merged.mount: Deactivated successfully.
+Unit: docker.service  Result=exit-code  ExecMainStatus=176  NRestarts=4  InvocationID=626a0d44323276396243b196d84d8d00
+systemd[1]: Mounting mnt-nas.mount - /mnt/nas...
+systemd-logind[49184]: New session 23 of user root.
+systemd[1]: run-docker-runtime\x2drunc-moby-951eb3ec7a950109ac390ccc46741e58d29fb9633966f94bb5fc785448d24705-runc.F9cKcb.mount: Deactivated successfully.
+systemd[1]: run-docker-runtime\x2drunc-moby-37c2b65dad1e28a647c89d664fee45bb30516a7974ac8bdea09922cc24c0d0ca-runc.Hb3M50.mount: Deactivated successfully.
+systemd-coredump[75510]: Module libc.so.6 from rpm glibc-2.41-1 with build-id 09f5e1ad356484c90d030b2ad52cf837213730e2
+systemd[1]: Reached target sleep.target - Sleep.
+systemd[1]: user@1000.service: Consumed 1min 23.580s CPU time, 8.6G memory peak.
+systemd-coredump[10425]: #11  0x00007f26642a9c81 strlen (libc.so.6 + 0x9c8ad)
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":32.611}}}
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+systemd-coredump[72958]: ELF object binary architecture: AMD x86-64
+coredump: {"time":1701885825875964,"pid":25126,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/node","size":44933110}
+lsblk: nvme0n1 931.5G disk 1ffa4e4c-2cad-4262-9197-3d05ceae6a20 ext4 /
+systemd-coredump[83848]: #2  0x00007fc94877cce3 strlen (libc.so.6 + 0x64735)
+systemd[1]: Started docker-25682c29492902cdacbc883a0b12f33ecd896dc641ef01d56eb3cb7a76c0b58b.scope - libcontainer container bf947554d658a0dc4db1261c80b8c7b1b93b0ca9dce4398efa16bc99a3365887.
+pacman: [ALPM] upgraded docker (1:2.0.13-3 -> 1:28.1.12-1)
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-b20481db\x2dfa61\x2d4b10\x2d87ff\x2d32e33a8f7ea1.service: Deactivated successfully.
+systemd[1]: Reached target sleep.target - Sleep.
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd-coredump[17917]: #6  0x00007f4a82744bd3 strlen (libc.so.6 + 0x00b3d)
+pacman: [ALPM] upgraded linux (1:7.10.39-3 -> 1:15.8.18-4)
+systemd-fsck[74716]: /dev/nvme0n1p1: 777 files, 46157/546445 clusters
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":71.378}}}
+systemd-timesyncd[45765]: Initial clock synchronization to Tue 2026-11-04 08:34:58.737896 CET.
+systemd[1]: run-docker-runtime\x2drunc-moby-886bf46e2feae6ebbf690ac2cc4e451a5483e6d51de0323e6c31ab20bb7d12e6-runc.E48R55.mount: Deactivated successfully.
+coredump: {"time":1744206438199909,"pid":47956,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/node","size":46260307}
+systemd-coredump[29448]: Module libc.so.6 from rpm glibc-2.41-1 with build-id 6aceb2d351c69f511cd5938c18d1b7d13189c11e
+Unit: dictate.service  Result=exit-code  ExecMainStatus=244  NRestarts=4  InvocationID=b68b7a4268192bf9e859c36e102ee756
+coredump: {"time":1730851154309108,"pid":16216,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/python3.13","size":19312659}
+lsblk: nvme0n1 931.5G disk 40e0c9b4-5feb-443c-9c02-631f60ccebf2 ext4 /
+systemd[1]: Started session-29.scope - Session 2 of User root.
+systemd[1]: var-lib-docker-overlay2-660d047501a32f50c1d40c8a9bf100e8178ff96ee018926d41f950f6bda41c5b-merged.mount: Deactivated successfully.
+pacman: [ALPM] upgraded glibc (5.15.14.arch1-1 -> 5.12.36.arch1-1)
+systemd[1]: run-docker-runtime\x2drunc-moby-fb8c905e0e376a8e1b8a4779cdfb39679634233e741a792d7ef00cdf32f1eda9-runc.Fc2L2f.mount: Deactivated successfully.
+pacman: [ALPM] installed python-idna (19.11.22-2)
+systemd-coredump[97372]: ELF object binary architecture: AMD x86-64
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-a7b24da7\x2d74f4\x2d4219\x2db088\x2df1a8f299af94.service: Deactivated successfully.
+systemd-timesyncd[13267]: Initial clock synchronization to Tue 2026-11-04 08:17:11.368112 CET.
+systemd-coredump[54988]: Process 25899 (dataroom) of user 1000 dumped core.
+systemd[1]: Mounting mnt-nas.mount - /mnt/nas...
+systemd[1]: docker.service: Main process exited, code=exited, status=3/FAILURE
+systemd[1]: run-docker-runtime\x2drunc-moby-e166b36d23440e9d509a747bd9985f70cec165d9e3dc07158550d7de1a3ee7a0-runc.C7eNc2.mount: Deactivated successfully.
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd-coredump[97034]: Process 36137 (dataroom) of user 1000 dumped core.
+coredump: {"time":1788205096799806,"pid":3895,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/python3.13","size":11700032}
+systemd-coredump[50512]: ELF object binary architecture: AMD x86-64
+lsblk: nvme0n1 931.5G disk 1b680dd7-f7a9-439e-ad46-4145d6c4bc5d ext4 /
+systemd[1]: dev-disk-by\x2duuid-d06a2f6f\x2d38f1\x2d4811\x2d8faa\x2d9243fb7af77f.device: Job dev-disk-by\x2duuid-0e807a38\x2d4862\x2d4803\x2dac85\x2d710cb1cb12fb.device/start timed out.
+systemd-coredump[18800]: Module libc.so.6 from rpm glibc-2.41-1 with build-id 36e67f4a3f38bfc33ebf1d0a98e1ffd1117600a8
+systemd[1]: dev-disk-by\x2duuid-e2f685b5\x2dde26\x2d47b5\x2db458\x2dc20cdcc26f4d.device: Job dev-disk-by\x2duuid-1229b944\x2d7eb6\x2d4303\x2dbb5d\x2d88098b582130.device/start timed out.
+systemd[1]: docker.service: Main process exited, code=exited, status=2/FAILURE
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=11h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd[1]: Mounting mnt-nas.mount - /mnt/nas...
+systemd-coredump[10855]: Module libc.so.6 from rpm glibc-2.41-1 with build-id 01f9b8fec9f3bd5eeee70711096a86f7d81e99df
+systemd[1]: dev-disk-by\x2duuid-602999de\x2d546b\x2d45b4\x2dbb42\x2d26cb7785a946.device: Job dev-disk-by\x2duuid-5faad07a\x2db17f\x2d4e76\x2da70d\x2d5d05773bc55e.device/start timed out.
+systemd-coredump[29820]: Module libc.so.6 from rpm glibc-2.41-1 with build-id 5aded82b3e0497cea02de85d2fe32e86781f89f2
+lsblk: nvme0n1 931.5G disk 4b098a70-179b-4a57-be52-13a7d7a4255f ext4 /
+systemd-coredump[70813]: Process 93169 (dataroom) of user 1000 dumped core.
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":86.904}}}
+Unit: cups.service  Result=exit-code  ExecMainStatus=81  NRestarts=2  InvocationID=3d10fd888676240e15381b26c2d38111
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+systemd-coredump[14369]: #0  0x00007fbfde9a604f strlen (libc.so.6 + 0x4340a)
+systemd-timesyncd[93179]: Initial clock synchronization to Tue 2026-11-04 08:39:48.334351 CET.
+systemd[1]: docker.service: Main process exited, code=exited, status=2/FAILURE
+pacman: [ALPM] upgraded systemd (13.2.33.arch1-1 -> 8.19.5.arch1-1)
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=19h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd[1]: Started session-24.scope - Session 22 of User root.
+systemd-coredump[90536]: #6  0x00007fe40dbe1e7e strlen (libc.so.6 + 0x91c55)
+systemd-logind[83112]: New session 25 of user root.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 1.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 2.
+systemd-timesyncd[95870]: Initial clock synchronization to Tue 2026-11-04 08:35:51.430953 CET.
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+pacman: [ALPM] installed python-requests (22.20.5-1)
+systemd-coredump[60809]: Process 56878 (dataroom) of user 1000 dumped core.
+systemd[1]: docker.service: Main process exited, code=exited, status=3/FAILURE
+systemd[1]: var-lib-docker-overlay2-2804574d0bfebed714e9e71d59ba9f79c96e32768c33441a67221caa7f094982-merged.mount: Deactivated successfully.
+systemd-fsck[33774]: /dev/nvme0n1p1: 496 files, 87627/660275 clusters
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=10h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-67470976\x2d57ef\x2d476d\x2db8ed\x2de51ef621058d.service: Deactivated successfully.
+pacman: [ALPM] upgraded glibc (5.5.34.arch1-1 -> 21.20.19.arch1-1)
+systemd[1]: Starting systemd-tmpfiles-clean.service - Cleanup of Temporary Directories...
+systemd-coredump[3750]: Module libc.so.6 from rpm glibc-2.41-1 with build-id f404eae965c6d52e00e5db750447611af0111c2d
+systemd[1]: docker.service: Main process exited, code=exited, status=3/FAILURE
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=13h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd[1]: run-docker-runtime\x2drunc-moby-47772e10dbbaf894ce6a80a6464b2f3cb5215d26978c086112cedcb77a1768cc-runc.HadS4f.mount: Deactivated successfully.
+pacman: [ALPM] upgraded openssl (1:22.6.26-3 -> 1:21.5.30-1)
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+systemd-fsck[28107]: /dev/nvme0n1p1: 605 files, 19994/427293 clusters
+lsblk: nvme0n1 931.5G disk d8775a53-6073-4807-9463-372c4bec483d ext4 /
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-ceeaa039\x2d3e27\x2d4944\x2dbdb7\x2d5bb6ab294564.service: Deactivated successfully.
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=2h UNIT=shadow.timer ACTIVATES=shadow.service
+systemd[1]: Started docker-8ead117b1904d70dc0b4e98798c0571e1306c5826a8eaaec5386257bf4baff1d.scope - libcontainer container c2bfa164e09c0ac4dd34a2ff071c727ba83331366645638561ae8957cdfbfd5c.
+systemd-journald[89368]: Data hash table of /var/log/journal/89a9c818d390e02f8828204d748ed9a1/system.journal has a fill level at 75.0 (99355 of 267234 items, 96M file size, 227 bytes per hash table item), suggesting rotation.
+systemd-timesyncd[48456]: Initial clock synchronization to Tue 2026-11-04 08:36:55.805137 CET.
+systemd-coredump[53259]: Process 40095 (dataroom) of user 1000 dumped core.
+systemd[1]: user@1000.service: Consumed 45min 9.573s CPU time, 2.7G memory peak.
+systemd[1]: run-docker-runtime\x2drunc-moby-bc2363e1a2f551273e36029a715dfc7cc81d126153786c57a757ed7f0df006a5-runc.J6fM63.mount: Deactivated successfully.
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+timers: NEXT=Wed 2026-11-05 00:00:00 CET LEFT=11h UNIT=shadow.timer ACTIVATES=shadow.service
+coredump: {"time":1716439121834182,"pid":41362,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/dataroom","size":25675694}
+systemd-logind[12522]: New session 9 of user root.
+pacman: [ALPM] upgraded linux (26.18.37.arch1-1 -> 8.5.36.arch1-1)
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":39.993}}}
+systemd-coredump[87298]: Module libc.so.6 from rpm glibc-2.41-1 with build-id 1aa00b08f6c79eb70074322252d8768405b83cee
+systemd-logind[67830]: New session 13 of user root.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 2.
+pacman: [ALPM] upgraded glibc (1:17.11.11-1 -> 1:14.1.20-4)
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 6.
+systemd[1]: Mounting mnt-nas.mount - /mnt/nas...
+systemd-logind[45221]: New session 16 of user root.
+systemd[1]: Started session-17.scope - Session 2 of User root.
+systemd[1]: run-docker-runtime\x2drunc-moby-889091924936459edebe5c2f4beca49bbc4409c890e6611796e66526d816ecb6-runc.J0bSeb.mount: Deactivated successfully.
+systemd[1]: Started session-26.scope - Session 22 of User root.
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-3847c284\x2dce26\x2d4674\x2da4ca\x2dc05c66d688d3.service: Deactivated successfully.
+systemd[1]: run-docker-runtime\x2drunc-moby-fd06833a31c6fb854ea06c370764b34cb06f44518e822183b0ff05cae2745cbe-runc.B6bOe3.mount: Deactivated successfully.
+systemd-coredump[49701]: Process 75709 (dataroom) of user 1000 dumped core.
+systemd-coredump[49892]: ELF object binary architecture: AMD x86-64
+systemd-coredump[79548]: ELF object binary architecture: AMD x86-64
+systemd-journald[15297]: /var/log/journal/6da0eae3eca4e1272214646b4998e1b8/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+systemd-coredump[83561]: #18  0x00007f657fbdf910 strlen (libc.so.6 + 0x86ec1)
+systemd-coredump[38143]: ELF object binary architecture: AMD x86-64
+systemd-journald[38292]: Data hash table of /var/log/journal/08661a5901e58b9665c0584bed11efa1/system.journal has a fill level at 75.0 (52222 of 288031 items, 85M file size, 358 bytes per hash table item), suggesting rotation.
+systemd[1]: var-lib-docker-overlay2-48a4278dd282fc30cce4d2ece6c8d0c711164639380d40f619853f15d6b8b9d8-merged.mount: Deactivated successfully.
+systemd[1]: Started docker-044d7489ae17e393357fc328d526fca09bf8fb9fd1974468194f0d686c894480.scope - libcontainer container 00c6a39eea61a1c4dbcb3ff0a5aec46a94651e63c0ce55948b8e7b48a612d6ba.
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-53c75334\x2d95db\x2d4cee\x2db1f7\x2d2e4e8d1ef210.service: Deactivated successfully.
+systemd[1]: dev-disk-by\x2duuid-8c690ec2\x2d8e7f\x2d46f7\x2d8d0b\x2dca434b7877fd.device: Job dev-disk-by\x2duuid-3d86c6a3\x2db5f3\x2d4936\x2d92da\x2decdca8c172d9.device/start timed out.
+systemd-timesyncd[68667]: Initial clock synchronization to Tue 2026-11-04 08:22:23.428584 CET.
+systemd[1]: docker.service: Main process exited, code=exited, status=1/FAILURE
+systemd[1]: var-lib-docker-overlay2-138d23ab0290183a843d45ef2a216417b320b0048a693e2b3a6eade9e0d072ee-merged.mount: Deactivated successfully.
+systemd[1]: user@1000.service: Consumed 50min 2.142s CPU time, 1.5G memory peak.
+systemd-coredump[25372]: ELF object binary architecture: AMD x86-64
+systemd[1]: systemd-fsck@dev-disk-by\x2duuid-9a318d18\x2ddaf5\x2d4182\x2d9f49\x2de957258fd0db.service: Deactivated successfully.
+systemd-timesyncd[86937]: Initial clock synchronization to Tue 2026-11-04 08:33:50.202823 CET.
+systemd[1]: Failed to start docker.service - Docker Application Container Engine.
+systemd[1]: run-docker-runtime\x2drunc-moby-2b5dc74ccc9a5b19814f41d59851d50c8635cf0d9f7b8f90f687aacb50ba0540-runc.Ga2Q59.mount: Deactivated successfully.
+systemd-fsck[30851]: /dev/nvme0n1p1: 28 files, 48442/222225 clusters
+systemd[1]: Started session-14.scope - Session 7 of User root.
+systemd-coredump[9041]: #6  0x00007f53734f913c strlen (libc.so.6 + 0x6c01b)
+systemd[1]: user@1000.service: Consumed 15min 17.100s CPU time, 2.2G memory peak.
+systemd-coredump[28844]: #0  0x00007f5c5e57cf85 strlen (libc.so.6 + 0xb2149)
+Unit: temp-logger.service  Result=exit-code  ExecMainStatus=66  NRestarts=9  InvocationID=98011600bc4b3bee0f14673cba5122b7
+Unit: temp-logger.service  Result=exit-code  ExecMainStatus=123  NRestarts=4  InvocationID=7542256ce56f2b0429e6cc8a55f68503
+Unit: cups.service  Result=exit-code  ExecMainStatus=12  NRestarts=5  InvocationID=9249cedcf0623618ebdff8246cd71ec6
+systemd[1]: Started session-23.scope - Session 5 of User root.
+systemd[1]: Reached target sleep.target - Sleep.
+systemd[1]: docker.service: Main process exited, code=exited, status=1/FAILURE
+lsblk: nvme0n1 931.5G disk 792dc724-11df-48e4-9ceb-8b42fd7378f7 ext4 /
+coredump: {"time":1706529421909335,"pid":5010,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/python3.13","size":39285492}
+systemd[1]: Reached target sleep.target - Sleep.
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":84.786}}}
+systemd[1]: Started docker-7288fc2dbbbb31a3cc9b3941f8bf805ad83ff57d3f8d9c925bdb1f782c3948b9.scope - libcontainer container 76de78eb018e43496cf2c54d6077479858a19b7bc93681a1933afe686e8c46c7.
+systemd-coredump[47143]: #10  0x00007fe87720c70d strlen (libc.so.6 + 0x9e253)
+systemd-journald[36240]: /var/log/journal/aae09f1da317ea7ea673bdedb28d1de1/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+systemd-journald[64697]: Data hash table of /var/log/journal/3b23fc4f3cedca2cbbb20c1724436ea3/system.journal has a fill level at 75.0 (99515 of 245553 items, 10M file size, 512 bytes per hash table item), suggesting rotation.
+systemd-fsck[21216]: /dev/nvme0n1p1: 796 files, 61661/706853 clusters
+coredump: {"time":1738132859669721,"pid":80040,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/node","size":73760769}
+systemd-timesyncd[19641]: Initial clock synchronization to Tue 2026-11-04 08:17:53.984613 CET.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 5.
+systemd[1]: docker.service: Scheduled restart job, restart counter is at 3.
+systemd-journald[99951]: /var/log/journal/dedbe989dafc8a30b0e25190305de872/user-1000.journal: Journal file uses a different sequence number ID, rotating.
+pacman: [ALPM] upgraded openssl (1:10.0.16-1 -> 1:2.2.21-2)
+systemd-fsck[98022]: /dev/nvme0n1p1: 380 files, 52100/113033 clusters
+systemd-coredump[64474]: ELF object binary architecture: AMD x86-64
+systemd[1]: Reached target sleep.target - Sleep.
+systemd-timesyncd[58338]: Initial clock synchronization to Tue 2026-11-04 08:33:42.114178 CET.
+pacman: [ALPM] upgraded openssl (7.15.33.arch1-1 -> 3.8.10.arch1-1)
+systemd-logind[5288]: New session 21 of user root.
+systemd-logind[15904]: New session 19 of user root.
+systemd-coredump[2279]: ELF object binary architecture: AMD x86-64
+sensors: {"k10temp-pci-00c3":{"Tctl":{"temp1_input":60.349}}}
+systemd[1]: var-lib-docker-overlay2-a260d8f6e967626835bb7465b662b4ffe7c87911d9ee73182b0aedc0e823db38-merged.mount: Deactivated successfully.
+systemd-timesyncd[31867]: Initial clock synchronization to Tue 2026-11-04 08:11:53.414862 CET.
+Unit: dictate.service  Result=exit-code  ExecMainStatus=54  NRestarts=9  InvocationID=9ab37c5f814b4fabdf516a13948945f5
+coredump: {"time":1728981033358335,"pid":28944,"uid":1000,"gid":1000,"sig":11,"corefile":"present","exe":"/usr/bin/node","size":81389448}

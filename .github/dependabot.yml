@@ -1,0 +1,22 @@
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      actions:
+        patterns: ["*"]
+  - package-ecosystem: cargo
+    directory: /
+    schedule:
+      interval: monthly
+    groups:
+      cargo:
+        patterns: ["*"]
+    # Pinned on purpose: niri-ipc matches the niri version, the Wayland crates the versions tested in the spikes.
+    ignore:
+      - dependency-name: niri-ipc
+      - dependency-name: wayland-client
+      - dependency-name: wayland-protocols
+      - dependency-name: wayland-protocols-misc
