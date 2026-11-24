@@ -77,10 +77,12 @@ Protokoll und Daemon-Teile gelten weiter.
    CHANGELOG, CODE_OF_CONDUCT, SECURITY mit Adresse nach V10, `.github/` mit CI im Arch-Container nach V12,
    `scripts/ci-setup-arch.sh`; Pushing-Pixels-Zeichen nicht unter der GPL, V14); der Start-Commit ist damit neu
    gebaut und per Force-Push ersetzt (V8, 24.11.), CI auf GitHub grün (59 min ohne Cache), Homepage, Topics und
-   Dependabot gesetzt; ein zweiter Neubau bringt den CI-Badge. Offen mit Daniels Freigabe: Umschalten auf öffentlich,
-   danach Secret Scanning mit Push Protection und Private Reporting; Dependabot-PR #1 (cargo) braucht eine neu
-   erzeugte `THIRD-PARTY-LICENSES.txt`. Danach offen: Archiv und Tausch der Checkouts, Sponsors oder Liberapay, Download-Seite, AUR. Die unversionierten Ordner `reports/` und `research_notes/` im
-   alten Haupt-Checkout sind Daniels private Recherche: nicht anfassen, nie committen.
+   Dependabot gesetzt; ein zweiter Neubau bringt den CI-Badge. **Öffentlich seit 24.11.** (U5 Schritt 3: Baum vorher
+   erneut geprüft, Secret Scanning mit Push Protection und Private Reporting an); GitLab-Projekt archiviert, Checkouts
+   getauscht (Schritt 4: dieser Checkout ist der von GitHub, der alte liegt unter `/home/git/blub/dictate-archiv` mit
+   Remote `archiv`). Dependabot-PR #1 (cargo) braucht eine neu erzeugte `THIRD-PARTY-LICENSES.txt`. Offen als eigene
+   Fragen: Sponsors oder Liberapay, Download-Seite, AUR, Ankündigung. Die unversionierten Ordner `reports/` und
+   `research_notes/` im Archiv-Checkout sind Daniels private Recherche: nicht anfassen, nie committen.
 2. **Beobachten** (aus der Live-Abnahme, Liste in `PLAN-wayland.md` 6h): mehrere Monitore, fullscreen/maximized,
    Sperre im Abgang und Weg „Frame gemeldet“ (nur Unit-Test), Hinweis nach echtem unsauberem Boot-Ende, Schwelle
    `CONFIDENT_*` (`src/palette/resolve.rs`) nach einigen Wochen, `ASK_FRAME` live, Diagnose-Messung mit Symptom und

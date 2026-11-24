@@ -926,10 +926,27 @@ Hinweis, dass sie allgemein werden (O3).
        `/home/user-1` als erfundene Pfade in `demo_daemon.py`. Geschäftliche Begriffe: nur ein weiteres „Preis“ in
        diesem Plan (Abwägung). Neue Binärdateien: die sieben PNG in `docs/assets/` (selbst angesehen, ohne Textchunks).
        Gedankenstriche in den öffentlichen englischen Dateien: 0; alle Bildverweise der README vorhanden.
-  3. Auf öffentlich schalten, Private Vulnerability Reporting einschalten (**Annahme:** geht erst bei öffentlichen Repositories; nicht getestet, weil ein Versuch ein außenwirksamer Aufruf wäre).
-     **Wartet auf Daniel** (Wahl „Erst selbst ansehen“, 23.11.2026).
-  4. Altes GitLab-Projekt archivieren, Remote im alten Checkout umbenennen; Checkouts tauschen (V7), Orca und Worktrees
-     nachziehen, der CUDA-Erstbau fällt im neuen Checkout einmal an.
+  3. **Erledigt am 24.11.2026** (Freigabe Daniel): auf öffentlich geschaltet. Vorher U5a noch einmal über den Baum
+     von `24d8966` (`git archive`, 319 Dateien, 13 binär; Rohdaten `$DICTATE_TEST_ROOT/logs/u5/scan-24d8966.json`,
+     `gitleaks-24d8966.json`; Listen des Rechners am selben Tag neu erhoben, mehr MACs, IPs und Verbindungen als am
+     Vortag): gitleaks 52 Treffer in denselben Dateien, exakte Treffer und Ordnernamen nach Art und Ort gleich der
+     abgenommenen Prüfung von `4089835` (Baum `0408054`), nichts Neues. Über die API sichtbar außer dem Baum: nur
+     `main`, keine Tags, keine Releases, keine Artefakte, der geschlossene Dependabot-PR #1 (`fbe11de`, ändert nur
+     `Cargo.toml` und `Cargo.lock`) und die Actions-Läufe der ersetzten Start-Commits. Deren Commits bleiben per SHA
+     abrufbar; alle Bäume sind geprüft (`ef6cd55` Baum `f269143` in U5a, `8387c60` Baum `9886b42` in U5c, `c5df8a4`
+     Baum `0408054`). Die Läufe bleiben stehen (Löschen wäre eine eigene Wahl). Danach eingeschaltet und per GET
+     belegt: Secret Scanning und Push Protection (`security_and_analysis`), Private Vulnerability Reporting
+     (`enabled: true`; die Annahme oben trifft zu, privat war es nicht verfügbar), Dependabot-Alerts weiter an.
+     Anonym (ohne Token): Repo-Seite und API 200, `SECURITY.md` als Richtlinie 200, CI-Badge 200 mit „passing“.
+     Secret-Scanning-Alerts direkt danach: 0 (erwartet waren welche zu den Testmustern aus S1; spätere Zählung
+     abwarten, keinen Alert ohne Prüfung schließen).
+  4. **Erledigt am 24.11.2026:** Archiv vorher geprüft (`git log --branches --tags --not --remotes` leer, kein Stash,
+     GitLab-`main` = `68ca88f`), GitLab-Projekt archiviert (API: privat, `archived: true`), Remote im alten Checkout
+     heißt `archiv`. Checkouts getauscht (V7): alt `/home/git/blub/dictate-archiv` (mit den unversionierten privaten
+     Ordnern), neu `/home/git/blub/dictate` auf `main`; Orca führt das Repo unter demselben Pfad weiter und zeigt den
+     neuen Stand, Worktrees gab es keine mehr. Erwartet, nicht gemessen: der Ordnerwechsel macht den Build-Cache im
+     neuen Checkout ungültig (absolute Pfade), der nächste Release-Build baut CUDA einmal neu (19 min am 23.11.).
+     U5a über diesen Nachtrag: gleiche Treffer wie `24d8966`, neu nur der Ordnername `dictate-archiv` (steht schon in V7).
   5. Danach eigene Fragen: Sponsors oder Liberapay, Download-Seite, AUR, Ankündigung.
 - **Später (Auslöser „bezahlte Builds“):** Schätzung und Plan für Hyprland, sway und Vulkan (Nr. 3); die
   geschäftlichen und rechtlichen Punkte des Verkaufs stehen privat, nicht im Repo.
