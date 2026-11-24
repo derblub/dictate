@@ -1071,9 +1071,25 @@ Hinweis, dass sie allgemein werden (O3).
        (`/home/git/blub/aur-dictate`, Zweig `master` = `origin/master` = `4472128`), nicht im Repo. Belegt am selben
        Abend: Paketseite `aur.archlinux.org/packages/dictate` zeigt „dictate 0.1.0-1“ mit Maintainer `derblub` und
        Upstream-URL auf GitHub, cgit zeigt den Commit, der Snapshot `dictate.tar.gz` liefert 200. Die RPC
-       (`/rpc/v5/info?arg[]=dictate`, auch `search` nach Name und Maintainer) gab bis 25 min nach dem Push noch
-       `resultcount: 0` (eigener Cache der RPC); AUR-Helfer finden das Paket erst, wenn sie es meldet. Nachprüfen.
+       (`/rpc/v5/info?arg[]=dictate`, auch `search` nach Name und Maintainer) gab direkt nach dem Push und noch um
+       22:12 und 22:13 MEZ `resultcount: 0`, um 22:20 dann `dictate 0.1.0-1`, Maintainer `derblub`, angelegt laut RPC
+       um 21:10:58 UTC (22:10 MEZ, also nur Minuten vor den leeren Abfragen); die Ursache der Verzögerung ist nicht
+       belegt. Damit finden AUR-Helfer das Paket.
      - **Aufräumen (O5):** `$DICTATE_TEST_ROOT/logs/aur/` enthält zwei Testpakete von 47 MB aus nicht finalen Tarballs
        (keine Release-Artefakte); mit `u3/`, `u3b/`, `u5/` nach Abschluss von U5 löschen.
+  7. **Nach dem AUR, Entscheidungen Daniels vom 24.11.2026** (über seinen Assistenten, je wörtlich weitergegeben):
+     - **GitHub Sponsors (V19):** Die API zeigte für `derblub` kein Profil (`hasSponsorsListing: false`). Daniel
+       entschied „einrichten“. Am 24.11. hat sein Assistent das Profil per GitHub-API als Entwurf angelegt
+       (Beschreibung und Stufen); Daniel verbindet die Auszahlung über Stripe, unterschreibt das Steuerformular und
+       reicht das Profil ein, danach prüft GitHub. Konto-, Zahlungs- und Steuerangaben sowie die Beträge der Stufen
+       stehen nicht im Repo (Geschäftliches nur privat). Erst wenn die API das Profil als öffentlich meldet
+       (`sponsorsListing.isPublic: true`; `hasSponsorsListing` allein genügt nicht): `.github/FUNDING.yml`
+       (`github: derblub`) und ein englischer README-Link auf eigenem Branch, U5a, Push/PR/Merge mit Freigabe.
+     - **Ankündigung (V22):** Kanäle nach Daniels Wahl, Texte englisch (LinkedIn deutsch), nur Projekt und GitHub-Link,
+       ohne Firma, Homepage und Sponsors. Die Entwürfe liegen privat, nicht im Repo; veröffentlichen tut Daniel
+       (die AUR-RPC meldet das Paket seit 22:20 MEZ am 24.11.).
+     - **O5:** Die Werkzeuge (Prüfskript der U5a, Bau-Test im Container) und die Vergleichsbasis der letzten U5a sind
+       privat außerhalb des Repos gesichert; `logs/u3/`, `u3b/`, `u5/`, `aur/` werden gelöscht, wenn U5 abgeschlossen
+       ist (Sponsors erledigt, Ankündigung veröffentlicht).
 - **Später (Auslöser „bezahlte Builds“):** Schätzung und Plan für Hyprland, sway und Vulkan (Nr. 3); die
   geschäftlichen und rechtlichen Punkte des Verkaufs stehen privat, nicht im Repo.
