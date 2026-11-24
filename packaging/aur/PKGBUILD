@@ -13,17 +13,21 @@ pkgdesc='Local live dictation for niri on Wayland (whisper.cpp, CUDA)'
 arch=('x86_64')
 url='https://github.com/derblub/dictate'
 license=('GPL-3.0-or-later')
+# libglvnd, libxkbcommon and wayland: dictate-settings loads libEGL, libxkbcommon and libwayland-client at runtime
+# (dlopen, so namcap does not see them); niri: dictate-ui talks to it over its socket
 depends=(
   'cairo'
   'cuda'
-  'gcc-libs'
   'glib2'
   'glibc'
   'graphene'
   'gtk4'
   'gtk4-layer-shell'
+  'hicolor-icon-theme'
+  'libgcc'
   'libglvnd'
   'libpulse'
+  'libstdc++'
   'libxkbcommon'
   'niri'
   'nvidia-utils'
