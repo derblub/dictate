@@ -2,12 +2,12 @@
 
 All notable changes to this project are documented here. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and the project uses [Semantic Versioning](https://semver.org/).
-There are no releases yet; until the first one, `main` is the current state.
 
 ## [Unreleased]
 
-The first public state of dictate, version 0.1.0 in `Cargo.toml`. The history before it stays private; the repository
-starts with a single commit.
+## [0.1.0] - 2026-11-24
+
+The first public release of dictate. The history before it stays private; the repository starts with a single commit.
 
 ### Added
 
@@ -28,3 +28,8 @@ starts with a single commit.
 - License GPL-3.0-or-later with an additional permission for NVIDIA CUDA, third-party notices in
   `THIRD-PARTY-LICENSES.txt`, a contributor license agreement (`CLA.md`), a security policy and a code of conduct.
 - CI on GitHub: formatting, license checks, clippy and the mock tests on every push to `main` and every pull request.
+- Package for Arch Linux in the AUR (`dictate`), built from the release tag with CUDA from the system; the PKGBUILD is
+  in `packaging/aur/`.
+
+[Unreleased]: https://github.com/derblub/dictate/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/derblub/dictate/releases/tag/v0.1.0
