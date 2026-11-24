@@ -5,6 +5,10 @@ All notable changes to this project are documented here. The format follows
 
 ## [Unreleased]
 
+### Added
+
+- A GitHub Sponsors link (`.github/FUNDING.yml` and a section in the README).
+
 ## [0.1.0] - 2026-11-24
 
 The first public release of dictate. The history before it stays private; the repository starts with a single commit.

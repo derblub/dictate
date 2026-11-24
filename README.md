@@ -24,7 +24,8 @@
   <a href="#installation">Installation</a> ·
   <a href="#usage">Usage</a> ·
   <a href="#configuration">Configuration</a> ·
-  <a href="CHANGELOG.md">Changelog</a>
+  <a href="CHANGELOG.md">Changelog</a> ·
+  <a href="#sponsoring">Sponsor</a>
 </p>
 
 </div>
@@ -515,6 +516,11 @@ Bug reports and ideas are welcome in the [issue tracker](https://github.com/derb
 contributions need a contributor license agreement ([CLA.md](CLA.md)); how to agree, how to run the checks and the
 rules for changes are in [CONTRIBUTING.md](CONTRIBUTING.md). Everyone taking part follows the
 [Code of Conduct](CODE_OF_CONDUCT.md). Security issues go through [SECURITY.md](SECURITY.md).
+
+## Sponsoring
+
+If dictate is useful to you, you can support its development through
+[GitHub Sponsors](https://github.com/sponsors/derblub).
 
 ## License
 
