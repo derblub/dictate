@@ -1065,6 +1065,14 @@ Hinweis, dass sie allgemein werden (O3).
        `depends` samt Kommentar). Prüfsumme und neu erzeugte `.SRCINFO` auf Branch `aur-sha256`. AUR-Konto
        `derblub` mit SSH-Schlüssel hat Daniel eingerichtet; der Upload folgt nach seiner Sichtprüfung des lokalen
        AUR-Commits.
+     - **AUR-Upload am 24.11.2026** (Freigabe Daniel nach Sichtprüfung des lokalen AUR-Commits): Push von `4472128`
+       („Initial upload: dictate 0.1.0-1“) in das AUR-Repository `dictate`, Konto `derblub`; die vier Dateien des
+       Commits sind byte-gleich mit `packaging/aur/` auf `main` (`cmp`). Der Arbeitsklon liegt lokal
+       (`/home/git/blub/aur-dictate`, Zweig `master` = `origin/master` = `4472128`), nicht im Repo. Belegt am selben
+       Abend: Paketseite `aur.archlinux.org/packages/dictate` zeigt „dictate 0.1.0-1“ mit Maintainer `derblub` und
+       Upstream-URL auf GitHub, cgit zeigt den Commit, der Snapshot `dictate.tar.gz` liefert 200. Die RPC
+       (`/rpc/v5/info?arg[]=dictate`, auch `search` nach Name und Maintainer) gab bis 25 min nach dem Push noch
+       `resultcount: 0` (eigener Cache der RPC); AUR-Helfer finden das Paket erst, wenn sie es meldet. Nachprüfen.
      - **Aufräumen (O5):** `$DICTATE_TEST_ROOT/logs/aur/` enthält zwei Testpakete von 47 MB aus nicht finalen Tarballs
        (keine Release-Artefakte); mit `u3/`, `u3b/`, `u5/` nach Abschluss von U5 löschen.
 - **Später (Auslöser „bezahlte Builds“):** Schätzung und Plan für Hyprland, sway und Vulkan (Nr. 3); die
