@@ -1055,6 +1055,16 @@ Hinweis, dass sie allgemein werden (O3).
        `assets`, `licenses`, `LICENSE`, `THIRD-PARTY-LICENSES.txt`, `packaging/dictate-settings.desktop`) muss leer
        sein, dann gilt Lauf 2 für den getaggten Stand. **AUR-Konto:** der Upload braucht ein Konto mit hinterlegtem
        SSH-Schlüssel (Frage an Daniel, Claude legt weder Konto noch Schlüssel an).
+     - **Umgesetzt am 24.11.2026** (Freigaben Daniel, je einzeln): Push `aur`, PR #3, Merge nach grüner CI (lint
+       2 min, test 10 min), `main` = `742c58b`; Remote-Branches `u5-public` und `aur` gelöscht. Tag `v0.1.0`
+       (annotiert, „dictate 0.1.0“) auf `742c58b`, GitHub-Release „dictate 0.1.0“ (CHANGELOG-Abschnitt plus
+       Installation, keine Binaries, nur der automatische Quelltext-Tarball). Prüfung nach dem Tag in einer sauberen
+       Kopie: `updpkgsums` (sha256 `f90ea1d3…`), `makepkg --verifysource` bestanden, `makepkg -o` entpackt nach
+       `dictate-0.1.0/`, Inhalt des Tarballs gleich `git archive v0.1.0` (`diff -r` leer), Bau-Eingaben seit `5c8a11c`
+       (Lauf 2) unverändert (`git diff --stat` leer; geändert nur Plan, `CLAUDE.md`, `.SRCINFO` und im PKGBUILD
+       `depends` samt Kommentar). Prüfsumme und neu erzeugte `.SRCINFO` auf Branch `aur-sha256`. AUR-Konto
+       `derblub` mit SSH-Schlüssel hat Daniel eingerichtet; der Upload folgt nach seiner Sichtprüfung des lokalen
+       AUR-Commits.
      - **Aufräumen (O5):** `$DICTATE_TEST_ROOT/logs/aur/` enthält zwei Testpakete von 47 MB aus nicht finalen Tarballs
        (keine Release-Artefakte); mit `u3/`, `u3b/`, `u5/` nach Abschluss von U5 löschen.
 - **Später (Auslöser „bezahlte Builds“):** Schätzung und Plan für Hyprland, sway und Vulkan (Nr. 3); die

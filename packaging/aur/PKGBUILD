@@ -50,7 +50,7 @@ optdepends=(
 install=dictate.install
 options=('!lto')
 source=("$pkgname-$pkgver.tar.gz::$url/archive/refs/tags/v$pkgver.tar.gz")
-sha256sums=('SKIP')
+sha256sums=('f90ea1d31479265289f62a22323132aa649bbe3a3d97e4fd6d875bc3a5f4994d')
 
 prepare() {
   cd "$pkgname-$pkgver"
