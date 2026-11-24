@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Dictate Settings
+GenericName=Dictation settings
+Comment=Configure local live dictation
+Exec=dictate-settings
+Icon=dictate
+Terminal=false
+Categories=Settings;
+Keywords=dictation;speech;voice;microphone;

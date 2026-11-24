@@ -1,0 +1,400 @@
+2026-11-01T02:08:15+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":8}"}
+2026-11-03T12:17:56+0100 password: incorrect for account root
+2026-11-01T20:01:57+0100 session=1855 sid=3524 retries=2
+kernel: audit: type=1701 audit(1722988181.416:593): auid=1000 uid=1000 gid=1000 ses=3 pid=44630 comm="node" exe="/usr/bin/node" sig=6 res=1
+NetworkManager[93783]: <info>  [1767938257.1088] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+2026-11-04T16:14:44+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:62bdd25d295cd6e7a161e146bd3f970c12be062f690f8bbb90ce6389fbfb0ecb 200
+2026-11-03T07:23:04+0100 fetch https://archlinux.org/packages/core/x86_64/linux/ ok
+2026-11-03T09:29:25+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":480}"}
+2026-11-04T22:28:41+0100 mail: delivered to postmaster@example.org via smtp.example.org
+systemd[1]: Started getty@tty4.service - Getty on tty6.
+kernel: audit: type=1701 audit(1731703218.695:209): auid=1000 uid=1000 gid=1000 ses=7 pid=96851 comm="node" exe="/usr/bin/node" sig=11 res=1
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+kernel: audit: type=1300 audit(1742076227.638:671): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=98368 pid=20433 key=(null)
+2026-11-03T02:37:51+0100 cache hit ratio 0.25, evicted 800 entries
+2026-11-02T21:43:46+0100 session=182 sid=8777 retries=5
+2026-11-03T05:07:03+0100 token: expired, refreshing
+2026-11-01T02:23:43+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":381}"}
+systemd[1]: Started docker.service - Docker Application Container Engine.
+2026-11-03T09:08:43+0100 cache hit ratio 0.35, evicted 450 entries
+kernel: Command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=4321ccb8-7b4f-4577-a9fe-94089e9612f7 rw quiet loglevel=3 nvidia_drm.modeset=1 iommu.passthrough=1
+2026-11-04T15:35:52+0100 GET https://example.org/api/v1/rooms/6bdd99c1-47db-4004-bff7-ae042346c459/files?page=6&sort=name 200
+systemd[1]: Started docker.service - Docker Application Container Engine.
+wpa_supplicant[23341]: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+systemd[1]: Started docker.service - Docker Application Container Engine.
+kernel: audit: type=1300 audit(1783802844.755:926): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=70039 pid=37655 key=(null)
+2026-11-03T11:30:59+0100 auth: none required for /healthz
+2026-11-03T04:23:03+0100 fetch https://archlinux.org/packages/core/x86_64/systemd/ ok
+sudo[47433]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/5 ruser= rhost=  user=root
+sudo[95627]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/1 ruser= rhost=  user=root
+2026-11-03T16:15:09+0100 password: incorrect for account root
+wpa_supplicant[10962]: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+kernel: Command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=4d852f63-be73-4ee0-a3dc-0da05df9d99c rw quiet loglevel=3 nvidia_drm.modeset=1 iommu.passthrough=1
+kernel: audit: type=1701 audit(1718366452.764:654): auid=1000 uid=1000 gid=1000 ses=2 pid=82691 comm="node" exe="/usr/bin/node" sig=11 res=1
+2026-11-01T09:14:59+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:e2bca5418e337f5775bebed7e9c7c4ccb46d8bc8fe3ab44e0c906dc39821b53b 200
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=dae9b41e-25cb-4b4f-9489-eeaa9737040b rw rd.luks.name=5cfee3ae-ac65-417d-ae53-06cb747c3fd5=cryptroot amd_pstate=active
+2026-11-03T06:33:29+0100 password: incorrect for account root
+2026-11-02T15:48:58+0100 fetch https://archlinux.org/packages/core/x86_64/xorg-server/ ok
+2026-11-04T23:48:55+0100 GET https://example.org/api/v1/rooms/310d5c86-69e1-4bc0-98eb-5927444b8ca5/files?page=6&sort=name 200
+2026-11-03T13:50:57+0100 password: incorrect for account root
+NetworkManager[52192]: <info>  [1710921335.3862] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+kernel: audit: type=1300 audit(1711717792.583:19): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=14737 pid=86556 key=(null)
+systemd[1]: session-20.scope: Deactivated successfully.
+systemd[1]: session-13.scope: Deactivated successfully.
+sudo[41103]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/7 ruser= rhost=  user=root
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+2026-11-01T22:30:26+0100 auth: none required for /healthz
+2026-11-04T21:59:55+0100 fetch https://archlinux.org/packages/core/x86_64/linux/ ok
+kernel: Command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=efeeeab3-06fd-424b-b680-c8627a44f12f rw quiet loglevel=3 nvidia_drm.modeset=1 iommu.passthrough=1
+sshd[69695]: pam_unix(sshd:session): session closed for user root
+2026-11-03T07:14:16+0100 session=4774 sid=8965 retries=2
+systemd-logind[9442]: Session 26 logged out. Waiting for processes to exit.
+kernel: audit: type=1300 audit(1730721819.444:301): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=83367 pid=4148 key=(null)
+2026-11-03T14:24:02+0100 cache hit ratio 0.71, evicted 511 entries
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=891fff9e-bf0f-464a-9bfb-4bca7cc77519 rw rd.luks.name=df858137-e0bf-4055-9dea-4e9db7b1e453=cryptroot amd_pstate=active
+systemd[1]: Started docker.service - Docker Application Container Engine.
+2026-11-04T15:29:18+0100 fetch https://archlinux.org/packages/core/x86_64/nvidia-open-dkms/ ok
+2026-11-02T15:33:23+0100 fetch https://archlinux.org/packages/core/x86_64/openssl/ ok
+2026-11-02T02:59:07+0100 mail: delivered to postmaster@example.org via smtp.example.org
+kernel: audit: type=1300 audit(1741475751.494:515): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=60931 pid=24491 key=(null)
+NetworkManager[94287]: <info>  [1766257702.1476] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+kernel: audit: type=1300 audit(1712124371.799:541): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=97611 pid=83907 key=(null)
+systemd[1]: session-23.scope: Deactivated successfully.
+2026-11-01T04:42:15+0100 cache hit ratio 0.94, evicted 363 entries
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+2026-11-01T00:07:26+0100 session=7327 sid=1389 retries=4
+systemd-logind[65115]: Session 7 logged out. Waiting for processes to exit.
+2026-11-01T23:34:30+0100 fetch https://archlinux.org/packages/core/x86_64/pipewire/ ok
+systemd[1]: session-1.scope: Deactivated successfully.
+NetworkManager[67118]: <info>  [1788467365.7419] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+2026-11-03T03:17:56+0100 token: expired, refreshing
+systemd[1]: session-15.scope: Deactivated successfully.
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+sudo[15792]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/9 ruser= rhost=  user=root
+NetworkManager[45075]: <info>  [1765711709.8250] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+2026-11-02T04:44:57+0100 worker 16: processed 71 items in 241 ms
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+2026-11-01T20:19:37+0100 worker 7: processed 624 items in 75 ms
+sshd[16001]: pam_unix(sshd:session): session closed for user root
+systemd[1]: Started getty@tty6.service - Getty on tty2.
+systemd[1]: Started docker.service - Docker Application Container Engine.
+2026-11-01T10:16:04+0100 session=1516 sid=2886 retries=5
+systemd[1]: Started getty@tty5.service - Getty on tty3.
+2026-11-02T03:07:16+0100 192.0.2.214 - - [05/Nov/2026:10:20:00 +0000] "GET /static/js/main.8eab8e7a.js HTTP/1.1" 200 47752
+systemd[1]: Started getty@tty3.service - Getty on tty4.
+2026-11-02T02:30:24+0100 token: expired, refreshing
+2026-11-02T08:57:44+0100 token: expired, refreshing
+kernel: audit: type=1701 audit(1743917225.182:392): auid=1000 uid=1000 gid=1000 ses=7 pid=18880 comm="node" exe="/usr/bin/node" sig=11 res=1
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=2f10cc75-a1a4-49cf-95cc-dd08d618a54e rw rd.luks.name=cb93bf59-5f33-4f8f-8767-ab3586a84629=cryptroot amd_pstate=active
+sshd[36701]: pam_unix(sshd:session): session closed for user root
+systemd[1]: session-19.scope: Deactivated successfully.
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=ae74ccc3-d4d9-4bcb-bf07-d4473717b481 rw rd.luks.name=930ee949-ba92-44e8-8c0e-a38a9e570e05=cryptroot amd_pstate=active
+kernel: audit: type=1300 audit(1714314376.201:102): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=43958 pid=47704 key=(null)
+kernel: audit: type=1300 audit(1741407078.862:462): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=361 pid=65111 key=(null)
+2026-11-02T23:09:34+0100 password: incorrect for account root
+2026-11-04T03:24:23+0100 mail: delivered to postmaster@example.org via smtp.example.org
+systemd-logind[2674]: Session 12 logged out. Waiting for processes to exit.
+NetworkManager[64696]: <info>  [1705932301.5201] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+2026-11-03T12:10:43+0100 mail: delivered to postmaster@example.org via smtp.example.org
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=f496ff60-8fdb-4c94-b25b-440c161f750e rw rd.luks.name=baa1f3b0-cc63-496d-873e-c5bb41f758b5=cryptroot amd_pstate=active
+2026-11-01T05:08:44+0100 password: incorrect for account root
+systemd[1]: Started docker.service - Docker Application Container Engine.
+2026-11-01T00:49:58+0100 GET https://example.org/api/v1/rooms/f887983e-fa33-49ff-9f20-40488cc545f9/files?page=2&sort=name 200
+2026-11-01T03:18:04+0100 cache hit ratio 0.04, evicted 467 entries
+2026-11-02T11:58:17+0100 fetch https://archlinux.org/packages/core/x86_64/nvidia-utils/ ok
+2026-11-03T14:28:32+0100 cache hit ratio 0.03, evicted 98 entries
+systemd[1]: session-23.scope: Deactivated successfully.
+2026-11-04T07:31:43+0100 auth: none required for /healthz
+sudo[45683]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/6 ruser= rhost=  user=root
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+2026-11-04T17:42:53+0100 GET https://example.org/api/v1/rooms/d3c9d82a-f416-45b4-aa18-a5c7b9e76a8c/files?page=4&sort=name 200
+2026-11-04T04:50:39+0100 192.0.2.57 - - [05/Nov/2026:10:15:00 +0000] "GET /static/js/main.98485d3b.js HTTP/1.1" 200 99170
+2026-11-02T11:38:21+0100 password: incorrect for account root
+NetworkManager[74474]: <info>  [1725571022.9210] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+2026-11-03T13:34:50+0100 worker 1: processed 572 items in 212 ms
+2026-11-02T06:30:09+0100 GET https://example.org/api/v1/rooms/ccbf1efb-d42e-42bb-8b01-da8fb59cc560/files?page=9&sort=name 200
+2026-11-01T17:27:34+0100 fetch https://archlinux.org/packages/core/x86_64/pipewire/ ok
+2026-11-04T13:49:39+0100 worker 9: processed 391 items in 673 ms
+kernel: audit: type=1701 audit(1777850897.244:723): auid=1000 uid=1000 gid=1000 ses=1 pid=94090 comm="node" exe="/usr/bin/node" sig=6 res=1
+kernel: audit: type=1701 audit(1768059745.250:909): auid=1000 uid=1000 gid=1000 ses=6 pid=31501 comm="node" exe="/usr/bin/node" sig=11 res=1
+2026-11-01T04:57:42+0100 cache hit ratio 0.86, evicted 735 entries
+2026-11-02T02:20:42+0100 192.0.2.149 - - [05/Nov/2026:10:26:00 +0000] "GET /static/js/main.c5da2442.js HTTP/1.1" 200 54017
+NetworkManager[91095]: <info>  [1742462657.4780] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+2026-11-03T16:00:56+0100 192.0.2.230 - - [05/Nov/2026:10:35:00 +0000] "GET /static/js/main.82d46f23.js HTTP/1.1" 200 54934
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=03eabd52-bc8b-44e0-b7da-85feef7e74b7 rw rd.luks.name=f60ebae2-f3d5-407c-9464-86c2ffebbbfd=cryptroot amd_pstate=active
+2026-11-03T13:05:23+0100 worker 13: processed 627 items in 807 ms
+sudo[62684]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/8 ruser= rhost=  user=root
+2026-11-02T21:35:47+0100 fetch https://archlinux.org/packages/core/x86_64/pipewire/ ok
+kernel: audit: type=1300 audit(1703422542.917:367): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=66460 pid=40883 key=(null)
+kernel: audit: type=1701 audit(1753319375.896:671): auid=1000 uid=1000 gid=1000 ses=9 pid=58618 comm="node" exe="/usr/bin/node" sig=11 res=1
+2026-11-04T18:55:03+0100 worker 7: processed 263 items in 455 ms
+systemd[1]: Started docker.service - Docker Application Container Engine.
+2026-11-02T04:19:39+0100 GET https://example.org/api/v1/rooms/813c48b2-9464-4594-b77d-44900669d246/files?page=6&sort=name 200
+2026-11-02T17:00:23+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:14c6cf7d778e0867bae5e7d6962b1b2c955672ba9b7e4e89a77bb46074646e9a 200
+2026-11-04T09:41:43+0100 worker 15: processed 251 items in 718 ms
+2026-11-03T19:54:59+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:34eedd0a9bf31f5e341f1667dbb3e97ec3cac72c44885d205184ebb8b2d658af 200
+2026-11-04T05:18:30+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:bf95c4403be931089b1bd9adb3ec308ff3852dde5a19b612028676c06bdb12a4 200
+systemd[1]: session-2.scope: Deactivated successfully.
+sshd[20429]: pam_unix(sshd:session): session closed for user root
+kernel: audit: type=1300 audit(1788572000.586:107): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=15026 pid=23004 key=(null)
+kernel: audit: type=1300 audit(1726708996.423:429): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=31775 pid=45864 key=(null)
+kernel: audit: type=1701 audit(1753105142.409:97): auid=1000 uid=1000 gid=1000 ses=7 pid=84798 comm="node" exe="/usr/bin/node" sig=6 res=1
+kernel: audit: type=1701 audit(1762742513.873:433): auid=1000 uid=1000 gid=1000 ses=6 pid=79191 comm="node" exe="/usr/bin/node" sig=11 res=1
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=7e047b21-c990-426e-8aa7-a61631a9007c rw rd.luks.name=7921a81e-4112-4a9f-9d97-165bd7bf1adc=cryptroot amd_pstate=active
+2026-11-02T13:04:38+0100 mail: delivered to postmaster@example.org via smtp.example.org
+2026-11-04T19:03:44+0100 auth: none required for /healthz
+systemd[1]: Started getty@tty1.service - Getty on tty1.
+2026-11-03T13:01:26+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":867}"}
+2026-11-01T10:12:58+0100 token: expired, refreshing
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+sudo[49750]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/3 ruser= rhost=  user=root
+2026-11-02T05:14:25+0100 cache hit ratio 0.88, evicted 674 entries
+2026-11-04T10:06:18+0100 cache hit ratio 0.27, evicted 664 entries
+systemd[1]: session-3.scope: Deactivated successfully.
+2026-11-02T23:31:13+0100 fetch https://archlinux.org/packages/core/x86_64/glibc/ ok
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=366628b1-79c0-43ea-a9d3-d9b0a373118a rw rd.luks.name=2b5cd165-6f47-4a07-8dbf-deeeb3f13516=cryptroot amd_pstate=active
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+2026-11-04T02:34:48+0100 cache hit ratio 0.25, evicted 727 entries
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=cba574e2-69ea-43dd-8eb4-474e4e46b7f8 rw rd.luks.name=8aaeacad-a22d-4df2-94ea-d7a1882a0a3a=cryptroot amd_pstate=active
+kernel: Command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=3bfb0394-233e-4739-aecd-14ba732cc81b rw quiet loglevel=3 nvidia_drm.modeset=1 iommu.passthrough=1
+2026-11-02T16:19:52+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":741}"}
+2026-11-03T08:42:55+0100 password: incorrect for account root
+systemd-logind[23717]: Session 29 logged out. Waiting for processes to exit.
+2026-11-02T17:09:41+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":121}"}
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=5059961d-9601-400d-8de8-830a3d92267b rw rd.luks.name=bac6764c-3d18-4071-b53e-55172a088664=cryptroot amd_pstate=active
+wpa_supplicant[91823]: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+sshd[58454]: pam_unix(sshd:session): session closed for user root
+sshd[90484]: pam_unix(sshd:session): session closed for user root
+NetworkManager[38159]: <info>  [1769387972.9906] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+2026-11-03T20:00:19+0100 token: expired, refreshing
+sshd[34068]: pam_unix(sshd:session): session closed for user root
+2026-11-04T07:44:37+0100 fetch https://archlinux.org/packages/core/x86_64/openssl/ ok
+systemd[1]: Started docker.service - Docker Application Container Engine.
+systemd[1]: Started docker.service - Docker Application Container Engine.
+systemd[1]: session-9.scope: Deactivated successfully.
+2026-11-03T13:40:47+0100 worker 6: processed 887 items in 806 ms
+2026-11-04T20:14:24+0100 mail: delivered to postmaster@example.org via smtp.example.org
+sudo[39372]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/4 ruser= rhost=  user=root
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+sudo[88741]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/5 ruser= rhost=  user=root
+NetworkManager[18185]: <info>  [1723948341.7814] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+systemd[1]: session-14.scope: Deactivated successfully.
+systemd-logind[44375]: Session 27 logged out. Waiting for processes to exit.
+systemd[1]: Started getty@tty2.service - Getty on tty3.
+2026-11-04T07:09:45+0100 GET https://example.org/api/v1/rooms/710b8c13-9904-413f-bb16-10afee7b5b31/files?page=6&sort=name 200
+2026-11-01T21:32:42+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:1774f4f4b1f88be16ed1551add9c9a1319d0b1e704050930be50bf28cce6a987 200
+systemd[1]: Started getty@tty4.service - Getty on tty2.
+systemd[1]: Started docker.service - Docker Application Container Engine.
+systemd[1]: session-30.scope: Deactivated successfully.
+2026-11-02T16:20:10+0100 worker 12: processed 299 items in 66 ms
+2026-11-04T17:25:01+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":16}"}
+2026-11-03T21:07:12+0100 GET https://example.org/api/v1/rooms/b46e33d6-8c40-4c19-83aa-7ed409ea66c0/files?page=6&sort=name 200
+2026-11-04T12:57:52+0100 token: expired, refreshing
+kernel: audit: type=1300 audit(1778830597.542:166): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=21243 pid=24405 key=(null)
+2026-11-03T23:58:47+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:a74edf414bbbb63c63f3d90a3c3a48a87f263e8c0743c08b5038eeaf1f146ef9 200
+2026-11-02T17:23:38+0100 token: expired, refreshing
+2026-11-01T20:39:35+0100 auth: none required for /healthz
+sshd[59397]: pam_unix(sshd:session): session closed for user root
+sshd[25327]: pam_unix(sshd:session): session closed for user root
+2026-11-04T12:48:09+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":549}"}
+2026-11-03T14:42:25+0100 worker 1: processed 292 items in 831 ms
+2026-11-02T02:27:51+0100 worker 2: processed 330 items in 513 ms
+sudo[64883]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/3 ruser= rhost=  user=root
+2026-11-02T06:06:23+0100 mail: delivered to postmaster@example.org via smtp.example.org
+systemd[1]: Started docker.service - Docker Application Container Engine.
+2026-11-02T02:50:04+0100 token: expired, refreshing
+2026-11-02T13:14:12+0100 192.0.2.27 - - [05/Nov/2026:10:21:00 +0000] "GET /static/js/main.e1fa6427.js HTTP/1.1" 200 2981
+2026-11-01T16:33:38+0100 fetch https://archlinux.org/packages/core/x86_64/pipewire/ ok
+2026-11-03T19:17:57+0100 auth: none required for /healthz
+2026-11-02T07:21:44+0100 GET https://example.org/api/v1/rooms/c23e03b9-6e96-465f-ab34-ccd44f1d53b1/files?page=6&sort=name 200
+sudo[27963]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/6 ruser= rhost=  user=root
+2026-11-02T06:40:35+0100 192.0.2.241 - - [05/Nov/2026:10:47:00 +0000] "GET /static/js/main.a5f1463d.js HTTP/1.1" 200 62093
+systemd[1]: session-29.scope: Deactivated successfully.
+wpa_supplicant[78933]: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+kernel: audit: type=1300 audit(1702511501.487:276): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=43915 pid=42752 key=(null)
+2026-11-01T22:35:28+0100 session=9657 sid=8062 retries=5
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+2026-11-01T12:20:00+0100 session=6561 sid=8949 retries=2
+2026-11-04T21:35:44+0100 192.0.2.243 - - [05/Nov/2026:10:22:00 +0000] "GET /static/js/main.0fdc2c8a.js HTTP/1.1" 200 17887
+2026-11-04T09:17:02+0100 session=873 sid=9787 retries=3
+2026-11-02T14:22:32+0100 cache hit ratio 0.07, evicted 858 entries
+sudo[47875]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/4 ruser= rhost=  user=root
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=47eb2d29-ecca-4988-993d-32e71112cada rw rd.luks.name=7b71ba86-8ce1-4d70-bd8f-5b2f896df3d4=cryptroot amd_pstate=active
+2026-11-01T03:38:25+0100 password: incorrect for account root
+2026-11-01T07:35:39+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:43cab8537230a01fb4e9310a210517159d15176ce08064d2d6a39e1c0735b46c 200
+2026-11-04T12:55:39+0100 cache hit ratio 0.50, evicted 662 entries
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+kernel: audit: type=1300 audit(1783487222.696:184): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=4757 pid=69325 key=(null)
+systemd[1]: Started getty@tty5.service - Getty on tty5.
+2026-11-04T19:26:20+0100 token: expired, refreshing
+2026-11-01T19:21:03+0100 fetch https://archlinux.org/packages/core/x86_64/docker/ ok
+2026-11-02T17:52:42+0100 GET https://example.org/api/v1/rooms/433722e0-6049-4e73-ac81-294741630c53/files?page=1&sort=name 200
+kernel: audit: type=1701 audit(1729003428.860:21): auid=1000 uid=1000 gid=1000 ses=8 pid=75111 comm="node" exe="/usr/bin/node" sig=6 res=1
+systemd[1]: Started docker.service - Docker Application Container Engine.
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=bfa86441-39ef-46cd-870e-2f6fade2a9b5 rw rd.luks.name=c0a2ff20-1359-4fa2-b58b-1b5161233cac=cryptroot amd_pstate=active
+2026-11-04T19:06:46+0100 fetch https://archlinux.org/packages/core/x86_64/xorg-server/ ok
+2026-11-03T19:54:40+0100 worker 4: processed 627 items in 445 ms
+2026-11-02T08:37:30+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":754}"}
+sshd[97524]: pam_unix(sshd:session): session closed for user root
+systemd[1]: Started getty@tty4.service - Getty on tty5.
+2026-11-02T01:27:50+0100 worker 5: processed 302 items in 26 ms
+2026-11-03T21:28:02+0100 192.0.2.245 - - [05/Nov/2026:10:47:00 +0000] "GET /static/js/main.ed720abe.js HTTP/1.1" 200 86378
+wpa_supplicant[93023]: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+2026-11-02T03:22:27+0100 token: expired, refreshing
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+sshd[30233]: pam_unix(sshd:session): session closed for user root
+2026-11-02T00:11:40+0100 GET https://example.org/api/v1/rooms/2e6d70a3-48a6-4d4b-b9a2-82f5366ed62f/files?page=9&sort=name 200
+2026-11-02T17:51:33+0100 password: incorrect for account root
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=8099d2c3-3b03-4e46-8783-62ce97842358 rw rd.luks.name=36e6d1e3-ef1f-403a-9862-c6364a4b969d=cryptroot amd_pstate=active
+systemd[1]: session-21.scope: Deactivated successfully.
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+2026-11-03T19:42:07+0100 cache hit ratio 0.85, evicted 659 entries
+2026-11-03T08:58:01+0100 token: expired, refreshing
+2026-11-02T01:49:51+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":349}"}
+systemd[1]: Started getty@tty6.service - Getty on tty6.
+kernel: audit: type=1701 audit(1704229036.809:757): auid=1000 uid=1000 gid=1000 ses=7 pid=61422 comm="node" exe="/usr/bin/node" sig=6 res=1
+NetworkManager[84156]: <info>  [1732322053.9230] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+sudo[89538]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/9 ruser= rhost=  user=root
+2026-11-02T19:33:36+0100 192.0.2.252 - - [05/Nov/2026:10:30:00 +0000] "GET /static/js/main.c726d922.js HTTP/1.1" 200 86025
+wpa_supplicant[26689]: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+systemd-logind[43163]: Session 1 logged out. Waiting for processes to exit.
+2026-11-03T20:38:06+0100 session=1288 sid=9853 retries=5
+sshd[65608]: pam_unix(sshd:session): session closed for user root
+2026-11-04T06:14:21+0100 GET https://example.org/api/v1/rooms/ae2a24ab-a1cd-4124-9447-c578b879a556/files?page=2&sort=name 200
+2026-11-04T19:26:56+0100 cache hit ratio 0.36, evicted 345 entries
+systemd[1]: session-5.scope: Deactivated successfully.
+2026-11-02T13:49:19+0100 worker 12: processed 489 items in 92 ms
+systemd[1]: session-7.scope: Deactivated successfully.
+2026-11-01T12:18:50+0100 mail: delivered to postmaster@example.org via smtp.example.org
+2026-11-04T07:41:58+0100 token: expired, refreshing
+2026-11-02T08:19:46+0100 token: expired, refreshing
+2026-11-01T10:44:13+0100 192.0.2.251 - - [05/Nov/2026:10:26:00 +0000] "GET /static/js/main.affa596b.js HTTP/1.1" 200 47878
+systemd[1]: Started getty@tty3.service - Getty on tty2.
+2026-11-03T08:04:50+0100 token: expired, refreshing
+NetworkManager[1018]: <info>  [1725380598.2587] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+2026-11-04T11:19:50+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:b0df08fde1ffbb66665a03e84eb646c5907f74508e9ef09ac17e17ba9dc2e0a0 200
+2026-11-02T16:14:48+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:19981714e180a69c9beb4bf3d7bf1a99c9378eb6d6cda21a86fefdd6f56cabd0 200
+systemd[1]: Started docker.service - Docker Application Container Engine.
+2026-11-03T11:15:02+0100 worker 12: processed 106 items in 529 ms
+wpa_supplicant[80712]: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+2026-11-01T02:26:44+0100 password: incorrect for account root
+2026-11-03T21:14:17+0100 GET https://example.org/api/v1/rooms/4ef1fab0-f820-4913-85cc-6a049bb4f344/files?page=1&sort=name 200
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=1a9e9f8b-194c-4281-807c-4eddf669e34e rw rd.luks.name=ff0aae75-1ca3-48f3-b27c-a81bb6d9e4a3=cryptroot amd_pstate=active
+2026-11-02T02:09:21+0100 fetch https://archlinux.org/packages/core/x86_64/nvidia-utils/ ok
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+2026-11-01T02:17:01+0100 auth: none required for /healthz
+kernel: audit: type=1701 audit(1716297372.361:959): auid=1000 uid=1000 gid=1000 ses=6 pid=31595 comm="node" exe="/usr/bin/node" sig=11 res=1
+2026-11-03T21:50:16+0100 fetch https://archlinux.org/packages/core/x86_64/xorg-server/ ok
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+kernel: audit: type=1701 audit(1711132830.984:916): auid=1000 uid=1000 gid=1000 ses=6 pid=21503 comm="node" exe="/usr/bin/node" sig=6 res=1
+2026-11-03T09:12:55+0100 auth: none required for /healthz
+2026-11-04T22:06:45+0100 auth: none required for /healthz
+sshd[34534]: pam_unix(sshd:session): session closed for user root
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+NetworkManager[73067]: <info>  [1728686174.6361] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+NetworkManager[29393]: <info>  [1723004623.6423] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+systemd[1]: session-15.scope: Deactivated successfully.
+2026-11-02T17:20:33+0100 mail: delivered to postmaster@example.org via smtp.example.org
+2026-11-02T06:03:36+0100 fetch https://archlinux.org/packages/core/x86_64/docker/ ok
+2026-11-01T06:36:09+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":456}"}
+2026-11-04T20:24:14+0100 password: incorrect for account root
+2026-11-04T19:56:40+0100 fetch https://archlinux.org/packages/core/x86_64/nvidia-utils/ ok
+2026-11-04T23:13:07+0100 192.0.2.41 - - [05/Nov/2026:10:59:00 +0000] "GET /static/js/main.b4ecbd7f.js HTTP/1.1" 200 54448
+2026-11-04T22:59:02+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":779}"}
+2026-11-02T23:42:43+0100 cache hit ratio 0.98, evicted 269 entries
+systemd[1]: Started getty@tty2.service - Getty on tty5.
+2026-11-04T23:48:29+0100 password: incorrect for account root
+systemd-logind[35111]: Session 25 logged out. Waiting for processes to exit.
+systemd[1]: Started docker.service - Docker Application Container Engine.
+systemd[1]: Started getty@tty5.service - Getty on tty5.
+kernel: Command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=f2279a81-d1e1-482c-b634-2d25204b83b0 rw quiet loglevel=3 nvidia_drm.modeset=1 iommu.passthrough=1
+2026-11-03T06:58:44+0100 mail: delivered to postmaster@example.org via smtp.example.org
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=8c03c6e2-ebd7-46c6-b37b-9ec4be0cbec4 rw rd.luks.name=38882f56-756c-4aea-b555-c10022930248=cryptroot amd_pstate=active
+sudo[23188]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/1 ruser= rhost=  user=root
+systemd[1]: Started docker.service - Docker Application Container Engine.
+systemd[1]: Started docker.service - Docker Application Container Engine.
+systemd[1]: Started getty@tty4.service - Getty on tty1.
+2026-11-03T13:27:20+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:c3b4f2d35ad8f91ccca2bc4e6b89a745a0dbd87ecf784149294fbc1bb2a96096 200
+systemd[1]: session-7.scope: Deactivated successfully.
+2026-11-02T17:19:02+0100 auth: none required for /healthz
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+systemd[1]: Started getty@tty5.service - Getty on tty2.
+2026-11-04T15:30:51+0100 cache hit ratio 0.38, evicted 666 entries
+2026-11-01T20:15:52+0100 token: expired, refreshing
+2026-11-04T21:06:01+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":389}"}
+2026-11-03T02:05:06+0100 auth: none required for /healthz
+kernel: audit: type=1701 audit(1782483042.623:637): auid=1000 uid=1000 gid=1000 ses=7 pid=79224 comm="node" exe="/usr/bin/node" sig=11 res=1
+sshd[8355]: pam_unix(sshd:session): session closed for user root
+kernel: audit: type=1701 audit(1783931906.532:220): auid=1000 uid=1000 gid=1000 ses=9 pid=42427 comm="node" exe="/usr/bin/node" sig=11 res=1
+2026-11-03T17:06:44+0100 cache hit ratio 0.37, evicted 838 entries
+2026-11-01T06:02:54+0100 fetch https://archlinux.org/packages/core/x86_64/docker/ ok
+2026-11-01T02:31:52+0100 worker 11: processed 56 items in 462 ms
+kernel: Kernel command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=1438dd00-c3ae-4778-bf95-28fb44cdd564 rw rd.luks.name=69d96506-7672-49ed-b47c-de0a29b4aafd=cryptroot amd_pstate=active
+systemd-logind[956]: Session 1 logged out. Waiting for processes to exit.
+systemd-logind[52603]: Session 6 logged out. Waiting for processes to exit.
+2026-11-02T03:18:53+0100 cache hit ratio 0.76, evicted 937 entries
+2026-11-01T14:19:32+0100 cache hit ratio 0.36, evicted 404 entries
+wpa_supplicant[89226]: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+NetworkManager[27534]: <info>  [1779844384.3139] device (wlan0): supplicant: Config: added 'key_mgmt' value 'WPA-PSK WPA-PSK-SHA256'
+kernel: audit: type=1701 audit(1701184584.890:402): auid=1000 uid=1000 gid=1000 ses=4 pid=54834 comm="node" exe="/usr/bin/node" sig=6 res=1
+kernel: audit: type=1701 audit(1739094109.613:373): auid=1000 uid=1000 gid=1000 ses=6 pid=2176 comm="node" exe="/usr/bin/node" sig=11 res=1
+2026-11-01T22:37:11+0100 mail: delivered to postmaster@example.org via smtp.example.org
+sudo[19985]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/6 ruser= rhost=  user=root
+systemd-logind[25140]: Session 17 logged out. Waiting for processes to exit.
+2026-11-03T20:07:48+0100 {"level":"info","msg":"{\"event\":\"login\",\"result\":\"ok\",\"duration_ms\":156}"}
+2026-11-02T21:28:38+0100 password: incorrect for account root
+kernel: audit: type=1300 audit(1701527942.515:605): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=48627 pid=83423 key=(null)
+systemd[1]: session-14.scope: Deactivated successfully.
+systemd[1]: session-14.scope: Deactivated successfully.
+2026-11-02T14:28:08+0100 GET https://example.org/api/v1/rooms/f27c54b3-c57d-4927-a636-0405e70e8d35/files?page=6&sort=name 200
+systemd[1]: Started getty@tty5.service - Getty on tty1.
+systemd[1]: session-2.scope: Deactivated successfully.
+systemd[1]: session-4.scope: Deactivated successfully.
+2026-11-03T22:18:07+0100 password: incorrect for account root
+systemd[1]: Started getty@tty1.service - Getty on tty6.
+systemd[1]: session-8.scope: Deactivated successfully.
+kernel: audit: type=1300 audit(1785282797.813:141): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=83136 pid=26253 key=(null)
+2026-11-04T02:01:54+0100 session=4934 sid=7480 retries=5
+2026-11-04T07:20:15+0100 GET https://example.org/api/v1/rooms/4a152bb5-e545-4653-8881-a7689b45ce88/files?page=3&sort=name 200
+2026-11-02T17:55:07+0100 192.0.2.145 - - [05/Nov/2026:10:19:00 +0000] "GET /static/js/main.e1e30812.js HTTP/1.1" 200 62339
+2026-11-04T04:47:27+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:b8f938c46193229335f5b6a900d824ffd1044022e29bf52713f319d0d69c2c25 200
+sudo[39153]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/0 ruser= rhost=  user=root
+2026-11-03T22:28:16+0100 session=332 sid=5650 retries=2
+sudo[47546]: pam_unix(sudo:auth): authentication failure; logname= uid=0 euid=0 tty=/dev/pts/1 ruser= rhost=  user=root
+2026-11-01T16:15:16+0100 fetch https://archlinux.org/packages/core/x86_64/systemd/ ok
+2026-11-02T13:14:50+0100 session=7914 sid=7065 retries=2
+systemd[1]: Started getty@tty3.service - Getty on tty2.
+wpa_supplicant[6216]: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+systemd[1]: Started getty@tty6.service - Getty on tty6.
+systemd[1]: Started getty@tty1.service - Getty on tty2.
+wpa_supplicant[93130]: wlan0: CTRL-EVENT-SUBNET-STATUS-UPDATE status=0
+2026-11-03T04:04:40+0100 GET https://registry.example.org/v2/library/postgres/blobs/sha256:6c957ad1c6d6dc99070fbcfdd054d191081aa0a450a9d704936601778e2e41b8 200
+2026-11-02T05:36:58+0100 password: incorrect for account root
+systemd[1]: Started getty@tty6.service - Getty on tty1.
+systemd-logind[18567]: Session 13 logged out. Waiting for processes to exit.
+sshd[59173]: pam_unix(sshd:session): session closed for user root
+2026-11-02T15:39:11+0100 GET https://example.org/api/v1/rooms/1bb3bcd6-db50-47d7-9ff5-471d7fa97317/files?page=9&sort=name 200
+systemd[1]: Started getty@tty6.service - Getty on tty2.
+2026-11-01T04:55:02+0100 password: incorrect for account root
+2026-11-04T12:26:45+0100 fetch https://archlinux.org/packages/core/x86_64/xorg-server/ ok
+kernel: audit: type=1300 audit(1769877277.843:613): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=30729 pid=31166 key=(null)
+kernel: audit: type=1701 audit(1729223914.134:263): auid=1000 uid=1000 gid=1000 ses=3 pid=19268 comm="node" exe="/usr/bin/node" sig=6 res=1
+kernel: Command line: BOOT_IMAGE=/vmlinuz-linux root=UUID=99bf690a-e697-41f7-a2fc-81deea732b2e rw quiet loglevel=3 nvidia_drm.modeset=1 iommu.passthrough=1
+systemd[1]: Started user@1000.service - User Manager for UID 1000.
+systemd-logind[59926]: Session 19 logged out. Waiting for processes to exit.
+kernel: audit: type=1300 audit(1724203437.467:928): arch=c000003e syscall=59 success=yes exit=0 items=2 ppid=22773 pid=47934 key=(null)
+kernel: audit: type=1701 audit(1754228861.663:859): auid=1000 uid=1000 gid=1000 ses=1 pid=59298 comm="node" exe="/usr/bin/node" sig=6 res=1
+2026-11-03T07:53:53+0100 worker 4: processed 19 items in 124 ms
+2026-11-04T13:49:01+0100 worker 16: processed 81 items in 559 ms
+2026-11-04T05:53:01+0100 cache hit ratio 0.90, evicted 99 entries
+2026-11-02T16:54:27+0100 192.0.2.44 - - [05/Nov/2026:10:49:00 +0000] "GET /static/js/main.a10a747b.js HTTP/1.1" 200 37614
+2026-11-04T16:34:15+0100 worker 7: processed 259 items in 483 ms
+2026-11-01T19:38:35+0100 auth: none required for /healthz
+systemd[1]: Started docker.service - Docker Application Container Engine.
+systemd[1]: Started docker.service - Docker Application Container Engine.
+2026-11-03T09:49:49+0100 token: expired, refreshing
+kernel: audit: type=1701 audit(1715582487.374:771): auid=1000 uid=1000 gid=1000 ses=2 pid=43818 comm="node" exe="/usr/bin/node" sig=11 res=1
+systemd[1]: session-8.scope: Deactivated successfully.

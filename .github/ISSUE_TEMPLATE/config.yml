@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security issue
+    url: https://github.com/derblub/dictate/security/advisories/new
+    about: Please report vulnerabilities privately.
+  - name: Does AI pay off for a task in your business?
+    url: https://pushingpixels.at/creates/ki-beratung
+    about: A one-week AI feasibility check on your own examples by the author, Daniel Kurdoghlian (Pushing Pixels).

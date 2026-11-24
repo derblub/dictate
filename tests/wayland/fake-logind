@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+# Copyright (C) 2026 Daniel Kurdoghlian
+# Pushing Pixels, Vienna <https://pushingpixels.at>
+# SPDX-License-Identifier: GPL-3.0-or-later
+# Fake für systemd-logind auf einem privaten D-Bus (nur zum Testen der Sperr-Erkennung von dictate-ui,
+# tests/wayland/lock.sh).
+# Belegt org.freedesktop.login1 auf dem Bus aus $DBUS_SESSION_BUS_ADDRESS und bildet nach, was dictate-ui nutzt:
+#   Manager  /org/freedesktop/login1             GetSession(s) -> o, Signal PrepareForSleep(b)
+#   Session  /org/freedesktop/login1/session/_32 (eigene) und _33 (fremde): Property LockedHint, Signale Lock/Unlock
+# Gesteuert über eine Test-Schnittstelle (vom selben Bus-Namen gesendet, wie beim echten logind):
+#   gdbus call --session -d org.freedesktop.login1 -o /org/dictate/test -m org.dictate.Test.Lock _32
+#   … .SetLockedHint _32 true   … .Sleep true
+# Jeder GetSession-Aufruf landet mit Argument in $FAKE_LOGIND_LOG.
+import os, sys
+from gi.repository import Gio, GLib
+
+MANAGER = "/org/freedesktop/login1"
+SESSIONS = {"_32": "/org/freedesktop/login1/session/_32", "_33": "/org/freedesktop/login1/session/_33"}
+XML = """
+<node>
+  <interface name="org.freedesktop.login1.Manager">
+    <method name="GetSession"><arg type="s" direction="in"/><arg type="o" direction="out"/></method>
+    <signal name="PrepareForSleep"><arg type="b"/></signal>
+  </interface>
+  <interface name="org.freedesktop.login1.Session">
+    <property name="LockedHint" type="b" access="read"/>
+    <signal name="Lock"/>
+    <signal name="Unlock"/>
+  </interface>
+  <interface name="org.dictate.Test">
+    <method name="Lock"><arg type="s" direction="in"/></method>
+    <method name="SetLockedHint"><arg type="s" direction="in"/><arg type="b" direction="in"/></method>
+    <method name="Sleep"><arg type="b" direction="in"/></method>
+  </interface>
+</node>
+"""
+info = Gio.DBusNodeInfo.new_for_xml(XML)
+hint = {k: False for k in SESSIONS}
+log = os.environ.get("FAKE_LOGIND_LOG")
+
+
+def emit(conn, path, iface, name, params):
+    conn.emit_signal(None, path, iface, name, params)
+
+
+def call(conn, sender, path, iface, method, params, inv):
+    if iface == "org.freedesktop.login1.Manager" and method == "GetSession":
+        sid = params.unpack()[0]
+        if log:
+            with open(log, "a") as f:
+                f.write(sid + "\n")
+        # wie logind: "auto"/"self" und die eigene Nummer 2 ergeben die eigene Sitzung; Nummer 3 ist die andere (für
+        # dictate-ui: eine veraltete XDG_SESSION_ID, die neben "auto" beobachtet wird)
+        if sid in ("auto", "self", "2"):
+            inv.return_value(GLib.Variant("(o)", (SESSIONS["_32"],)))
+        elif sid == "3":
+            inv.return_value(GLib.Variant("(o)", (SESSIONS["_33"],)))
+        else:
+            inv.return_dbus_error("org.freedesktop.login1.NoSuchSession", "No session '%s' known" % sid)
+        return
+    if iface == "org.dictate.Test":
+        args = params.unpack()
+        if method == "Lock":
+            emit(conn, SESSIONS[args[0]], "org.freedesktop.login1.Session", "Lock", None)
+        elif method == "SetLockedHint":
+            hint[args[0]] = args[1]
+            changed = GLib.Variant("(sa{sv}as)", ("org.freedesktop.login1.Session", {"LockedHint": GLib.Variant("b", args[1])}, []))
+            emit(conn, SESSIONS[args[0]], "org.freedesktop.DBus.Properties", "PropertiesChanged", changed)
+        elif method == "Sleep":
+            emit(conn, MANAGER, "org.freedesktop.login1.Manager", "PrepareForSleep", GLib.Variant("(b)", (args[0],)))
+        inv.return_value(None)
+        return
+    inv.return_dbus_error("org.freedesktop.DBus.Error.UnknownMethod", method)
+
+
+def get_prop(conn, sender, path, iface, prop):
+    for k, p in SESSIONS.items():
+        if p == path and prop == "LockedHint":
+            return GLib.Variant("b", hint[k])
+    return None
+
+
+def on_bus(conn, name):
+    conn.register_object(MANAGER, info.lookup_interface("org.freedesktop.login1.Manager"), call, None, None)
+    for p in SESSIONS.values():
+        conn.register_object(p, info.lookup_interface("org.freedesktop.login1.Session"), call, get_prop, None)
+    conn.register_object("/org/dictate/test", info.lookup_interface("org.dictate.Test"), call, None, None)
+
+
+def on_name(conn, name):
+    print("ready", flush=True)
+
+
+def on_lost(conn, name):
+    print("name lost", file=sys.stderr, flush=True)
+    loop.quit()
+
+
+loop = GLib.MainLoop()
+
+
+# Verwaist (run.sh weg, z. B. kill -9): beenden statt den privaten Bus weiter zu halten. Einmal je Sekunde, kein Drehen.
+PARENT = os.getppid()
+
+
+def check_parent():
+    if os.getppid() != PARENT:
+        loop.quit()
+        return False
+    return True
+
+
+GLib.timeout_add_seconds(1, check_parent)
+Gio.bus_own_name(Gio.BusType.SESSION, "org.freedesktop.login1", Gio.BusNameOwnerFlags.NONE, on_bus, on_name, on_lost)
+loop.run()

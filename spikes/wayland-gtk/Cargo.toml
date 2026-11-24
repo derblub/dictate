@@ -1,0 +1,14 @@
+[package]
+name = "wl-gtk-probe"
+version = "0.0.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+publish = false
+description = "Spike S4 (W0): GTK-4-Overlay als Layer-Fläche und Panel als schwebendes Fenster unter niri"
+
+# Eigener Workspace: nicht Teil von dictate.
+[workspace]
+
+[dependencies]
+gtk = { package = "gtk4", version = "0.11.5", features = ["v4_24"] }
+gtk4-layer-shell = { version = "0.8.1", features = ["v1_3"] }

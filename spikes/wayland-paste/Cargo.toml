@@ -1,0 +1,18 @@
+[package]
+name = "wl-paste-probe"
+version = "0.0.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+publish = false
+description = "Spike S3 (W0): Einfügen über Data-Control unter niri"
+
+# Eigener Workspace: nicht Teil von dictate.
+[workspace]
+
+[[bin]]
+name = "clip"
+path = "src/main.rs"
+
+[dependencies]
+wayland-client = "=0.31.15"
+wayland-protocols = { version = "=0.32.13", features = ["client", "staging"] }

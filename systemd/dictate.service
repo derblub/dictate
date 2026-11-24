@@ -1,0 +1,12 @@
+[Unit]
+Description=dictate - local live dictation daemon
+After=pipewire-pulse.service
+
+[Service]
+Type=simple
+ExecStart=%h/.cargo/bin/dictate daemon
+Restart=on-failure
+RestartSec=2
+
+[Install]
+WantedBy=default.target

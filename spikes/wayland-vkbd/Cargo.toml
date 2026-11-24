@@ -1,0 +1,18 @@
+[package]
+name = "wl-vkbd-probe"
+version = "0.0.0"
+edition = "2024"
+license = "GPL-3.0-or-later"
+publish = false
+description = "Spike S2 (W0): eigene virtuelle Tastatur und Eingabemethode unter niri"
+
+# Eigener Workspace: nicht Teil von dictate.
+[workspace]
+
+[[bin]]
+name = "vk"
+path = "src/main.rs"
+
+[dependencies]
+wayland-client = "=0.31.15"
+wayland-protocols-misc = { version = "=0.3.12", features = ["client"] }
