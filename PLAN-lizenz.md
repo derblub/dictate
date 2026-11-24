@@ -968,8 +968,9 @@ Hinweis, dass sie allgemein werden (O3).
      AUR als nächste Sitzung, Ankündigung danach. Social Preview lädt Daniel selbst hoch.
      Aufgeräumt nach V16–V18 (Bundle, Branches gelöscht, Läufe stehen). Offen: O5 (Rohdaten `logs/u3/`, `u3b/`,
      `u5/` löschen) nach Abschluss von U5.
-  6. **AUR (V21), vorbereitet am 24.11.2026** auf Branch `aur` (lokal, von `main` `f5f4f50`). Entscheidungen (Daniel,
-     24.11.2026, alle wie empfohlen):
+  6. **AUR (V21), vorbereitet am 24.11.2026** auf Branch `aur` (lokal, von `main` `f5f4f50`). Entscheidungen vom
+     24.11.2026, alle wie empfohlen: W1–W3 hat Daniels Assistent in seinem Auftrag beantwortet, W4 (rechtlich) Daniel
+     selbst; Version, Paketname und Adresse stehen darum in den Freigabeanfragen für Push und Tag noch einmal:
 
      | Nr. | Frage | Entscheidung |
      |---|---|---|
@@ -1040,10 +1041,19 @@ Hinweis, dass sie allgemein werden (O3).
        `$DICTATE_TEST_ROOT/logs/u5/scan-aur.json`, `gitleaks-aur.json`, Werte nie ausgegeben), verglichen mit
        `scan-u5-public2.json`: gitleaks 52 Treffer in denselben Dateien. Neu nur Erwartetes: der GitHub-Name `derblub`
        (P4) in `CHANGELOG.md` (Vergleichslinks), `PKGBUILD` (`url`) und `.SRCINFO`, die geschäftliche Adresse in der
-       Zeile `# Maintainer:` (W3) und das Wort des Rechnernamens im Dateinamen des Host-Locks in `CLAUDE.md`
-       (wörtlicher Pfad, nach H2 erlaubt). Keine neue Kennung des Rechners, keine neue Binärdatei.
+       Zeile `# Maintainer:` (W3). Keine neue Kennung des Rechners, keine neue Binärdatei.
      - **Freigabekette** (je Schritt einzeln mit Daniels Freigabe): Push `aur`, PR, Merge; Tag `v0.1.0`; GitHub-Release
        mit dem Abschnitt aus dem CHANGELOG; Commit mit `sha256sums` des Tag-Tarballs (`updpkgsums`) und neuer
        `.SRCINFO`; Upload ins AUR (Repository `dictate` mit `PKGBUILD`, `.SRCINFO`, `dictate.install`, `LICENSE`).
+       **Vor dem Tag:** das Datum in `[0.1.0] - 2026-11-24` auf den Tag des Tags setzen (steckt im Tarball; danach nur
+       mit neuem Tag und neuer Prüfsumme änderbar). **Nach dem Tag, vor dem Upload** (ohne dritten langen Bau): in einer
+       sauberen Kopie von `packaging/aur` `updpkgsums`, `makepkg --verifysource` und `makepkg -o` (URL, Prüfsumme,
+       Ordner `dictate-0.1.0/`), `makepkg --printsrcinfo | diff - .SRCINFO`, und `git diff --stat 5c8a11c v0.1.0` über
+       die Bau-Eingaben (`src`, `tests`, `Cargo.*`, `build.rs` falls vorhanden, `systemd`, `niri`, `noctalia`,
+       `assets`, `licenses`, `LICENSE`, `THIRD-PARTY-LICENSES.txt`, `packaging/dictate-settings.desktop`) muss leer
+       sein, dann gilt Lauf 2 für den getaggten Stand. **AUR-Konto:** der Upload braucht ein Konto mit hinterlegtem
+       SSH-Schlüssel (Frage an Daniel, Claude legt weder Konto noch Schlüssel an).
+     - **Aufräumen (O5):** `$DICTATE_TEST_ROOT/logs/aur/` enthält zwei Testpakete von 47 MB aus nicht finalen Tarballs
+       (keine Release-Artefakte); mit `u3/`, `u3b/`, `u5/` nach Abschluss von U5 löschen.
 - **Später (Auslöser „bezahlte Builds“):** Schätzung und Plan für Hyprland, sway und Vulkan (Nr. 3); die
   geschäftlichen und rechtlichen Punkte des Verkaufs stehen privat, nicht im Repo.
