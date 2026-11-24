@@ -86,8 +86,11 @@ Protokoll und Daemon-Teile gelten weiter.
    Builds. **AUR vorbereitet am 24.11.** (Branch `aur`, `PLAN-lizenz.md` U5 Schritt 6, W1–W4): Version 0.1.0, Paket
    `dictate` aus dem Tag-Tarball, `packaging/aur/` (PKGBUILD, `.SRCINFO` nur aus `makepkg --printsrcinfo`,
    `dictate.install`, LICENSE 0BSD), Bau im Arch-Container grün (66 min mit allen Standardarchitekturen, 44 min mit
-   86). Tag `v0.1.0` und GitHub-Release am 24.11. veröffentlicht, Prüfsumme im PKGBUILD; AUR-Upload nach Daniels
-   Sichtprüfung (Konto `derblub`).
+   86). Tag `v0.1.0` und GitHub-Release am 24.11. veröffentlicht, Prüfsumme im PKGBUILD. **Im AUR seit 24.11.**:
+   `dictate 0.1.0-1` (Konto `derblub`, AUR-Commit `4472128`, Arbeitsklon außerhalb des Repos unter
+   `/home/git/blub/aur-dictate`; neue Fassung = neuer Tag, `updpkgsums`, `.SRCINFO` neu, dort committen). Nächste
+   Punkte: GitHub Sponsors (V19; Profil im Konto fehlt noch, Entscheidung bei Daniel, `FUNDING.yml` erst mit Profil),
+   Ankündigung (V22, Texte englisch von Claude, Kanäle bei Daniel), danach O5.
    Ein Bau-Test des PKGBUILD mit allen Architekturen belegt den Host über eine Stunde: Wiederholungen mit
    `CMAKE_CUDA_ARCHITECTURES=86` und unter dem gemeinsamen Host-Lock (Datei in `~/.cache`, Vorgabe der Sitzungen). Der nächste Dependabot-PR (cargo, monatlich) braucht auf seinem Branch eine neu erzeugte
    `THIRD-PARTY-LICENSES.txt`. Der U5c-Verlauf (`u5-stand`) liegt nur noch als Bundle unter `/home/data/archiv/`.
