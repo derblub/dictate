@@ -54,22 +54,34 @@ prepare() {
   cargo fetch --locked --target "$(rustc -vV | sed -n 's/host: //p')"
 }
 
-build() {
-  cd "$pkgname-$pkgver"
+_build_env() {
+  # makepkg runs build() and check() in the same shell: set everything once, or check() would see changed flags and
+  # build whisper.cpp again
+  [[ -n ${_dictate_build_env:-} ]] && return 0
+  _dictate_build_env=1
   export RUSTUP_TOOLCHAIN=stable
   export CARGO_TARGET_DIR=target
   # /etc/profile.d/cuda.sh is not read when makepkg installs cuda in the same run
   export CUDA_PATH="${CUDA_PATH:-/opt/cuda}"
   export PATH="$CUDA_PATH/bin:$PATH"
+  # whisper-rs-sys copies whisper.cpp below target/ and compiles it there, so __FILE__ in the asserts of ggml would
+  # carry the build directory into the binary. Map it like makepkg does for debug packages; CMAKE_CUDA_FLAGS replaces
+  # the value set by whisper-rs-sys, so it repeats its -fPIC.
+  local map="-ffile-prefix-map=$srcdir=/usr/src/debug/$pkgbase"
+  export CFLAGS="$CFLAGS $map"
+  export CXXFLAGS="$CXXFLAGS $map"
+  export CMAKE_CUDA_FLAGS="-Xcompiler=-fPIC -Xcompiler=$map${CMAKE_CUDA_FLAGS:+ $CMAKE_CUDA_FLAGS}"
+}
+
+build() {
+  cd "$pkgname-$pkgver"
+  _build_env
   cargo build --frozen --release
 }
 
 check() {
   cd "$pkgname-$pkgver"
-  export RUSTUP_TOOLCHAIN=stable
-  export CARGO_TARGET_DIR=target
-  export CUDA_PATH="${CUDA_PATH:-/opt/cuda}"
-  export PATH="$CUDA_PATH/bin:$PATH"
+  _build_env
   # Mock tests only; no test outside --ignored touches the GPU, the audio server or the running session
   cargo test --frozen --release
 }
