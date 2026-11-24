@@ -35,24 +35,24 @@ anyhow = "1"
 clap = { version = "4", features = ["derive"] }
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
-toml = "0.8"
-toml_edit = { version = "0.22", features = ["serde"] }
+toml = "1.2"
+toml_edit = { version = "0.25", features = ["serde"] }
 serde_path_to_error = "0.1"
 hound = "3"
 tracing = "0.1"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
-dirs = "5"
+dirs = "7"
 whisper-rs = { version = "0.16", features = ["cuda", "tracing_backend"] }
 libpulse-binding = "2"
 libpulse-simple-binding = "2"
-signal-hook = "0.3"
+signal-hook = "0.4"
 # Ohne `default_fonts` (U2, PLAN-lizenz.md): keine Schrift von egui im Binary (Hack, Ubuntu Light, Icons), das Fenster
 # lädt seine Schriften vom System (src/gui/fonts.rs, theme::install)
 eframe = { version = "0.37", optional = true, default-features = false, features = ["glow", "wayland", "clipboard"] }
 egui = { version = "0.37", optional = true, default-features = false }
 # Schriftdateien vor dem Laden prüfen (egui bricht mit panic ab, wenn sich eine Datei nicht lesen lässt; Lesart L41 in
 # PLAN-wayland.md 6h): dieselbe Version wie in epaint, steht über egui ohnehin im Lockfile
-skrifa = { version = "0.44", optional = true, default-features = false, features = ["std"] }
+skrifa = { version = "0.50", optional = true, default-features = false, features = ["std"] }
 url = "2"
 # Graphem-Grenzen für gestreamte KI-Antworten (steht über egui ohnehin im Lockfile)
 unicode-segmentation = "1"
@@ -63,7 +63,7 @@ webpki-roots = "1"
 httparse = "1"
 socket2 = "0.6"
 libc = "0.2"
-sha2 = { version = "0.10", optional = true }
+sha2 = { version = "0.11", optional = true }
 # dictate-ui (Feature `ui`): System-GTK 4.24 und gtk4-layer-shell 1.3 (wie Spike S4, `spikes/wayland-gtk`)
 gtk = { package = "gtk4", version = "0.11.5", features = ["v4_24"], optional = true }
 gtk4-layer-shell = { version = "0.8.1", features = ["v1_3"], optional = true }
@@ -82,7 +82,7 @@ image = { version = "0.25", optional = true, default-features = false, features 
 # Offline-TLS-Tests des HTTP-Clients: eigene Test-CA und Serverzertifikate (src/http.rs)
 rcgen = "0.14"
 # Prüfsumme der Wortliste (src/actions/wordlist.rs); als Abhängigkeit nur mit dem Feature `gui`
-sha2 = "0.10"
+sha2 = "0.11"
 # Echte Schriftbytes für die Tests der Schriftprüfung (src/gui/fonts.rs, theme.rs); nur Testbau, das Binary bleibt ohne
 # `default_fonts` (eine Test-Abhängigkeit schaltet das Feature von epaint nicht ein)
 epaint_default_fonts = "0.37"
