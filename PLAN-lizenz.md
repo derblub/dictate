@@ -1037,11 +1037,13 @@ Hinweis, dass sie allgemein werden (O3).
      - **Prüfung im Repo:** keine Datei unter `src/`, `tests/`, `Cargo.*` geändert, kein Test liest README, CHANGELOG
        oder `packaging/` (`git grep`); `tests/license_headers.rs` erfasst `PKGBUILD` nicht (keine Endung, kein
        Shebang), der Kurzkopf entfällt dort ohnehin (0BSD, W4). Darum kein Schritt von `check.sh` nötig.
-     - **U5a vor dem Push** über den Baum von `52d0fc0` (`git archive`, 323 Dateien, 13 binär wie vorher; Rohdaten
+     - **U5a vor dem Push** über den Baum von `52d0fc0` und erneut über den Commit mit diesem Absatz, der gepusht wird
+       (`git archive`, 323 Dateien, 13 binär wie vorher; Rohdaten
        `$DICTATE_TEST_ROOT/logs/u5/scan-aur.json`, `gitleaks-aur.json`, Werte nie ausgegeben), verglichen mit
        `scan-u5-public2.json`: gitleaks 52 Treffer in denselben Dateien. Neu nur Erwartetes: der GitHub-Name `derblub`
        (P4) in `CHANGELOG.md` (Vergleichslinks), `PKGBUILD` (`url`) und `.SRCINFO`, die geschäftliche Adresse in der
-       Zeile `# Maintainer:` (W3). Keine neue Kennung des Rechners, keine neue Binärdatei.
+       Zeile `# Maintainer:` (W3), allgemeine Ordnernamen (`dictate`, `tests`, `pushingpixels` in der Adresse). Keine
+       neue Kennung des Rechners, keine neue Binärdatei.
      - **Freigabekette** (je Schritt einzeln mit Daniels Freigabe): Push `aur`, PR, Merge; Tag `v0.1.0`; GitHub-Release
        mit dem Abschnitt aus dem CHANGELOG; Commit mit `sha256sums` des Tag-Tarballs (`updpkgsums`) und neuer
        `.SRCINFO`; Upload ins AUR (Repository `dictate` mit `PKGBUILD`, `.SRCINFO`, `dictate.install`, `LICENSE`).
