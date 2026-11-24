@@ -80,8 +80,12 @@ Protokoll und Daemon-Teile gelten weiter.
    Dependabot gesetzt; ein zweiter Neubau bringt den CI-Badge. **Öffentlich seit 24.11.** (U5 Schritt 3: Baum vorher
    erneut geprüft, Secret Scanning mit Push Protection und Private Reporting an); GitLab-Projekt archiviert, Checkouts
    getauscht (Schritt 4: dieser Checkout ist der von GitHub, der alte liegt unter `/home/git/blub/dictate-archiv` mit
-   Remote `archiv`). Dependabot-PR #1 (cargo) braucht eine neu erzeugte `THIRD-PARTY-LICENSES.txt`. Offen als eigene
-   Fragen: Sponsors oder Liberapay, Download-Seite, AUR, Ankündigung. Die unversionierten Ordner `reports/` und
+   Remote `archiv`). Secret-Scanning-Alerts am 24.11. abends: 0. **Schritt 5 entschieden** (V15–V22 in
+   `PLAN-lizenz.md`): nächste Sitzung AUR (Version, PKGBUILD aus dem Quelltext, CUDA vom System; Tag, Release und
+   Upload je mit Freigabe), danach GitHub Sponsors (eigene Sitzung), Ankündigung nach AUR; Download-Seite erst mit
+   Builds. Der nächste Dependabot-PR (cargo, monatlich) braucht auf seinem Branch eine neu erzeugte
+   `THIRD-PARTY-LICENSES.txt`. Der U5c-Verlauf (`u5-stand`) liegt nur noch als Bundle unter `/home/data/archiv/`.
+   Die unversionierten Ordner `reports/` und
    `research_notes/` im Archiv-Checkout sind Daniels private Recherche: nicht anfassen, nie committen.
 2. **Beobachten** (aus der Live-Abnahme, Liste in `PLAN-wayland.md` 6h): mehrere Monitore, fullscreen/maximized,
    Sperre im Abgang und Weg „Frame gemeldet“ (nur Unit-Test), Hinweis nach echtem unsauberem Boot-Ende, Schwelle
