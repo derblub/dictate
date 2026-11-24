@@ -968,5 +968,94 @@ Hinweis, dass sie allgemein werden (O3).
      AUR als nächste Sitzung, Ankündigung danach. Social Preview lädt Daniel selbst hoch.
      Aufgeräumt nach V16–V18 (Bundle, Branches gelöscht, Läufe stehen). Offen: O5 (Rohdaten `logs/u3/`, `u3b/`,
      `u5/` löschen) nach Abschluss von U5.
+  6. **AUR (V21), vorbereitet am 24.11.2026** auf Branch `aur` (lokal, von `main` `f5f4f50`). Entscheidungen vom
+     24.11.2026, alle wie empfohlen: W1–W3 hat Daniels Assistent in seinem Auftrag beantwortet, W4 (rechtlich) Daniel
+     selbst; Version, Paketname und Adresse stehen darum in den Freigabeanfragen für Push und Tag noch einmal:
+
+     | Nr. | Frage | Entscheidung |
+     |---|---|---|
+     | W1 | Version des ersten Releases | **0.1.0** (steht schon in `Cargo.toml`; vor 1.0 dürfen sich Config und Bedienung noch ändern); CHANGELOG-Abschnitt `[0.1.0] - 2026-11-24` (Datum beim Tag anpassen, falls später) |
+     | W2 | AUR-Paket | **Nur `dictate`** aus dem Tarball des Tags `v0.1.0` auf GitHub (Name im AUR frei, RPC geprüft; ähnlich nur `whisper-dictate-git`); `dictate-git` erst bei Bedarf |
+     | W3 | Adresse in `# Maintainer:` | **Die geschäftliche Adresse** aus `SECURITY.md` (V10), nie die private |
+     | W4 | Lizenz der Paketdateien | **0BSD** wie die Paketquellen von Arch (RFC 40): `packaging/aur/LICENSE`, vierte Ausnahme in der README-Liste |
+
+     - **Dateien:** `packaging/aur/PKGBUILD`, `.SRCINFO` (nur aus `makepkg --printsrcinfo`), `dictate.install` (gibt
+       nur Hinweise aus: Dienste, `include`, Modelle, Gruppe `input`, Farben; aktiviert nichts), `LICENSE` (0BSD).
+       README: Abschnitt „Arch Linux (AUR)“ vor „From source“, Hinweis zur Rust-Fassung, Ausnahme 0BSD. CHANGELOG:
+       `[Unreleased]` leer, `[0.1.0]` mit Zeile zum AUR-Paket und Vergleichslinks.
+     - **Inhalt des Pakets:** die drei Binaries nach `/usr/bin`; die Units nach `/usr/lib/systemd/user`, `ExecStart`
+       von `%h/.cargo/bin/` auf `/usr/bin/` umgeschrieben (`package()` bricht ab, wenn das nicht greift); Desktop-Datei;
+       Icon als `dictate.svg` (scalable) und `dictate.png` (512); `dictate-binds.kdl` und die Noctalia-Vorlage nach
+       `/usr/share/dictate/` (README empfiehlt `include "/usr/share/dictate/dictate-binds.kdl"`: Kürzel, Fensterregeln
+       und `dictate-ui` kommen so immer aus derselben Fassung; absoluter `include` mit niri 26.04 per `niri validate`
+       geprüft); README und CHANGELOG nach `/usr/share/doc/dictate`; `LICENSE`, `THIRD-PARTY-LICENSES.txt`, `licenses/`
+       und `NOTICE` (die Zeilen 1–25 von `src/main.rs`, also der Lizenzkopf mit der Zusatzerlaubnis für CUDA;
+       `package()` prüft die Zeile „Additional permission …“) nach `/usr/share/licenses/dictate/`.
+     - **CUDA vom System (Nr. 9):** `depends` auf `cuda` (libcudart, libcublas) und `nvidia-utils` (libcuda); nichts von
+       NVIDIA im Paket. **Architekturen:** makepkg setzt `SOURCE_DATE_EPOCH`, ggml schaltet damit `GGML_NATIVE` ab
+       (gelesen in `ggml/CMakeLists.txt` von whisper-rs-sys 0.15.0) und baut seine Standardliste (75 und 80 als PTX,
+       86, 89, 120a, 121a): portabel, ohne GPU baubar, auch kein `-march=native` auf der CPU-Seite. whisper-rs-sys reicht
+       jede Variable `CMAKE_*`, `GGML_*`, `WHISPER_*` an CMake weiter (gelesen in `build.rs`), also wirkt ein eigenes
+       `CMAKE_CUDA_ARCHITECTURES` (README nennt es als schnelleren Bau).
+     - **Bauweise nach den Rust-Richtlinien von Arch:** `cargo` aus dem System (Arch hat 1.100, `rust-toolchain.toml`
+       pinnt 1.95.0 und wird mit `RUSTUP_TOOLCHAIN=stable` übergangen), `cargo fetch --locked` in `prepare()`,
+       `--frozen` in `build()` und `check()` (`cargo test --release`, nur Mock-Tests). `options=('!lto')`: das LTO von
+       makepkg gilt für C/C++ von whisper.cpp und *ring*; Rust hat sein eigenes `lto = "thin"`.
+     - **Befund Lauf 1 und Korrektur:** makepkg meldete „Package contains reference to $srcdir“ in `usr/bin/dictate`.
+       Ursache (am lokalen Binary belegt): whisper-rs-sys kopiert whisper.cpp nach `target/…/out` und baut dort,
+       `__FILE__` in den Asserts von ggml (C, C++, CUDA) trägt den Bauordner ins Binary; Rust-Pfade kommen nicht vor.
+       Korrektur: `-ffile-prefix-map=$srcdir=/usr/src/debug/$pkgbase` in `CFLAGS`, `CXXFLAGS` und (mit `-Xcompiler`)
+       in `CMAKE_CUDA_FLAGS`, das den Wert von whisper-rs-sys ersetzt (spätere `-D` gewinnen, gelesen im cmake-Crate)
+       und darum dessen `-fPIC` wiederholt. makepkg ruft `build()` und `check()` in derselben Shell auf (gelesen in
+       `run_function`): die Umgebung setzt `_build_env` darum nur einmal, sonst sähe `check()` andere Flags und baute
+       whisper.cpp neu.
+     - **Bau-Test** in `docker archlinux:latest` (`--cpus=4`, `MAKEFLAGS=-j4`, `CARGO_BUILD_JOBS=4`, unter dem Host-Lock,
+       Benutzer `builder`, `makepkg -s` mit `check()`; Skript und Logs `$DICTATE_TEST_ROOT/logs/aur/`). Quelle ist
+       `git archive` des Branch-Commits; die PKGBUILD-Kopie unterscheidet sich nur in `source` und `sha256sums`
+       (per `diff` belegt). **Lauf 1** (Standardarchitekturen, Stand `2400767`): makepkg grün in 66 min (Bau 45:36,
+       Testbau 12:57), 1748 Tests bestanden, 0 gescheitert, 28 ignoriert (25 Test-Binaries), namcap über das PKGBUILD
+       ohne Meldung; die Prüfungen danach brachen an meinem Skript ab (das Debug-Paket des Containers machte die
+       Paketsuche mehrdeutig). **Lauf 2** (`CMAKE_CUDA_ARCHITECTURES=86`, um den Host nicht wieder
+       eine Stunde zu belegen; Stand `5c8a11c`): makepkg grün in 44 min (Bau 20:47, Testbau 13:12), wieder 1748 Tests
+       bestanden, 0 gescheitert, 28 ignoriert; **keine** Warnung „reference to $srcdir“ mehr, `/build/src` in keinem
+       Binary (0/0/0), stattdessen 84 Stellen mit `/usr/src/debug/dictate`. Paket 47 MB (`dictate` 57 MB, `dictate-ui`
+       4,2 MB, `dictate-settings` 12 MB). Nach `pacman -U` im Container: `ldd` ohne „not found“; NEEDED wie in
+       Abschnitt 1 (Daemon: libcublas, libcudart, libcuda, libpulse(-simple), libstdc++; `dictate-ui`: GTK 4,
+       gtk4-layer-shell, Pango, Cairo, Graphene, GLib; `dictate-settings`: nur libc, libm, libgcc_s); per dlopen in
+       `dictate-settings` (Zeichenketten) libEGL, libwayland-client, libwayland-egl, libxkbcommon, alle vorhanden.
+       Inhalt (Liste `out/contents.txt`): kein Pfad mit cuda, nvidia oder libcu außerhalb der Lizenztexte. Units mit
+       `ExecStart=/usr/bin/…`; `systemd-analyze verify --user` geht im Container nicht (kein User-Manager), die Units
+       sind bis auf den Pfad die laufenden des Rechners des Autors. `desktop-file-validate` ohne Meldung,
+       `niri validate` mit `include "/usr/share/dictate/dictate-binds.kdl"` gültig, `dictate --help` läuft, `NOTICE`
+       enthält die Zusatzerlaubnis. **namcap** schlug vor, `gcc-libs` durch die geteilten Pakete `libgcc` und
+       `libstdc++` zu ersetzen und `hicolor-icon-theme` zu nennen (umgesetzt); geprüft mit einem dritten, kurzen
+       Container (Abhängigkeiten installiert, Paket aus Lauf 2 mit der neuen `depends`-Liste in `.PKGINFO`): übrig
+       nur „may not be needed“ für `libglvnd`, `libxkbcommon`, `wayland` (dlopen, im PKGBUILD begründet) und `niri`
+       (Socket) sowie „unused ld-linux“ (bei Rust üblich); namcap über das PKGBUILD ohne Meldung. Container und Image
+       nach jedem Lauf entfernt. Der portable Bau mit allen Standardarchitekturen ist durch Lauf 1 belegt, die
+       Pfadkorrektur wirkt unabhängig von der Architektur.
+     - **Prüfung im Repo:** keine Datei unter `src/`, `tests/`, `Cargo.*` geändert, kein Test liest README, CHANGELOG
+       oder `packaging/` (`git grep`); `tests/license_headers.rs` erfasst `PKGBUILD` nicht (keine Endung, kein
+       Shebang), der Kurzkopf entfällt dort ohnehin (0BSD, W4). Darum kein Schritt von `check.sh` nötig.
+     - **U5a vor dem Push** über den Baum von `52d0fc0` und erneut über den Commit mit diesem Absatz, der gepusht wird
+       (`git archive`, 323 Dateien, 13 binär wie vorher; Rohdaten
+       `$DICTATE_TEST_ROOT/logs/u5/scan-aur.json`, `gitleaks-aur.json`, Werte nie ausgegeben), verglichen mit
+       `scan-u5-public2.json`: gitleaks 52 Treffer in denselben Dateien. Neu nur Erwartetes: der GitHub-Name `derblub`
+       (P4) in `CHANGELOG.md` (Vergleichslinks), `PKGBUILD` (`url`) und `.SRCINFO`, die geschäftliche Adresse in der
+       Zeile `# Maintainer:` (W3), allgemeine Ordnernamen (`dictate`, `tests`, `pushingpixels` in der Adresse). Keine
+       neue Kennung des Rechners, keine neue Binärdatei.
+     - **Freigabekette** (je Schritt einzeln mit Daniels Freigabe): Push `aur`, PR, Merge; Tag `v0.1.0`; GitHub-Release
+       mit dem Abschnitt aus dem CHANGELOG; Commit mit `sha256sums` des Tag-Tarballs (`updpkgsums`) und neuer
+       `.SRCINFO`; Upload ins AUR (Repository `dictate` mit `PKGBUILD`, `.SRCINFO`, `dictate.install`, `LICENSE`).
+       **Vor dem Tag:** das Datum in `[0.1.0] - 2026-11-24` auf den Tag des Tags setzen (steckt im Tarball; danach nur
+       mit neuem Tag und neuer Prüfsumme änderbar). **Nach dem Tag, vor dem Upload** (ohne dritten langen Bau): in einer
+       sauberen Kopie von `packaging/aur` `updpkgsums`, `makepkg --verifysource` und `makepkg -o` (URL, Prüfsumme,
+       Ordner `dictate-0.1.0/`), `makepkg --printsrcinfo | diff - .SRCINFO`, und `git diff --stat 5c8a11c v0.1.0` über
+       die Bau-Eingaben (`src`, `tests`, `Cargo.*`, `build.rs` falls vorhanden, `systemd`, `niri`, `noctalia`,
+       `assets`, `licenses`, `LICENSE`, `THIRD-PARTY-LICENSES.txt`, `packaging/dictate-settings.desktop`) muss leer
+       sein, dann gilt Lauf 2 für den getaggten Stand. **AUR-Konto:** der Upload braucht ein Konto mit hinterlegtem
+       SSH-Schlüssel (Frage an Daniel, Claude legt weder Konto noch Schlüssel an).
+     - **Aufräumen (O5):** `$DICTATE_TEST_ROOT/logs/aur/` enthält zwei Testpakete von 47 MB aus nicht finalen Tarballs
+       (keine Release-Artefakte); mit `u3/`, `u3b/`, `u5/` nach Abschluss von U5 löschen.
 - **Später (Auslöser „bezahlte Builds“):** Schätzung und Plan für Hyprland, sway und Vulkan (Nr. 3); die
   geschäftlichen und rechtlichen Punkte des Verkaufs stehen privat, nicht im Repo.

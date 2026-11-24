@@ -111,7 +111,8 @@ a dictation tool, though, not a replacement for full voice control of the deskto
 - GTK 4 and gtk4-layer-shell
 - Read access to `/dev/input/event*` (group `input`): dictate only queries which keys are held (`EVIOCGKEY`) to detect
   the release of the speak key; it never reads key presses
-- Rust; the exact toolchain is pinned in `rust-toolchain.toml` and installed by rustup automatically
+- Rust; the exact toolchain is pinned in `rust-toolchain.toml` and installed by rustup automatically (the AUR package
+  builds with Arch's current Rust instead)
 
 Optional: the Noctalia shell for matching colors (see [Colors](#colors)); without it dictate uses a Tokyo Night dark
 palette. The command palette locks the screen through logind, so locking needs a screen locker that follows logind
@@ -121,7 +122,27 @@ if its program is installed.
 
 ## Installation
 
-dictate is built from source.
+dictate is built from source, either through the AUR package or with cargo.
+
+### Arch Linux (AUR)
+
+```bash
+paru -S dictate   # or another AUR helper, or makepkg -si in a clone of the AUR repository
+systemctl --user enable --now dictate.service dictate-ui.service
+```
+
+Then add `include "/usr/share/dictate/dictate-binds.kdl"` to `~/.config/niri/config.kdl`. The package updates this file
+together with the binaries, so shortcuts, window rules and `dictate-ui` always match; do not include a copied
+`dictate-binds.kdl` as well. Download the speech models in the settings window (page "Model"). The Noctalia template
+is at `/usr/share/dictate/dictate.json.tmpl` (see [Colors](#colors)).
+
+The package builds the release tag with Arch's current Rust and takes CUDA from the packages `cuda` and
+`nvidia-utils`; it contains no NVIDIA files. whisper.cpp is compiled for the GPU architectures it picks by default
+(Turing, RTX 20xx, and newer; cards without prebuilt code compile it once on the first start), so the build needs
+no GPU. To build only for your card, which is faster, set the architecture before building, for example
+`CMAKE_CUDA_ARCHITECTURES=86` for an RTX 30xx. The PKGBUILD lives in [`packaging/aur/`](packaging/aur/).
+
+### From source
 
 ```bash
 cargo install --path . --locked   # installs dictate, dictate-ui and dictate-settings to ~/.cargo/bin
@@ -499,9 +520,10 @@ rules for changes are in [CONTRIBUTING.md](CONTRIBUTING.md). Everyone taking par
 
 [GPL-3.0-or-later](LICENSE) © Daniel Kurdoghlian, Pushing Pixels
 
-The license covers the whole repository including the dictate logo (`assets/logo/`), with three exceptions: third-party
+The license covers the whole repository including the dictate logo (`assets/logo/`), with four exceptions: third-party
 material under its own license (the EFF wordlist below), the contributor license agreement `CLA.md`, which is adapted
-from the Harmony contributor agreement template and therefore licensed under CC BY 3.0 Unported, and the Pushing Pixels
+from the Harmony contributor agreement template and therefore licensed under CC BY 3.0 Unported, the packaging files
+for the AUR in `packaging/aur/`, licensed under 0BSD like Arch Linux package sources, and the Pushing Pixels
 mark and wordmark, wherever they appear in the repository (`docs/assets/logo*.svg`, `docs/assets/pushing-pixels*.svg`
 and the social preview image `docs/assets/social-preview.png`), which are the author's trademarks, not licensed under
 the GPL, all rights reserved. Every `.rs` file carries the license header, every shell and Python script a short header
