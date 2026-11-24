@@ -749,6 +749,19 @@ Hinweis, dass sie allgemein werden (O3).
   | V13 | CI vor dem ersten Push lokal nachstellen? | **Ja** (wie empfohlen): einmal in Docker (`archlinux:latest`, 4 Kerne), Container und Image danach weg |
   | V14 | Lizenz der Pushing-Pixels-Zeichen in `docs/assets/` | **Von der GPL ausgenommen** (wie empfohlen): Marken des Autors, alle Rechte vorbehalten; das dictate-Logo (`assets/logo/`) bleibt GPL |
 
+  **Entscheidungen nach dem Umschalten (Daniel, 24.11.2026, alle wie empfohlen):**
+
+  | Nr. | Frage | Entscheidung |
+  |---|---|---|
+  | V15 | Branch `u5-public` (Schritte 3 und 4) | Diesen Nachtrag als zweiten Commit dazu, Baum nach U5a prüfen, einmal pushen, PR auf Englisch, Merge (kein Squash) nach grüner CI ohne weitere Rückfrage |
+  | V16 | Lokaler Branch `u5-stand` (Baum = `main`, aber 15 Commits `ef6cd55`..`79f6a91` mit der U5c-Arbeit, nur in diesem Checkout) | Als Bundle gesichert (`/home/data/archiv/dictate-u5-stand-2026-11-24.bundle`, `git bundle verify` ok, vollständiger Verlauf), dann gelöscht; ebenso `start-u5c` (= `main`) |
+  | V17 | Dependabot-PR #1 (durch den Force-Push geschlossen; seine CI scheiterte belegt nur an `licenses`: „out of date: THIRD-PARTY-LICENSES.txt“) | Auf den nächsten Monatslauf warten (`dependabot.yml`: monthly); dann auf dessen Branch `scripts/third-party-licenses.py`, `check.sh --only fmt,licenses,clippy,unit`, Ergebnis committen, Push mit Freigabe |
+  | V18 | Läufe und SHAs der ersetzten Start-Commits (Läufe: 5× `8387c60`, 1× `c5df8a4`, 1× `fbe11de`; die Commits bleiben per SHA und `refs/pull/1/head` abrufbar, entfernen könnte sie nur der GitHub-Support) | **Stehen lassen**: alle Bäume sind nach U5a geprüft |
+  | V19 | Spenden | **GitHub Sponsors** (passt zu Nr. 14), eigene Sitzung: Profil richtet Daniel im Konto ein, danach `FUNDING.yml` und README-Link auf einem Feature-Branch. Geschäftliche Angaben nur privat |
+  | V20 | Download-Seite (Nr. 13) | **Erst mit Releases und Builds**; bis dahin sind GitHub-Releases mit Quelltext-Tarball der Download-Ort |
+  | V21 | AUR (Nr. 9 und 13) | **Eigene Sitzung als Nächstes:** Version und CHANGELOG, PKGBUILD und `.SRCINFO` aus dem Quelltext (CUDA vom System), Bau in einem sauberen Arch-Container; Tag, Release und AUR-Upload je nur mit Freigabe |
+  | V22 | Ankündigung | **Nach AUR und erstem Release**; Texte bereitet Claude vor, veröffentlichen tut Daniel |
+
   **U5a Prüfung des Baums für den Start-Commit (23.11.2026, gemessen, nur lesend).** Geprüft wird ein mit `git archive`
   exportierter Baum (nie das Arbeitsverzeichnis), zuerst der von `849bdcd` als Probe, vor dem echten Start-Commit
   noch einmal dessen Baum. Rohdaten und Skript außerhalb des Repos (unter dem Testordner, `logs/u5/`; nach U5 mit
@@ -926,10 +939,34 @@ Hinweis, dass sie allgemein werden (O3).
        `/home/user-1` als erfundene Pfade in `demo_daemon.py`. Geschäftliche Begriffe: nur ein weiteres „Preis“ in
        diesem Plan (Abwägung). Neue Binärdateien: die sieben PNG in `docs/assets/` (selbst angesehen, ohne Textchunks).
        Gedankenstriche in den öffentlichen englischen Dateien: 0; alle Bildverweise der README vorhanden.
-  3. Auf öffentlich schalten, Private Vulnerability Reporting einschalten (**Annahme:** geht erst bei öffentlichen Repositories; nicht getestet, weil ein Versuch ein außenwirksamer Aufruf wäre).
-     **Wartet auf Daniel** (Wahl „Erst selbst ansehen“, 23.11.2026).
-  4. Altes GitLab-Projekt archivieren, Remote im alten Checkout umbenennen; Checkouts tauschen (V7), Orca und Worktrees
-     nachziehen, der CUDA-Erstbau fällt im neuen Checkout einmal an.
-  5. Danach eigene Fragen: Sponsors oder Liberapay, Download-Seite, AUR, Ankündigung.
+  3. **Erledigt am 24.11.2026** (Freigabe Daniel): auf öffentlich geschaltet. Vorher U5a noch einmal über den Baum
+     von `24d8966` (`git archive`, 319 Dateien, 13 binär; Rohdaten `$DICTATE_TEST_ROOT/logs/u5/scan-24d8966.json`,
+     `gitleaks-24d8966.json`; Listen des Rechners am selben Tag neu erhoben, mehr MACs, IPs und Verbindungen als am
+     Vortag): gitleaks 52 Treffer in denselben Dateien, exakte Treffer und Ordnernamen nach Art und Ort gleich der
+     abgenommenen Prüfung von `4089835` (Baum `0408054`), nichts Neues. Über die API sichtbar außer dem Baum: nur
+     `main`, keine Tags, keine Releases, keine Artefakte, der geschlossene Dependabot-PR #1 (`fbe11de`, ändert nur
+     `Cargo.toml` und `Cargo.lock`) und die Actions-Läufe der ersetzten Start-Commits. Deren Commits bleiben per SHA
+     abrufbar; alle Bäume sind geprüft (`ef6cd55` Baum `f269143` in U5a, `8387c60` Baum `9886b42` in U5c, `c5df8a4`
+     Baum `0408054`). Die Läufe bleiben stehen (Löschen wäre eine eigene Wahl). Danach eingeschaltet und per GET
+     belegt: Secret Scanning und Push Protection (`security_and_analysis`), Private Vulnerability Reporting
+     (`enabled: true`; die Annahme oben trifft zu, privat war es nicht verfügbar), Dependabot-Alerts weiter an.
+     Anonym (ohne Token): Repo-Seite und API 200, `SECURITY.md` als Richtlinie 200, CI-Badge 200 mit „passing“.
+     Secret-Scanning-Alerts direkt danach: 0 (erwartet waren welche zu den Testmustern aus S1; spätere Zählung
+     abwarten, keinen Alert ohne Prüfung schließen). **Nachgezählt am 24.11. abends:** weiter 0 (offen und gelöst).
+     Belegt ist nur: die Erkennung allgemeiner Muster (`secret_scanning_non_provider_patterns`) ist aus, erkannt
+     werden also nur Schlüssel bekannter Anbieter in gültiger Form; die Testmuster aus S1 sind zur Laufzeit erzeugt
+     (`rnd()`) oder Doku-Beispiele. Ob der erste Scan abgeschlossen ist, zeigt die API ohne Advanced Security nicht
+     (`scan-history`: 404). Einstellung nicht geändert.
+  4. **Erledigt am 24.11.2026:** Archiv vorher geprüft (`git log --branches --tags --not --remotes` leer, kein Stash,
+     GitLab-`main` = `68ca88f`), GitLab-Projekt archiviert (API: privat, `archived: true`), Remote im alten Checkout
+     heißt `archiv`. Checkouts getauscht (V7): alt `/home/git/blub/dictate-archiv` (mit den unversionierten privaten
+     Ordnern), neu `/home/git/blub/dictate` auf `main`; Orca führt das Repo unter demselben Pfad weiter und zeigt den
+     neuen Stand, Worktrees gab es keine mehr. Erwartet, nicht gemessen: der Ordnerwechsel macht den Build-Cache im
+     neuen Checkout ungültig (absolute Pfade), der nächste Release-Build baut CUDA einmal neu (19 min am 23.11.).
+     U5a über diesen Nachtrag: gleiche Treffer wie `24d8966`, neu nur der Ordnername `dictate-archiv` (steht schon in V7).
+  5. **Entschieden am 24.11.2026** (V19–V22): GitHub Sponsors in eigener Sitzung, Download-Seite erst mit Builds,
+     AUR als nächste Sitzung, Ankündigung danach. Social Preview lädt Daniel selbst hoch.
+     Aufgeräumt nach V16–V18 (Bundle, Branches gelöscht, Läufe stehen). Offen: O5 (Rohdaten `logs/u3/`, `u3b/`,
+     `u5/` löschen) nach Abschluss von U5.
 - **Später (Auslöser „bezahlte Builds“):** Schätzung und Plan für Hyprland, sway und Vulkan (Nr. 3); die
   geschäftlichen und rechtlichen Punkte des Verkaufs stehen privat, nicht im Repo.
