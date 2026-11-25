@@ -26,6 +26,13 @@ Protokoll und Daemon-Teile gelten weiter.
   beschreiben den Stand unter AwesomeWM (Archiv); Protokoll und Daemon-Teile gelten weiter.
 - **Läuft:** User-Dienste `dictate.service` (`~/.cargo/bin/dictate daemon`) und `dictate-ui.service` (`dictate-ui run`,
   nur in einer Wayland-Sitzung); `niri/dictate-binds.kdl` über chezmoi (gepusht am 23.11.).
+- **Härtung der Units** (25.11., `docs/systemd-hardening.md`, englisch, weil die Units darauf verweisen):
+  `dictate-ui.service` mit Dateisystem-, Kernel- und Netz-Optionen (`systemd-analyze` offline 9.2 → 1.4),
+  `dictate.service` nur mit den Optionen ohne Namespace (9.2 → 5.9), weil die Programme der Diagnose als Kinder des
+  Daemons laufen und im Namespace Falsches melden. Regeln dazu unter „Fallen“. Installiert sind die neuen Units erst,
+  wenn Daniel sie nach `~/.config/systemd/user/` kopiert (nur zusammen mit dem passenden `dictate-ui`: ein altes
+  startete das Einstellungsfenster in der Sandbox). Beim nächsten AUR-Release installiert der PKGBUILD zusätzlich
+  `docs/systemd-hardening.md` nach `/usr/share/doc/dictate/docs/` (der Tarball von 0.1.0 enthält die Seite nicht).
 - **Kürzel** (niri): `Mod+E` halten = sprechen, `Mod+Shift+E` freihändig, `Mod+Ctrl+E` abbrechen, `Mod+Ctrl+Shift+E`
   Einstellungen (schwebend), `Mod+I` Textaktionen, `Mod+Shift+I` Diagnose, `Mod+Alt+Space` Befehlspalette (die Suche
   von espanso auf derselben Taste ist abgeschaltet, siehe Fallen).
@@ -104,6 +111,12 @@ Protokoll und Daemon-Teile gelten weiter.
    Prompt-Punkte (t16 knapp über 3×, „Dear Sam“ → „Lieber Sam“), Wackeln von `palette.sh` und `T3: route input method` unter Last (O7: zwei Läufe bei Last 17 mit je anderer Zeitprüfung rot), t18 im Sprachtest. Der Handtest von O6
    (Sperre über logind, Zwischenablage, Emoji, Gruppe „Clipboard and emoji“) ist am 23.11. von Daniel abgenommen.
 3. Baustein 5 (Kontext-Workspaces) ist nicht begonnen (`ROADMAP.md`).
+4. **Voller Schutz für `dictate.service`** (Entscheidung in Daniels Auftrag, 25.11.: festhalten, nicht bauen): Der Daemon
+   behält Schreibzugriff auf den Heimatordner, weil die Programme der Diagnose als seine Kinder laufen und im
+   Namespace Falsches melden. Ausweg: Proben außerhalb der Sandbox starten (etwa als flüchtige Units), dann die
+   Dateisystem-Optionen wie bei `dictate-ui`. Das ändert den Probenstarter (`src/diagnose/run.rs`: Drossel, Frist,
+   Abholen, Katalog als einzige Schranke) und braucht Entwurf und Security-Review. Dazu `MemoryDenyWriteExecute` für
+   `dictate-ui` und Daniels Handtest nach dem Installieren der Units (`docs/systemd-hardening.md`, „Open“).
 
 ## Entscheidungen, die weiter gelten
 
@@ -173,6 +186,7 @@ die Schritte laufen, die ihre Änderung berührt; die volle Suite (ca. 25 min, g
 | Gemeinsame Teile von Overlay und Einstellungsfenster (`src/ui/wave.rs`, `src/ui/palette.rs`, `src/ui/fsutil.rs`) | `fmt,clippy,gui,wayland`, dazu `--bin dictate-settings`, `--bin dictate-ui`, `--lib ui::` |
 | Audio, Engine, Streaming, Pipeline-Text | `fmt,clippy,unit,speech` (`gpu` bei Engine/Streaming/Audio) |
 | Diagnose (Rust: Katalog, Proben, Filter, KI, Dienst) | `fmt,clippy,unit` |
+| Units (`systemd/*.service`) und alles, was `dictate` oder `dictate-ui` als Kindprozess startet (Katalog der Diagnose, Kurzläufer der Palette) | `tests/systemd/probe.py dictate`, `tests/systemd/probe.py dictate-ui`, `tests/systemd/programs.py` (je unter 1 min, lesend, nicht in `check.sh`: sie brauchen den User-Manager), `systemd-analyze --user security --offline=yes systemd/<unit>.service`; bei `dictate-ui.service` dazu `DICTATE_UI_UNDER_UNIT=1 tests/wayland/run.sh`, bei `dictate.service` die GPU-Tests über `tests/systemd/under-unit.py dictate -- <Test-Binary> --ignored …` |
 | Wayland-Oberfläche und Textausgabe (`src/ui/`, `src/bin/dictate-ui/`, `niri/dictate-binds.kdl`; die KDL auch `gui`, dort prüft `tests/gui/lib.sh` das Schweben von `dictate-settings`). `wayland` = `tests/wayland/run.sh` mit `output.sh`, `actions.sh`, `diagnose.sh` (Diagnose-Panel, Boot-Hinweis), `palette.sh` (Befehlspalette gegen Mock und Fake-Programme, P1–P27), `lock.sh`, `logout.sh` (P28, beendet das verschachtelte niri, darum zuletzt) | `fmt,clippy,unit,wayland` (gezielt statt `unit`: `cargo test --release --bin dictate-ui` (2 s) **und** `--lib ui::…`, bei `src/ui/pal_*`/`cmdpal*` auch `--lib palette::ui_mirror` und `--lib ui::cmdpal`; nur `--lib` ließ `sources_stay_apart` vier Commits lang rot) |
 
 - **Testsatz:** `tests/speech/testset.tsv`, Aufnahmen des Users unter `$DICTATE_TEST_ROOT/audio/testset/<id>.wav`
@@ -300,6 +314,21 @@ die Schritte laufen, die ihre Änderung berührt; die volle Suite (ca. 25 min, g
   einem `flush` (siehe „Textausgabe unter Wayland“); ein Abbruch (Mod+Ctrl+E) lässt nichts gedrückt. Die X11-Regeln zu
   `xdotool`, `dictate release-keys` und `dictate synth` entfielen mit W7 (Herleitung in der Git-Geschichte vor
   `remove-awesome`).
+- **Härtung der Units** (`docs/systemd-hardening.md`): Kindprozesse erben die Sandbox ihrer Unit. (1) Ein Fenster nie
+  als Kind von `dictate-ui` starten, nur über `niri::spawn_at` (das Einstellungsfenster: `pal_exec::settings_launch`,
+  auch für „Settings“ in den Panels); ein Kind hätte einen nur lesbaren Heimatordner und kein Netz. (2) Ein neues
+  Programm im Katalog der Diagnose oder ein neuer Kurzläufer der Palette kommt in `tests/systemd/programs.py` und muss
+  dort ohne und unter der Unit gleich antworten (so fielen `ip`/`ping` am Filter und `findmnt`/`lsblk`/`ss` im
+  Namespace auf). Das Skript startet die Programme direkt: was der Daemon um eine Probe herum tut, zeigen nur seine
+  Tests unter der Unit (`under-unit.py dictate -- <daemon_diagnose-Binary>`; so fiel auf, dass der Filter
+  `setpriority`/`ioprio_set` der Drossel sperrte und keine Probe mehr startete). Ein neuer Systemaufruf im
+  Probenstarter oder im Daemon braucht darum diesen Lauf. (3) Darum bekommt `dictate.service` keine Option, die einen Namespace braucht (im User-Manager auch
+  `ProtectClock`, `ProtectHostname`, `CapabilityBoundingSet`): nicht „nachziehen“, solange die Diagnose ihre Programme
+  als Kinder startet. (4) `dictate-ui` schreibt nur in Zustands-, Cache- und Laufzeitordner (`StateDirectory`,
+  `CacheDirectory`, `RuntimeDirectory`, alle `dictate`); ein neuer Schreibpfad im Overlay braucht eine Zeile in der
+  Unit. (5) Flüchtige Test-Units nie mit den Verzeichnis-Direktiven unter dem Namen `dictate` (systemd fasst sonst
+  die Ordner der laufenden Dienste an) und nie mit der Umgebung des User-Managers (das ist die echte Sitzung):
+  `tests/systemd/unit.py` regelt beides. Kein `MemoryDenyWriteExecute` für `dictate-ui` (NVIDIA-OpenGL-Treiber).
 - **Lizenzköpfe** (seit U1, `PLAN-lizenz.md`): jede neue `.rs`-Datei beginnt mit dem Kopf aus `RS_HEADER` in
   `tests/license_headers.rs` (byte-genau, dann Leerzeile), jedes neue Shell- oder Python-Skript trägt nach dem Shebang
   den Kurzkopf `SCRIPT_HEADER`; der Test im Schritt `unit` findet fehlende.

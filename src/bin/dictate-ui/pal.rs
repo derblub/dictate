@@ -297,6 +297,11 @@ impl PalIo {
         self.ask.set_gen(gen);
     }
 
+    /// Suchpfad der Programme (derselbe wie beim Ausführen): für den Start des Einstellungsfensters aus einem Panel
+    pub fn programs(&self) -> &Programs {
+        &self.programs
+    }
+
     /// `palette.timeout_ms` (im Bereich der Config geklemmt)
     pub fn set_ask_timeout_ms(&mut self, ms: u64) {
         let (lo, hi) = crate::config::PALETTE_TIMEOUT_RANGE;

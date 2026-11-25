@@ -55,7 +55,7 @@ use crate::ui::fake_keys::FileKeys;
 use crate::ui::hold::{self, DaemonCmd, Hold, Out};
 use crate::ui::keys::{Evdev, KeySource};
 use crate::ui::output::{OutCfg, Queue};
-use crate::ui::pal_exec::{ExecCtx, Handoff, Outcome, Programs};
+use crate::ui::pal_exec::{self, ExecCtx, Handoff, Outcome, Programs};
 use crate::ui::palette::{self, Palette, Source};
 use crate::ui::panel::{Effect, Panel, Phase};
 use crate::ui::view::{self, NoticeKind};
@@ -1162,7 +1162,7 @@ fn apply_panel(this: &Shared, effects: Vec<Effect>) {
                     }
                 }
                 Effect::Notice(t) => notices.push((t, NoticeKind::Info)),
-                Effect::Settings(page) => open_settings(page),
+                Effect::Settings(page) => open_settings(a.pal_io.programs(), page),
             }
         }
         a.act.set_gen(a.panel.gen());
@@ -1194,16 +1194,20 @@ fn schedule_panel(this: &Shared) {
     }));
 }
 
-/// Einstellungsfenster auf einer Seite (argv, keine Shell); der Prozess wird eingesammelt
-fn open_settings(page: &'static str) {
-    match std::process::Command::new("dictate-settings").args(["--page", page]).spawn() {
-        Ok(mut child) => {
-            let _ = std::thread::Builder::new().name("settings-wait".into()).spawn(move || {
-                let _ = child.wait();
-            });
+/// Einstellungsfenster auf einer Seite: über niri (`Spawn` mit argv, keine Shell) wie aus der Palette, nie als
+/// Kindprozess. Ein Kind erbte die Härtung von `dictate-ui.service` (Heimatordner nur lesbar, kein Netz): es könnte
+/// weder Modelle laden noch einen Browser öffnen (docs/systemd-hardening.md). Die Anfrage an niri läuft in einem eigenen
+/// Thread (der Hauptthread wartet nie auf niri); niri meldet einen Startfehler nicht (`niri::spawn_at`)
+fn open_settings(programs: &Programs, page: &'static str) {
+    let Some(launch) = pal_exec::settings_launch(programs, Some(page)) else {
+        warn!("cannot start dictate-settings: not in PATH");
+        return;
+    };
+    let _ = std::thread::Builder::new().name("settings-spawn".into()).spawn(move || {
+        if let Err(e) = crate::niri::socket().and_then(|sock| crate::niri::spawn_at(&sock, launch)) {
+            warn!("cannot start dictate-settings: {e}");
         }
-        Err(e) => warn!("cannot start dictate-settings: {e}"),
-    }
+    });
 }
 
 // --- Diagnose -------------------------------------------------------------------------------------------------

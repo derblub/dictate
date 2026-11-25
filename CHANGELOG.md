@@ -9,6 +9,17 @@ All notable changes to this project are documented here. The format follows
 
 - A GitHub Sponsors link (`.github/FUNDING.yml` and a section in the README).
 
+### Changed
+
+- The systemd user units are hardened. `dictate-ui.service` runs with a read-only view of the system and the home
+  directory, without network and with a system call filter (`systemd-analyze security`: 9.2 to 1.4);
+  `dictate.service` gets the options that do not change what the Linux diagnosis sees (9.2 to 5.9). Measurements and
+  reasons are in `docs/systemd-hardening.md`. After updating the unit files run `systemctl --user daemon-reload` and
+  restart both services; install `dictate-ui.service` only together with the `dictate-ui` of the same version. The
+  AUR package installs the unit files of the release it builds, so it gets the hardened units with the next release.
+- The "Settings" button in a panel starts the settings window through niri instead of as a child of the overlay, so
+  the window does not inherit the overlay's sandbox.
+
 ## [0.1.0] - 2026-11-24
 
 The first public release of dictate. The history before it stays private; the repository starts with a single commit.

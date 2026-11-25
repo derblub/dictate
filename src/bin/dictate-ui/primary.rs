@@ -262,6 +262,9 @@ mod tests {
                 assert!(!c.contains(bad), "{name} starts a process through {bad}");
             }
             assert!(!c.contains("SpawnSh"), "{name} spawns through niri's shell");
+            // das Einstellungsfenster startet nur niri (`pal_exec::settings_launch`): als Kind erbte es die Härtung von
+            // `dictate-ui.service` (docs/systemd-hardening.md)
+            assert!(!c.contains("Command::new(\"dictate-settings\")"), "{name} starts the settings window as a child");
             let n = c.matches("Action::Spawn").count();
             assert!(n == 0 || name == "niri.rs", "{name} spawns through niri");
             spawns += n;
