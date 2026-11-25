@@ -462,6 +462,15 @@ impl Launch {
     }
 }
 
+/// Start des Einstellungsfensters, auf Wunsch auf einer Seite aus [`SETTINGS_PAGES`]; `None`: `dictate-settings` ist
+/// nicht im Suchpfad. Für die Palette und für „Settings“ in den Panels: das Fenster startet immer über niri, nie als
+/// Kindprozess von `dictate-ui` (es erbte sonst die Härtung von `dictate-ui.service` und könnte weder Modelle laden
+/// noch einen Browser öffnen, docs/systemd-hardening.md)
+pub fn settings_launch(programs: &Programs, page: Option<&'static str>) -> Option<Launch> {
+    let exe = programs.find("dictate-settings")?;
+    Some(Launch::new(&exe, page.map(|p| vec!["--page".to_string(), p.to_string()]).unwrap_or_default()))
+}
+
 // --- Wirt -----------------------------------------------------------------------------------------------------------
 
 /// niri-Aktionen des Ausführers (geschlossene Liste; `niri.rs` bildet sie auf `niri_ipc::Action` ab, jede mit fester
@@ -801,9 +810,7 @@ fn step(c: &Candidate, ctx: &ExecCtx, programs: &Programs, host: &mut dyn Host) 
                     None => None,
                     Some(p) => Some(*SETTINGS_PAGES.iter().find(|x| **x == p.as_str()).ok_or_else(|| fail("Unknown settings page"))?),
                 };
-                let exe = programs.find("dictate-settings").ok_or_else(|| fail("dictate-settings is not installed"))?;
-                let args: Vec<String> = page.map(|p| vec!["--page".to_string(), p.to_string()]).unwrap_or_default();
-                spawn(host, Launch::new(&exe, args))
+                spawn(host, settings_launch(programs, page).ok_or_else(|| fail("dictate-settings is not installed"))?)
             }
             Intent::Screenshot { mode } => match mode {
                 ScreenshotMode::Area => niri(host, NiriOp::ScreenshotArea),

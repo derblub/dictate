@@ -744,6 +744,10 @@ fn widgets_and_settings() {
     let (r, s) = spawned(json!({"intent": "dictate_settings", "page": "--evil"}));
     failed(&r, "Unknown settings page");
     assert!(s.is_empty());
+    // derselbe Start für „Settings“ in den Panels (`app::open_settings`); ohne das Programm im Suchpfad keiner
+    assert_eq!(settings_launch(&programs, Some("actions")).unwrap().argv(), [exe(&dir, "dictate-settings"), "--page".into(), "actions".into()]);
+    assert_eq!(settings_launch(&programs, None).unwrap().argv(), [exe(&dir, "dictate-settings")]);
+    assert_eq!(settings_launch(&Programs::with_dirs([]), Some("actions")), None);
     let mut h = Rec::new();
     failed(&exec_with(&cand(json!({"intent": "dictate_settings"}), none(), "run"), &ctx, &Programs::with_dirs([]), &mut h), "not installed");
 }
