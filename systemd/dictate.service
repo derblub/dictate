@@ -1,5 +1,6 @@
 # The dictate daemon as a systemd user unit: audio capture, speech recognition on the GPU, the pipeline and the AI
-# calls. docs/systemd-hardening.md says which options were measured and why each one is in or out.
+# calls. Which options were measured and why each one is in or out: docs/systemd-hardening.md in the repository,
+# https://github.com/derblub/dictate/blob/main/docs/systemd-hardening.md
 
 [Unit]
 Description=dictate - local live dictation daemon
@@ -12,9 +13,9 @@ Restart=on-failure
 RestartSec=2
 
 # Hardening. Only options that need no namespace: in a user manager every file system option (ProtectSystem,
-# ProtectHome, PrivateTmp, ProtectKernel*, ...) and ProtectClock, ProtectHostname and CapabilityBoundingSet put the
-# service into a mount and user namespace of its own, and the programs of the Linux diagnosis run as children of the
-# daemon. Inside those namespaces findmnt and lsblk report mount options and mount points that are not the system's,
+# ProtectHome, PrivateTmp, ProtectKernel*, ...) and ProtectClock and ProtectHostname put the service into a mount or
+# user namespace of its own (CapabilityBoundingSet= does not even start without one), and the programs of the Linux
+# diagnosis run as children of the daemon. Inside those namespaces findmnt and lsblk report mount options and mount points that are not the system's,
 # and ss no longer names the user's own processes: the diagnosis would be wrong. What is left limits which kernel
 # interfaces a bug in the daemon reaches; it does not limit which files the daemon can write.
 NoNewPrivileges=yes

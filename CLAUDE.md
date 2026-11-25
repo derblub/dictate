@@ -30,7 +30,9 @@ Protokoll und Daemon-Teile gelten weiter.
   `dictate-ui.service` mit Dateisystem-, Kernel- und Netz-Optionen (`systemd-analyze` offline 9.2 → 1.4),
   `dictate.service` nur mit den Optionen ohne Namespace (9.2 → 5.9), weil die Programme der Diagnose als Kinder des
   Daemons laufen und im Namespace Falsches melden. Regeln dazu unter „Fallen“. Installiert sind die neuen Units erst,
-  wenn Daniel sie nach `~/.config/systemd/user/` kopiert (zusammen mit dem passenden `dictate-ui`, siehe dort).
+  wenn Daniel sie nach `~/.config/systemd/user/` kopiert (nur zusammen mit dem passenden `dictate-ui`: ein altes
+  startete das Einstellungsfenster in der Sandbox). Beim nächsten AUR-Release installiert der PKGBUILD zusätzlich
+  `docs/systemd-hardening.md` nach `/usr/share/doc/dictate/docs/` (der Tarball von 0.1.0 enthält die Seite nicht).
 - **Kürzel** (niri): `Mod+E` halten = sprechen, `Mod+Shift+E` freihändig, `Mod+Ctrl+E` abbrechen, `Mod+Ctrl+Shift+E`
   Einstellungen (schwebend), `Mod+I` Textaktionen, `Mod+Shift+I` Diagnose, `Mod+Alt+Space` Befehlspalette (die Suche
   von espanso auf derselben Taste ist abgeschaltet, siehe Fallen).

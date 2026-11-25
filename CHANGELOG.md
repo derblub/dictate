@@ -15,8 +15,8 @@ All notable changes to this project are documented here. The format follows
   directory, without network and with a system call filter (`systemd-analyze security`: 9.2 to 1.4);
   `dictate.service` gets the options that do not change what the Linux diagnosis sees (9.2 to 5.9). Measurements and
   reasons are in `docs/systemd-hardening.md`. After updating the unit files run `systemctl --user daemon-reload` and
-  restart both services. The AUR package installs the unit files of the release it builds, so it gets the hardened
-  units with the next release; the package itself needs no change.
+  restart both services; install `dictate-ui.service` only together with the `dictate-ui` of the same version. The
+  AUR package installs the unit files of the release it builds, so it gets the hardened units with the next release.
 - The "Settings" button in a panel starts the settings window through niri instead of as a child of the overlay, so
   the window does not inherit the overlay's sandbox.
 

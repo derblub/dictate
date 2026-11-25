@@ -1,5 +1,6 @@
 # The dictate overlay as a systemd user unit: the layer surface, hold-to-speak, the text output and the panels.
-# docs/systemd-hardening.md says which options were measured and why each one is in or out.
+# Which options were measured and why each one is in or out: docs/systemd-hardening.md in the repository,
+# https://github.com/derblub/dictate/blob/main/docs/systemd-hardening.md
 #
 # Only in a Wayland session (niri-session imports WAYLAND_DISPLAY into the user manager); without one the unit does not
 # start. It depends on the daemon through the daemon's socket, not through systemd.

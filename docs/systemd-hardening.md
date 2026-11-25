@@ -193,5 +193,14 @@ Add a drop-in with `systemctl --user edit dictate-ui.service`; nothing in the un
 ## Packaging
 
 The AUR package installs the unit files from the release tarball (`packaging/aur/PKGBUILD` rewrites only the path of
-the binaries), so the hardened units ship with the first release after 0.1.0; the package itself needs no change.
-`dictate 0.1.0-1` keeps the units without hardening.
+the binaries), so the hardened units ship with the first release after 0.1.0; `dictate 0.1.0-1` keeps the units
+without hardening. For that release the PKGBUILD should also install this page as
+`/usr/share/doc/dictate/docs/systemd-hardening.md`, next to the README that links to it (the unit files name the page
+in the repository). The PKGBUILD in this repository still builds 0.1.0, whose tarball does not contain the page, so
+that line belongs to the release change.
+
+The unit file of the overlay and the `dictate-ui` binary belong together: a `dictate-ui` from before this change
+under the new unit would start the settings window inside the sandbox.
+
+Outbound connections under the daemon unit were tried as well: name resolution (`getent ahosts`) answers as without
+the unit, and a TLS handshake with an AI provider's host completes.
