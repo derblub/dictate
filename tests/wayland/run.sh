@@ -22,6 +22,7 @@
 # PID/Prozessgruppe, auch bei Abbruch (trap).
 #
 # Aufruf: tests/wayland/run.sh (nach `cargo build --release --bin dictate-ui` und dem Bau des Injektors)
+#   DICTATE_UI_UNDER_UNIT=1 dictate-ui unter der Härtung von systemd/dictate-ui.service (docs/systemd-hardening.md)
 #   DICTATE_TEST_LOGS=DIR   Logs dorthin kopieren (Vorgabe $DICTATE_TEST_ROOT/logs/wl-test, Testordner aus
 #                           scripts/test-root.sh)
 set -uo pipefail
@@ -192,9 +193,19 @@ nested_spawn target python3 "$HERE/target.py"
 nested_wait 10 target_focused || { echo "FAILED: target window did not get the focus"; exit 1; }
 
 echo 0 >"$KEYS"
+# DICTATE_UI_UNDER_UNIT=1: dictate-ui läuft unter der Härtung von systemd/dictate-ui.service (flüchtige Unit im
+# User-Manager mit genau dieser Umgebung, tests/systemd/under-unit.py). Schreiben darf es dann nur, was ihm die Unit
+# lässt: seinen Laufzeit-, Zustands- und Cache-Ordner und /tmp (hier TMPDIR); dazu das Log der Fake-Programme, die als
+# Kurzläufer in derselben Unit laufen. Alles andere im Testordner ist für dictate-ui nur lesbar
+UI_UNDER=()
+if [[ -n ${DICTATE_UI_UNDER_UNIT:-} ]]; then
+    mkdir -p "$XDG_STATE_HOME/dictate" "$XDG_CACHE_HOME" "$TMPDIR"
+    UI_UNDER=(python3 "$ROOT/tests/systemd/under-unit.py" dictate-ui --rw "$NESTED_RT/dictate" --rw "$XDG_STATE_HOME/dictate" --rw "$XDG_CACHE_HOME" --rw "$TMPDIR" --rw "$FAKE_LOG" --)
+    echo "dictate-ui runs under the hardening of systemd/dictate-ui.service"
+fi
 start_ui() {
     # NIRI_SOCKET wie live (der User-Manager hat ihn): nur der verschachtelte Socket im eigenen Laufzeitordner
-    nested_spawn ui env DICTATE_LOG=dictate_ui=debug,info NIRI_SOCKET="$NESTED_NIRI_SOCKET" XDG_SESSION_ID="${UI_SESSION_ID:-2}" DBUS_SYSTEM_BUS_ADDRESS="${UI_SYSBUS:-$DBUS_SYSTEM_BUS_ADDRESS}" "$UI" run --fake-keys "$KEYS" --fake-programs "$FAKES" ${UI_BOOT_MS:+--boot-hint-ms "$UI_BOOT_MS"}
+    nested_spawn ui env DICTATE_LOG=dictate_ui=debug,info NIRI_SOCKET="$NESTED_NIRI_SOCKET" XDG_SESSION_ID="${UI_SESSION_ID:-2}" DBUS_SYSTEM_BUS_ADDRESS="${UI_SYSBUS:-$DBUS_SYSTEM_BUS_ADDRESS}" "${UI_UNDER[@]}" "$UI" run --fake-keys "$KEYS" --fake-programs "$FAKES" ${UI_BOOT_MS:+--boot-hint-ms "$UI_BOOT_MS"}
     UI_PID=$NESTED_LAST_PID
     nested_wait 10 test -S "$NESTED_RT/dictate/ui.sock" || return 1
     # nur mit den Fakes weiter (die Zeile kommt vor dem Steuer-Socket)

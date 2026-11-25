@@ -1,7 +1,11 @@
+# The dictate overlay as a systemd user unit: the layer surface, hold-to-speak, the text output and the panels.
+# docs/systemd-hardening.md says which options were measured and why each one is in or out.
+#
+# Only in a Wayland session (niri-session imports WAYLAND_DISPLAY into the user manager); without one the unit does not
+# start. It depends on the daemon through the daemon's socket, not through systemd.
+
 [Unit]
 Description=dictate - Wayland overlay and hold-to-speak (niri)
-# Nur in einer Wayland-Sitzung (niri-session importiert WAYLAND_DISPLAY in den User-Manager); ohne sie startet der
-# Dienst nicht. Er hängt am Daemon über dessen Socket, nicht über systemd.
 PartOf=graphical-session.target
 After=graphical-session.target
 Requisite=graphical-session.target
@@ -12,6 +16,48 @@ Type=simple
 ExecStart=%h/.cargo/bin/dictate-ui run
 Restart=on-failure
 RestartSec=2
+
+# The only places the overlay writes: its control socket and the caches of the libraries it draws with (shaders,
+# fonts). It watches the state directory for the colors that Noctalia writes there, so the directory has to exist.
+# The runtime directory is shared with the daemon and the settings window, so it stays when this unit stops.
+StateDirectory=dictate
+StateDirectoryMode=0700
+CacheDirectory=dictate
+CacheDirectoryMode=0700
+RuntimeDirectory=dictate
+RuntimeDirectoryMode=0700
+RuntimeDirectoryPreserve=yes
+# The graphics driver, GTK and fontconfig keep caches below ~/.cache, which is read-only here.
+Environment=XDG_CACHE_HOME=%C/dictate
+
+# Hardening. This limits what a bug in the overlay can write and which kernel interfaces it reaches. It is no boundary
+# against code running in the overlay, which keeps the compositor's sockets (it types and pastes text), the session
+# bus and the input devices (key state only). Programs with a window (the settings window, applications from the
+# command palette) are started by niri, outside this sandbox; only short commands such as pactl run inside it.
+# No MemoryDenyWriteExecute: the NVIDIA OpenGL driver maps parts of itself writable and executable.
+NoNewPrivileges=yes
+UMask=0077
+LockPersonality=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+ProtectSystem=strict
+ProtectHome=read-only
+PrivateTmp=yes
+PrivateUsers=yes
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+KeyringMode=private
+RestrictRealtime=yes
+CapabilityBoundingSet=
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+SystemCallErrorNumber=EPERM
 
 [Install]
 WantedBy=graphical-session.target

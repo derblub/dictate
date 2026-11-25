@@ -103,6 +103,9 @@ a dictation tool, though, not a replacement for full voice control of the deskto
   it on.
 - Locking the screen closes open panels, aborts a running output and discards selection and diagnosis data held in
   memory.
+- The systemd units are sandboxed (see [Installation](#from-source) and
+  [docs/systemd-hardening.md](docs/systemd-hardening.md)): the overlay cannot write outside its own directories and
+  has no network; both services run with a system call filter and cannot gain privileges.
 
 ## Requirements
 
@@ -174,6 +177,15 @@ the binary belong together in the same way.
 
 `dictate-ui.service` starts only in a Wayland session (`niri-session` imports `WAYLAND_DISPLAY` into the user
 manager) and connects to the daemon through its socket.
+
+Both units are sandboxed with systemd's hardening options as far as dictate works under them. The overlay
+(`dictate-ui.service`) sees the system and the home directory read-only, has no network and may write only its own
+state, cache and runtime directory; windows it opens for you (the settings window, programs from the command palette)
+are started by niri, outside that sandbox. The daemon (`dictate.service`) gets the options that need no namespace
+(system call filter, no new privileges, no writable and executable memory); the file system options are left out there
+because the programs of the Linux diagnosis run as its children and would report the sandbox instead of the system.
+[docs/systemd-hardening.md](docs/systemd-hardening.md) lists every option, what was measured and how to loosen a unit
+with a drop-in if your setup needs it.
 
 ### Colors
 

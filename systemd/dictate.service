@@ -1,3 +1,6 @@
+# The dictate daemon as a systemd user unit: audio capture, speech recognition on the GPU, the pipeline and the AI
+# calls. docs/systemd-hardening.md says which options were measured and why each one is in or out.
+
 [Unit]
 Description=dictate - local live dictation daemon
 After=pipewire-pulse.service
@@ -7,6 +10,30 @@ Type=simple
 ExecStart=%h/.cargo/bin/dictate daemon
 Restart=on-failure
 RestartSec=2
+
+# Hardening. Only options that need no namespace: in a user manager every file system option (ProtectSystem,
+# ProtectHome, PrivateTmp, ProtectKernel*, ...) and ProtectClock, ProtectHostname and CapabilityBoundingSet put the
+# service into a mount and user namespace of its own, and the programs of the Linux diagnosis run as children of the
+# daemon. Inside those namespaces findmnt and lsblk report mount options and mount points that are not the system's,
+# and ss no longer names the user's own processes: the diagnosis would be wrong. What is left limits which kernel
+# interfaces a bug in the daemon reaches; it does not limit which files the daemon can write.
+NoNewPrivileges=yes
+UMask=0077
+LockPersonality=yes
+RestrictSUIDSGID=yes
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6 AF_NETLINK
+RestrictNamespaces=yes
+KeyringMode=private
+RestrictRealtime=yes
+SystemCallFilter=@system-service
+SystemCallFilter=~@privileged @resources
+# Calls the Linux diagnosis needs although they are in the two groups above: the daemon starts every probe with a low
+# CPU and I/O priority (setpriority, ioprio_set) and does not start it if it cannot, and ip and ping drop their
+# capabilities and their user ID when they start (capset, setuid) and end if they may not.
+SystemCallFilter=capset setuid setpriority ioprio_set
+SystemCallErrorNumber=EPERM
+MemoryDenyWriteExecute=yes
 
 [Install]
 WantedBy=default.target
