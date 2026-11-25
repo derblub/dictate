@@ -121,7 +121,7 @@ key state of an input device (`EVIOCGKEY`; the group `input` still applies insid
 
 ### Programs started by dictate (`programs.py`)
 
-All 22 command lines of the diagnosis catalog under the daemon unit and all 11 short commands under the overlay unit
+All 22 command lines of the diagnosis catalog under the daemon unit and all 10 short commands under the overlay unit
 answered as without hardening: same exit status and standard error, same output apart from counters, timestamps and
 measured values. `resolvectl status` ended with 1 both ways (systemd-resolved does not run on this machine), so it was
 not exercised. Three controls show that the comparison catches the failures above: with `ProtectClock=yes` added to
@@ -150,7 +150,7 @@ The overlay, under the options of `dictate-ui.service`:
 
 | Run | What it shows | Result |
 |---|---|---|
-| `DICTATE_UI_UNDER_UNIT=1 tests/wayland/run.sh` | the whole Wayland suite in a nested niri with `dictate-ui` as a transient unit: the overlay appears, hold and release, text output through the input method, the clipboard and the virtual keyboard into a text field and terminals, the panels, the command palette with its short commands and niri actions, the lock through a (fake) logind | WAYLAND_RESULT |
+| `DICTATE_UI_UNDER_UNIT=1 tests/wayland/run.sh` | the whole Wayland suite in a nested niri with `dictate-ui` as a transient unit: the overlay appears, hold and release, text output through the input method, the clipboard and the virtual keyboard into a text field and terminals, the panels, the command palette with its short commands and niri actions, the lock through a (fake) logind | 543 checks pass, none fail (8 min), the same 543 as without the unit; the overlay's logs hold the same warnings as in the run without the unit (all provoked by the tests) and no line about a denied call or a read-only file system; no transient unit is left afterwards |
 | `gl-check.py` without hardening, under the unit, and under the unit plus `MemoryDenyWriteExecute` | the NVIDIA OpenGL driver under the unit | all three draw (renderer "NVIDIA GeForce RTX 3060", the pixel read back is the drawn color); the shader cache lands below `XDG_CACHE_HOME` (2 files); one writable and executable mapping without the option, none with it |
 
 | the overlay binary as a transient unit with the unit's 30 options in the live niri session, in place of the stopped `dictate-ui.service` for a few seconds (2026-11-25, agreed beforehand; `dictate-ui toggle`, then `cancel`) | the overlay itself on the real compositor with the real driver | connected to the daemon, renderer ready 490 ms after start (509 ms for the unhardened service right after), logind watched, overlay shown 648 ms after `toggle`, cancelled, no warning or error in the log; the NVIDIA libraries mapped, shader and font caches written below `~/.cache/dictate`, memory peak 88 MB; the regular service started again and reconnected |
