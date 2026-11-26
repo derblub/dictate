@@ -28,7 +28,7 @@ ausprobiert), **offen** (nicht geprüft, Spike oder Live-Test nötig).
 | Werkzeuge | `wtype`, `ydotool`/`ydotoold` (Dienst aus), `wl-copy`/`wl-paste`, `grim`, `sway` (für kopflose Tests), `xdotool`/`xclip` (nur noch XWayland); kein `fcitx`/`ibus` | gemessen |
 | Bibliotheken | `gtk4 4.24.1`, `gtk4-layer-shell 1.3.0` (System); im eigenen `Cargo.lock` schon `smithay-client-toolkit 0.20`, `wayland-client 0.31`, `wayland-protocols 0.32` (+ `-wlr`, `-misc`), `glutin 0.32`, `egui_glow 0.37` (über eframe/winit) | gemessen |
 | Rechte | User in Gruppe `input` (liest `/dev/input/event*`, also jeden Tastendruck), ACL `blub:rw` auf `/dev/uinput` | gemessen |
-| Portale | `xdg-desktop-portal` + `-gtk` laufen, `-gnome` ist Vorgabe, aber ohne GNOME Shell: **kein GlobalShortcuts-Portal** nutzbar | abgeleitet |
+| Portale | `xdg-desktop-portal` 1.22.1, `-gnome` 51.0 (Vorgabe in `niri-portals.conf`) und `-gtk` laufen; das Portal `org.freedesktop.portal.GlobalShortcuts` ist exportiert, aber **`BindShortcuts` scheitert** (das Backend ruft `org.gnome.Settings.GlobalShortcutsProvider`, den es auf niri 26.04 nicht gibt): **nicht nutzbar**; Messung vom 26.11.2026 in `PLAN-features.md` Abschnitt 1 (die frühere Fassung „kein GNOME-Portal-Backend“ war abgeleitet und ungenau) | gemessen |
 
 **Wayland-Globals von niri** (Registry gelesen, nichts gebunden): `zwlr_layer_shell_v1 v5`, `zwp_virtual_keyboard_manager_v1`,
 `zwp_input_method_manager_v2`, `zwp_text_input_manager_v3`, `ext_data_control_manager_v1`, `zwlr_data_control_manager_v1 v2`,
@@ -94,7 +94,7 @@ ist Teil von Block W1.
 |---|---|
 | **A. Eigene Datei `~/.config/niri/dictate-binds.kdl`, eingebunden mit `include`** | gemessen gültig; dictate pflegt sie selbst (aus dem Repo installiert); niri-coach kennt die Tasten dann nicht (keine Hilfe, kein Lernen) |
 | B. Einträge im Katalog von niri-coach (`catalog/actions.toml`) | eine Quelle für alle Tasten, erscheinen in Hilfe und Palette von niri-coach; dictate hängt an einem fremden Repo |
-| C. GlobalShortcuts-Portal | gibt es auf blub nicht (kein GNOME-Portal-Backend) |
+| C. GlobalShortcuts-Portal | geht auf blub mit niri 26.04 nicht: das Backend läuft und exportiert die Schnittstelle, `BindShortcuts` scheitert (gemessen 26.11.2026, `PLAN-features.md` Abschnitt 1); niri hat die Gegenseite mit #4744 am 07.11.2026 gemergt, noch in keinem Release (Wiedervorlage K1b) |
 
 Alle Einträge rufen nur `spawn` mit Argumentliste (nie `spawn-sh`), z. B. `Mod+E repeat=false { spawn "dictate" "start" "--hold"; }`
 (`--hold` ist neu, gibt es noch nicht).
