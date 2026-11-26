@@ -10,6 +10,8 @@ historisch `PLAN.md` (v1) und `SPEC-v2.md` (Einstellungsfenster, Pipeline, KI; b
 (Baustein 3): `PLAN-palette.md`. Linux-Diagnose (Baustein 4): `PLAN-diagnose.md` (Entscheidungen, Protokoll, Stand je
 Aufgabe), Messung der Modelle `diagnose-ai.md`. Diese drei Pläne beschreiben den Stand unter AwesomeWM (Archiv-Vermerk);
 Protokoll und Daemon-Teile gelten weiter.
+Kleine Funktionen und freie Modellwahl über mehrere Engines samt CPU-Weg (Bausteine 7 und 8, nur Plan) sowie die Messung
+des GlobalShortcuts-Portals: `PLAN-features.md`.
 
 ## Stand (26.11.2026)
 
@@ -64,6 +66,12 @@ Protokoll und Daemon-Teile gelten weiter.
    Prompt-Punkte (t16 knapp über 3×, „Dear Sam“ → „Lieber Sam“), Wackeln von `palette.sh` und `T3: route input method` unter Last (O7: zwei Läufe bei Last 17 mit je anderer Zeitprüfung rot), t18 im Sprachtest. Der Handtest von O6
    (Sperre über logind, Zwischenablage, Emoji, Gruppe „Clipboard and emoji“) ist am 23.11. von Daniel abgenommen.
 3. Baustein 5 (Kontext-Workspaces) ist nicht begonnen (`ROADMAP.md`).
+   **Bausteine 7 und 8** (kleine Funktionen, Modellwahl mit CPU-Weg) sind am 26.11.2026 geplant, nichts ist gebaut
+   (`PLAN-features.md`); Reihenfolge, Abnahme und die offenen Entscheidungen für Daniel stehen dort. **GlobalShortcuts-Portal:**
+   auf blub mit niri 26.04 nicht nutzbar (`BindShortcuts` scheitert, gemessen 26.11.: der Provider
+   `org.gnome.Settings.GlobalShortcutsProvider` fehlt); niri hat am 07.11.2026 nur die Tastenbelegung gemergt (#4744), noch in
+   keinem Release: Wiedervorlage K1b beim nächsten niri-Release (erst ohne, dann mit `gnome-control-center`), bis dahin
+   bleibt die Gruppe `input` Voraussetzung.
 4. **Voller Schutz für `dictate.service`** (Entscheidung in Daniels Auftrag, 25.11.: festhalten, nicht bauen): Der Daemon
    behält Schreibzugriff auf den Heimatordner, weil die Programme der Diagnose als seine Kinder laufen und im
    Namespace Falsches melden. Ausweg: Proben außerhalb der Sandbox starten (etwa als flüchtige Units), dann die
