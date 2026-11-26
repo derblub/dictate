@@ -21,7 +21,7 @@ Tastendruck) durch das Portal zu ersetzen. Das ist mit niri 26.04 nicht möglich
 | Backend | `org.freedesktop.impl.portal.desktop.gnome` läuft und exportiert `org.freedesktop.impl.portal.GlobalShortcuts` | gemessen |
 | App-ID | Ohne App-ID antwortet `CreateSession` mit `NotAllowed: An app id is required`. Programme außerhalb einer Sandbox brauchen `org.freedesktop.host.portal.Registry.Register(app_id)` **und** eine passende `<app_id>.desktop` in den Anwendungsordnern (sonst „App info not found“). dictate bräuchte also eine Desktop-Datei mit fester App-ID. | gemessen |
 | `CreateSession` | mit App-ID: Antwortcode 0, Sitzung entsteht | gemessen |
-| `BindShortcuts` | **Antwortcode 2 (Fehler) nach 1 ms.** Mitschnitt zwischen Portal und Backend: das Backend ruft `org.gnome.Settings.GlobalShortcutsProvider.BindShortcuts` auf, der Bus antwortet `ServiceUnknown`. Den Namen stellt auf GNOME `gnome-control-center`; es ist nicht installiert, und niri besitzt den Namen nicht. | gemessen |
+| `BindShortcuts` | **Antwortcode 2 (Fehler) nach 1 ms.** Mitschnitt zwischen Portal und Backend: das Backend ruft `org.gnome.Settings.GlobalShortcutsProvider.BindShortcuts` auf, der Bus antwortet `ServiceUnknown` („The name is not activatable“), das Backend meldet sofort Code 2. Es folgt weder ein Aufruf an `org.gnome.Shell` noch ein eigener Dialog von `-gnome`. Den Namen besitzt auf blub niemand: `gnome-control-center` ist nicht installiert (gemessen, `pacman -Q`), und in dessen Quelltext liegt der Dienst `org.gnome.Settings.GlobalShortcutsProvider` (gelesen, GNOME/gnome-control-center, Ordner `global-shortcuts-provider`). | gemessen / gelesen |
 | niri | besitzt von den `org.gnome.*`-Namen auf dem Session-Bus nur `org.gnome.Mutter.*`, `org.gnome.Shell.Introspect` und `org.gnome.Shell.Screenshot`, **nicht** `org.gnome.Shell`; das Binary enthält keine Zeichenkette „GlobalShortcut“ (0 Treffer) | gemessen |
 | Drücken und Loslassen | **nicht prüfbar**: ohne erfolgreichen `BindShortcuts` kommt weder `Activated` noch `Deactivated` | gemessen |
 
@@ -31,16 +31,21 @@ eine Wegwerf-Desktop-Datei `at.example.DictateProbe.desktop` lag für die Dauer 
 Ausgabe und Mitschnitt: `/home/data/stt-test/portal-probe/` (`gs_probe.py`, `gs_probe3.out`, `gs_monitor4.log`; der
 Mitschnitt enthält Bus-Verkehr und gehört nicht ins Repo).
 
-**Was upstream passiert (gelesen, nicht getestet):** niri-wm/niri #3587 (eigene Umsetzung von
-`org.gnome.Settings.GlobalShortcutsProvider`, Konfig-Abschnitt für Kürzel) wurde geschlossen und durch **#4744**
-„Implement the GlobalShortcuts portal through xdg-desktop-portal-gnome“ ersetzt, **gemergt am 07.11.2026**
-(`b4789dd`). Es ist **nicht in v26.04** (25.04.2026, neuester Release; `main` liegt 331 Commits davor). Laut
-Quelltext des PR implementiert niri `GrabAccelerator`/`UngrabAccelerator` von `org.gnome.Shell` und sendet
-`AcceleratorActivated` **und** `AcceleratorDeactivated` (das Loslassen läuft als eigene Aktion `release`); damit wäre
-Halten zum Sprechen grundsätzlich tragbar. Die Kürzel-IDs vergibt die Anwendung, die Tasten bestätigt der Nutzer in
-einem Dialog von `xdg-desktop-portal-gnome`. **Ungemessen** bleibt, ob `-gnome` 51.0 mit einem solchen niri ohne
-`gnome-control-center` bindet: der Mitschnitt oben zeigt, dass `-gnome` 51.0 den Weg über
-`org.gnome.Settings.GlobalShortcutsProvider` geht.
+**Es fehlen zwei Teile, nicht einer.** (1) Der **Provider** `org.gnome.Settings.GlobalShortcutsProvider`: gemessen
+fehlend, das ist der Fehler oben. (2) niris Seite der **Tastenbelegung** (`org.gnome.Shell`, `GrabAccelerator`): fehlt in
+niri 26.04 (abgeleitet aus dem Binary und dem Bus, der Aufruf kam im Test gar nicht so weit).
+
+**Was upstream passiert (gelesen, nicht getestet):** niri-wm/niri #3587 (eigene Umsetzung des Providers,
+Konfig-Abschnitt für Kürzel) wurde geschlossen und durch **#4744** „Implement the GlobalShortcuts portal through
+xdg-desktop-portal-gnome“ ersetzt, **gemergt am 07.11.2026** (`b4789dd`). Es ist **nicht in v26.04** (25.04.2026,
+neuester Release; `main` liegt 331 Commits voraus). Laut Quelltext des PR implementiert niri **nur Teil (2)**:
+`GrabAccelerator`/`UngrabAccelerator` von `org.gnome.Shell`, und sendet `AcceleratorActivated` **und**
+`AcceleratorDeactivated` (das Loslassen läuft als eigene Aktion `release`); damit wäre Halten zum Sprechen
+grundsätzlich tragbar. Den Provider lässt #4744 bewusst weg: dann zeige `xdg-desktop-portal-gnome` selbst den Dialog
+zur Tastenwahl (laut PR-Text läuft das beim Verfasser mit Discord). **Das deckt sich nicht mit dem Mitschnitt oben:**
+`-gnome` 51.0 ruft auf blub den Provider, scheitert und fällt weder auf einen eigenen Dialog noch auf
+`org.gnome.Shell` zurück. **Ungemessen** bleibt, ob ein niri mit #4744 allein genügt oder zusätzlich
+`gnome-control-center` (liefert den Provider auf GNOME) installiert sein muss; das klärt nur der Test K1b.
 
 **Folgen und Wiedervorlage**
 
@@ -48,9 +53,11 @@ einem Dialog von `xdg-desktop-portal-gnome`. **Ungemessen** bleibt, ob `-gnome` 
   Abschnitt 3.1, Zeile C) ist entsprechend berichtigt: die Aussage „kein GNOME-Portal-Backend“ stimmte nicht, das Backend
   läuft; es scheitert beim Binden.
 - **Wiedervorlage K1b:** sobald ein niri-Release mit #4744 erscheint (oder Daniel niri-git nutzt), dasselbe Skript noch
-  einmal laufen lassen; zusätzlich ein Tastendruck von Hand mit Zeitstempeln für `Activated` und `Deactivated`.
+  einmal laufen lassen, **erst ohne, dann mit `gnome-control-center`** (nur zum Test; Daniel entscheidet über das
+  Installieren); zusätzlich ein Tastendruck von Hand mit Zeitstempeln für `Activated` und `Deactivated`.
   Abnahme: `BindShortcuts` Code 0, beide Signale je Druck und Loslassen, `Deactivated` kommt auch, wenn die Taste lange
-  gehalten wird und das Fenster wechselt.
+  gehalten wird und das Fenster wechselt. Bindet es nur mit `gnome-control-center`, ist das eine schwere Abhängigkeit
+  (GNOME-Einstellungen) für den Ersatz der Gruppe `input` und gehört vor K2 zu Daniel.
 - **K2 (nur wenn K1b besteht):** das Portal als **zusätzlicher, optionaler** Weg für Halten und Umschalten, ohne
   `input`-Gruppe; `EVIOCGKEY` bleibt der Weg, wenn das Portal fehlt. Aufwand grob 3 bis 5 Tage (Desktop-Datei mit App-ID,
   `Registry.Register`, Sitzung mit Wiederherstellung nach Neustart von Portal und niri, Tastenwahl über den Dialog,
@@ -207,7 +214,7 @@ vorgelesen).
 - Whisper large-v3-turbo auf der CPU ist für Diktat **nicht brauchbar** (RTF 4,3; jede Live-Vorschau 5 bis 7 s).
 - Parakeet **int8 auf der CPU trägt Diktat mit Einschränkungen**: Endläufe von 5 bis 8 s Sprache brauchen 0,3 bis 0,5 s,
   30 s etwa 2,3 s (4 Threads, i7-7700K). Die **Live-Vorschau** hält den Takt von 250 ms nur bis etwa **2 s** neu berechneter
-  Audio (172 ms Mittel bei 1–2 s, 294 ms bei 2–4 s); darüber braucht sie ein gedeckeltes Fenster von etwa 2 bis 3 s
+  Audio (172 ms Median bei 1–2 s, 294 ms bei 2–4 s); darüber braucht sie ein gedeckeltes Fenster von etwa 2 bis 3 s
   mit festem Text davor (Entwurfsänderung in `stream.rs`, kein Parameter), sonst aktualisiert sich das Overlay mit
   2 bis 4 Hz, ab 8 s mit etwa 1 Hz.
 - Auf der GPU ist Parakeet im Endlauf 4-mal schneller (101 gegen 429 ms), in der Live-Vorschau nur bei Phrasen über etwa
@@ -243,7 +250,8 @@ Vergleich der Laufzeit-Bibliotheken auf Parakeet v3 int8, CPU, 4 Threads, dersel
 `ort` (`2.0.0-rc.15` auf crates.io, MIT OR Apache-2.0; die Standard-Features laden beim Bau vorkompilierte
 ONNX-Runtime-Bibliotheken herunter, das kollidiert mit dem Bau aus dem Quelltext im AUR und mit dem Schritt `licenses`;
 Alternative: gegen das Systempaket `onnxruntime-cpu` aus `extra` binden) gegen `sherpa-onnx` (Rust-Crate 2.0.3,
-Apache-2.0; bringt den TDT-Decoder und die Merkmalsberechnung mit, `ort` verlangt dafür eigenen Code).
+Apache-2.0; **in E0 zu prüfen:** ob es den TDT-Decoder und die Merkmalsberechnung für Parakeet v3 mitbringt, während
+`ort` dafür eigenen Code verlangt).
 *Abnahme:* gleiche Transkripte wie `onnx-asr` (Abweichungen je Wort aufgelistet), Latenz in ±25 % der Python-Zahlen,
 Erstbauzeit, Binärgröße, Bau ohne Netz, Lizenz- und `licenses`-Befund; Ergebnis als Datei unter `$DICTATE_TEST_ROOT`
 und Entscheidung (mit Daniel). *Halt:* nach zwei erfolglosen Ansätzen melden. **Aufwand:** 1 bis 2 Tage.
@@ -272,7 +280,8 @@ Vorschau mit gedeckeltem Fenster (3.1), Aufwärmen beim Laden. Eigene Schwellen 
 (`tests/speech/thresholds-parakeet.tsv`, nach derselben Regel abgeleitet; **die Schwellen von Whisper werden nie
 gelockert**).
 *Abnahme:* Transkripte der 18 Testsätze auf blub ≈ `onnx-asr`-Lauf; Endlauf 20,6 s ≤ 1,5 s (gemessen 1,26 s in Python);
-Live-Vorschau mit Obergrenze 250 ms je Durchlauf bei gedeckeltem Fenster; kein Vokabular-Hinweis im Aufruf
+Live-Vorschau bei einem Fenster von etwa 2 s höchstens 250 ms je Durchlauf (int8 maß 172 ms bei 1–2 s, aber 294 ms bei 2–4 s,
+also gilt das Fenster, nicht 3 s); kein Vokabular-Hinweis im Aufruf
 (Test), `replacements` wirken; `speech`-Schritt mit der neuen Schwellen-Datei grün; RAM ≤ 2 GB. **Aufwand:** 1 bis 2 Wochen.
 
 **E4 Modellkatalog mit Metadaten.**
