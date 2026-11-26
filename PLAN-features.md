@@ -1,7 +1,8 @@
 # Plan: kleine Funktionen und freie Modellwahl (Bausteine 7 und 8)
 
-Stand 26.11.2026: **nur Plan, nichts gebaut.** Dieser Plan gehört zu `ROADMAP.md` (Bausteine 7 und 8). Er hält fest,
-was Daniel am 25./26.11. wünschte: das GlobalShortcuts-Portal prüfen (Ergebnis: Abschnitt 1), vier kleine
+Stand 26.11.2026: **nur Plan, nichts gebaut.** Die fünf offenen Entscheidungen aus Abschnitt 3.4 hat Daniel am 26.11.2026
+getroffen; sie stehen dort und sind in den betroffenen Schritten nachgezogen. Dieser Plan gehört zu `ROADMAP.md`
+(Bausteine 7 und 8). Er hält fest, was Daniel am 25./26.11. wünschte: das GlobalShortcuts-Portal prüfen (Ergebnis: Abschnitt 1), vier kleine
 Funktionen planen (Abschnitt 2) und eine freie Modellwahl über mehrere Erkennungs-Engines samt CPU-Weg planen
 (Abschnitt 3). Aufwandsangaben sind grobe Schätzungen von Claude für einen Arbeitstag mit Prüfläufen; sie sind kein
 Maßstab für die Entscheidung (Arbeitsweise: fachlich richtige Lösung, nicht die leichtere).
@@ -79,8 +80,10 @@ und gibt ihn aus. Der Verlauf (`features.history`) ist aus und kein Ersatz.
 
 **Entwurf:** `dictate-ui` merkt den letzten Endtext **nur im Speicher**, unabhängig von `features.history`, und gibt ihn
 auf den neuen Steuerbefehl `dictate-ui paste-last` (`src/ui/ctl.rs`) noch einmal über dieselbe Ausgabekette aus
-(Eingabemethode → Einfügen, nicht in Terminals und nicht bei unbekannter `app_id` → eigene Tastatur). Lebensdauer: bis
-zum nächsten Endtext, bis zur Sperre oder bis `dictate-ui` endet; ob zusätzlich eine Frist gilt, entscheidet Daniel.
+(Eingabemethode → Einfügen, nicht in Terminals und nicht bei unbekannter `app_id` → eigene Tastatur). **Entschieden
+(Daniel, 26.11.2026): nur im Arbeitsspeicher, 30 Minuten, nie auf der Platte.** Lebensdauer also höchstens 30 Minuten
+nach dem Endtext, kürzer bei dem, was zuerst eintritt: nächster Endtext, Sperre, Ende von `dictate-ui`. Die Frist ist
+eine feste Konstante, kein Einstellungswert.
 
 **Abnahme**
 1. `dictate-ui paste-last` gibt den letzten Endtext genau einmal aus; zweimal aufgerufen zweimal; nach `Mod+Ctrl+E`
@@ -88,12 +91,19 @@ zum nächsten Endtext, bis zur Sperre oder bis `dictate-ui` endet; ob zusätzlic
 2. Stimme der Palette und Textaktionen gelten nicht als Diktat und werden nie gemerkt; das Einfügen sichert und
    stellt die Zwischenablage wie bisher her (`clip.rs`, Regeln zu `x-kde-passwordManagerHint: secret` unverändert).
 3. Sperre über logind löscht den Speicher; danach meldet `paste-last` im Overlay „nothing to paste“ (englischer Text).
-4. Der Text steht nie im Log (Prüfung mit den Marker-Wörtern wie in `tests/wayland/run.sh`), nie in `history.jsonl`, nicht
-   im Daemon (kein neues Feld in `Typed`).
-5. Kürzel in `niri/dictate-binds.kdl` (`niri validate -c niri/dictate-binds.kdl`), KDL und Binary nur zusammen
-   installieren. **Die Taste wählt Daniel**; vorher gegen espanso (`toggle_key`, `search_shortcut`) und niri-coach
+4. **30 Minuten:** nach Ablauf wird der Text **verworfen** (Zeitgeber, nicht nur beim nächsten Aufruf ignoriert), danach
+   meldet `paste-last` „nothing to paste“; Test mit eingespeister Uhr: bei 29:59 wird ausgegeben, bei 30:01 nicht mehr,
+   und der Speicher ist leer.
+5. **Nie auf der Platte:** kein Schreibpfad für den Text (Test: Zustands-, Cache- und Laufzeitordner von `dictate-ui` sind
+   nach Merken und Ausgeben unverändert), nicht in `history.jsonl`, nicht in der Konfiguration, nicht im Log (Prüfung mit
+   den Marker-Wörtern wie in `tests/wayland/run.sh`), nicht im Daemon (kein neues Feld in `Typed`). Auslagern in den Swap
+   und Core-Dumps kann ein Prozess allein nicht ausschließen: beim Bau prüfen, ob `dictate-ui.service` `LimitCORE=0`
+   bekommt (`docs/systemd-hardening.md`), und die Grenze in der README ehrlich nennen.
+6. **Kürzel `Mod+Alt+E`** (Entscheidung Daniel, 26.11.2026) in `niri/dictate-binds.kdl` mit `hotkey-overlay-title`
+   (`niri validate -c niri/dictate-binds.kdl`), KDL und Binary nur zusammen installieren. Im Repo ist die Taste frei
+   (26.11.2026 geprüft); **beim Bau** noch gegen espanso (`toggle_key`, `search_shortcut`) und niri-coach
    (`coach-binds*.kdl`) prüfen, weil espanso Tasten über evdev vor niri liest.
-6. Tests: Wayland-Ausgabetest im verschachtelten niri (`output.sh`: Fenster, Terminal, unbekannte `app_id`),
+7. Tests: Wayland-Ausgabetest im verschachtelten niri (`output.sh`: Fenster, Terminal, unbekannte `app_id`),
    `cargo test --release --bin dictate-ui`.
 
 **Prüfschritte:** `fmt,clippy,unit,wayland`. **Aufwand:** grob 1 Tag.
@@ -105,8 +115,9 @@ Beginnt eine Aufnahme (nach einer kurzen Halteschwelle, Vorschlag 300 ms, damit 
 pausiert es genau die Player mit `PlaybackStatus == Playing` (`Pause()`), merkt sich nur diese und setzt nach dem Ende
 (Endtext, Abbruch, Sperre, Fehler, Daemon weg) genau diese mit `Play()` fort, **wenn sie noch `Paused` sind**. Kein
 `playerctl` als Kindprozess (Kinder erben die Sandbox der Unit; siehe `docs/systemd-hardening.md`). Metadaten (Titel,
-Künstler) werden nie gelesen. Einstellung `features.pause_media`; **Vorgabe aus** (wirkt auf fremde Programme), ob an,
-entscheidet Daniel.
+Künstler) werden nie gelesen. Einstellung `features.pause_media`; **entschieden (Daniel, 26.11.2026): Vorgabe an**, mit
+der Regel „pausiert nur, was gerade spielt, und setzt danach nur fort, was dictate selbst pausiert hat“; in den
+Einstellungen abschaltbar.
 
 **Abnahme**
 1. Fake-Player auf einem privaten Session-Bus (wie `tests/wayland/fake-logind`): spielend → beim Halten pausiert,
@@ -121,6 +132,9 @@ entscheidet Daniel.
 5. Unter der gehärteten Unit gleich: `DICTATE_UI_UNDER_UNIT=1 tests/wayland/run.sh`, `tests/systemd/probe.py dictate-ui`
    (ob der Session-Bus unter den Netz- und Dateisystem-Optionen erreichbar ist, ist **ungemessen**).
 6. Schalter mit Beschreibung auf der passenden Einstellungsseite; neue Klickziele über `layout_log::note`.
+7. **Vorgabe an:** `FeaturesCfg::default()` und eine Konfigurationsdatei ohne den Schlüssel ergeben `pause_media = true`
+   (Unit-Test). Das gilt auch für bestehende Installationen beim Update; darum nennen README und `CHANGELOG.md` das
+   Verhalten (auch Videos in Browser-Tabs, soweit sie MPRIS melden) und den Schalter zum Abschalten.
 
 **Prüfschritte:** `fmt,clippy,unit,wayland,gui`. **Aufwand:** grob 2 bis 3 Tage.
 
@@ -134,9 +148,9 @@ Endtexte der Palette stehen nie darin.
 **Entwurf:** `history.retention_days` (Vorgabe 7, 0 = nur `max_entries`); gekürzt wird beim Start, beim Anhängen
 und beim Lesen (atomar: temporäre Datei mit 0600, dann `rename`). Die Suche läuft **lokal im Daemon**
 (`History { query, limit }`, Teilzeichenkette, Groß/klein egal, über `raw` und `text`) und der Suchbegriff wird nie
-geloggt. Die Seite zeigt ein Suchfeld und Rohtext gegen Text; einzelne Einträge lassen sich löschen. `features.history`
-**bleibt aus**; die Aufbewahrung gilt, wenn Daniel den Verlauf einschaltet. Ob die Vorgabe der Aufbewahrung bei 7 Tagen
-liegt, entscheidet Daniel.
+geloggt. Die Seite zeigt ein Suchfeld und Rohtext gegen Text; einzelne Einträge lassen sich löschen. **Entschieden
+(Daniel, 26.11.2026): `features.history` bleibt aus; eingeschaltet gelten 7 Tage Aufbewahrung, alles lokal** (kein
+Netz, Datei 0600, Ordner 0700).
 
 **Abnahme**
 1. Eintrag älter als `retention_days` ist nach Start, nach dem nächsten Anhängen und bei jedem Lesen weg
@@ -146,8 +160,9 @@ liegt, entscheidet Daniel.
 3. Datei 0600, Ordner 0700 bleiben nach jedem Umschreiben; ein Absturz beim Umschreiben lässt die alte Datei ganz
    (Test: Abbruch vor `rename`).
 4. Weder Suchbegriff noch Treffer erscheinen im Log (Test wie `reports_and_probe_output_never_reach_the_log`).
-5. `validate` prüft `retention_days` (Bereich, Vorschlag 0 bis 3650); `dictate-settings` zeigt Feld, Suchfeld und
-   Löschen; `HistoryClear` löscht alles wie bisher.
+5. `validate` prüft `retention_days` (Bereich, Vorschlag 0 bis 3650); Vorgaben: `features.history` aus,
+   `retention_days` 7 (Unit-Test auf `Config::default()`); `dictate-settings` zeigt Feld, Suchfeld und Löschen;
+   `HistoryClear` löscht alles wie bisher.
 6. Tests: Unit-Tests in `src/pipeline/history.rs`, Protokolltest (`tests/daemon_protocol.rs`), Schritt `gui` mit Lage-Log.
 
 **Prüfschritte:** `fmt,clippy,unit,gui`. **Aufwand:** grob 2 bis 3 Tage.
@@ -185,7 +200,9 @@ synthetischen Datei, bevor das Verhalten festgelegt wird.
 Whisper (whisper.cpp, wie heute) und ONNX Runtime (zuerst Parakeet v3) sind Engines dahinter, wählbar je Profil in
 den Einstellungen; ein Modellkatalog mit Metadaten und „eigene Modelldatei“ je Engine; ein Rückfall auf CPU ohne CUDA;
 ein Befehl `dictate bench <Modell>`, der auf den eigenen Testsätzen der Nutzer misst.
-**Whisper bleibt die Vorgabe für Deutsch, bis eine Messung etwas anderes zeigt** (Zahlen unten).
+**Vorgabe-Modell (entschieden, Daniel, 26.11.2026):** ohne CUDA automatisch Parakeet (das Paket `dictate-cpu`), mit GPU
+bleibt Whisper die Vorgabe (das Paket `dictate`, wie heute); nach E7 mit mehr Sprechern prüfen, ob das so bleibt
+(Zahlen unten).
 
 ### 3.1 Messlage vom 26.11.2026 (Parakeet gegen Whisper, gemessen in Python)
 
@@ -246,15 +263,21 @@ vorgelesen).
 Reihenfolge ist die Abhängigkeit. Jeder Schritt ein Branch und PR; die volle Suite läuft einmal am Ende.
 
 **E0 Messung in Rust (eigener Schritt mit festem Budget, Ergebnis als Datei, vor jedem Bau).**
-Vergleich der Laufzeit-Bibliotheken auf Parakeet v3 int8, CPU, 4 Threads, derselben 21 Aufnahmen:
-`ort` (`2.0.0-rc.15` auf crates.io, MIT OR Apache-2.0; die Standard-Features laden beim Bau vorkompilierte
-ONNX-Runtime-Bibliotheken herunter, das kollidiert mit dem Bau aus dem Quelltext im AUR und mit dem Schritt `licenses`;
-Alternative: gegen das Systempaket `onnxruntime-cpu` aus `extra` binden) gegen `sherpa-onnx` (Rust-Crate 2.0.3,
-Apache-2.0; **in E0 zu prüfen:** ob es den TDT-Decoder und die Merkmalsberechnung für Parakeet v3 mitbringt, während
-`ort` dafür eigenen Code verlangt).
-*Abnahme:* gleiche Transkripte wie `onnx-asr` (Abweichungen je Wort aufgelistet), Latenz in ±25 % der Python-Zahlen,
-Erstbauzeit, Binärgröße, Bau ohne Netz, Lizenz- und `licenses`-Befund; Ergebnis als Datei unter `$DICTATE_TEST_ROOT`
-und Entscheidung (mit Daniel). *Halt:* nach zwei erfolglosen Ansätzen melden. **Aufwand:** 1 bis 2 Tage.
+**Entschieden (Daniel, 26.11.2026):** E0 baut und misst **beide** Bibliotheken, `ort` und `sherpa-onnx`, an **einem Satz**;
+danach wählt Daniels Assistent nach den Zahlen (Daniel hat die Wahl übertragen). Kriterien in dieser Reihenfolge:
+(1) **AUR-Bau ohne fremde Binärdateien**: nichts Vorkompiliertes beim Bau laden, gebunden wird gegen das Systempaket
+`onnxruntime-cpu` (`extra`) oder aus Quelltext; (2) **Aufwand für den Decoder**: Parakeet v3 braucht einen TDT-Decoder und
+die Merkmalsberechnung, bei `ort` (`2.0.0-rc.15` auf crates.io, MIT OR Apache-2.0; die Standard-Features laden beim Bau
+vorkompilierte ONNX-Runtime-Bibliotheken herunter) wohl eigener Code, bei `sherpa-onnx` (Rust-Crate 2.0.3, Apache-2.0)
+**in E0 zu prüfen**, ob beides mitgeliefert wird; (3) **Latenz**.
+*Ablauf:* ein Satz aus `tests/speech/testset.tsv` (beim Bau festlegen), Parakeet v3 int8, CPU, 4 Threads, je Bibliothek
+ein kleines Wegwerfprogramm außerhalb des Repos.
+*Abnahme:* je Bibliothek: gleiches Transkript wie `onnx-asr` für diesen Satz (Abweichungen je Wort aufgelistet);
+Endlauf warm, gemessen gegen die Python-Zahl desselben Satzes (ein Satz trennt nur grobe Unterschiede, etwa ab dem Faktor
+1,5; die genaue Messung folgt in E3 mit allen 18 Sätzen); Bau im Container `archlinux:latest` ohne Netz nach `cargo fetch`
+und ohne heruntergeladene Binärdateien (Kriterium 1 mit Beleg); Aufwandsschätzung für den Decoder (Zeilen, Tage);
+Erstbauzeit, Binärgröße, Lizenz- und `licenses`-Befund; Ergebnis als Datei unter `$DICTATE_TEST_ROOT`. *Halt:* nach zwei
+erfolglosen Ansätzen je Bibliothek melden. **Aufwand:** 1 bis 2 Tage.
 
 **E1 Engine-Abstraktion in der Wurzel des Daemons.**
 Aus dem vorhandenen `Transcriber` (`transcribe`, `speech_ranges`) und `Engine` (whisper-rs) wird ein Trait mit
@@ -271,8 +294,9 @@ Stream ohne Modell, die Fähigkeiten steuern Vokabular-Prompt, Sprachhinweis und
 `whisper-rs` hängt heute fest an `features = ["cuda"]`; `cuda` wird ein Feature von dictate, das durchgereicht wird.
 *Abnahme:* `cargo build --release --no-default-features --features ui,gui` (Namen beim Bau festlegen) gelingt in einem
 Container ohne CUDA-Toolkit (`archlinux:latest` ohne Paket `cuda`), `dictate transcribe` läuft mit Whisper auf der
-CPU (langsam, aber richtig), ein CI-Job übersetzt diese Fassung; PKGBUILD: `cuda` bleibt Bauabhängigkeit, ob es eine
-zweite Paketfassung ohne CUDA gibt, entscheidet Daniel. **Aufwand:** 1 bis 2 Tage.
+CPU (langsam, aber richtig), ein CI-Job übersetzt diese Fassung. Das bestehende PKGBUILD `dictate` bleibt unverändert
+(CUDA, `cuda` und `nvidia-utils` als Abhängigkeiten); das zweite Paket `dictate-cpu` folgt in E3a. whisper.cpp bleibt in
+beiden Fassungen eingebaut (Silero-VAD, E1). **Aufwand:** 1 bis 2 Tage.
 
 **E3 ONNX-Engine mit Parakeet v3 int8 (CPU-Ausführungsanbieter).**
 Neue Engine hinter dem Trait aus E1, Bibliothek nach E0. Fähigkeiten: kein Vokabular-Prompt, kein Sprachhinweis,
@@ -283,6 +307,20 @@ gelockert**).
 Live-Vorschau bei einem Fenster von etwa 2 s höchstens 250 ms je Durchlauf (int8 maß 172 ms bei 1–2 s, aber 294 ms bei 2–4 s,
 also gilt das Fenster, nicht 3 s); kein Vokabular-Hinweis im Aufruf
 (Test), `replacements` wirken; `speech`-Schritt mit der neuen Schwellen-Datei grün; RAM ≤ 2 GB. **Aufwand:** 1 bis 2 Wochen.
+
+**E3a Zweites AUR-Paket `dictate-cpu` (nach E3 und E4).**
+**Entschieden (Daniel, 26.11.2026): zwei AUR-Pakete:** `dictate` (CUDA, wie heute) und `dictate-cpu` (ohne CUDA, Parakeet
+über ONNX auf der CPU). Der Name `dictate-cpu` ist im AUR frei (26.11.2026 über die AUR-RPC geprüft: nur `dictate`
+existiert). Das Paket baut denselben Tag-Tarball ohne das Feature `cuda` (E2), ohne `cuda` und `nvidia-utils` in
+`depends` und `makedepends`, mit der ONNX-Laufzeit nach E0 (bei Bindung ans Systempaket `onnxruntime-cpu` als Abhängigkeit),
+und hat Parakeet v3 int8 als Vorgabe-Modell (der erste Start bietet den Download des Katalogs aus E4 an; die Vorgabe der
+Fassung ohne CUDA steht im Code, nicht in einer Konfigurationsdatei). Beide Pakete installieren dieselben Dateien und
+schließen einander aus (`conflicts`; `provides` beim Bau festlegen).
+*Abnahme:* `makepkg` im Container `archlinux:latest` ohne die Pakete `cuda` und `nvidia-utils` gelingt; die Binaries
+haben keine Abhängigkeit auf CUDA-Bibliotheken (`readelf -d`, `ldd`); `dictate transcribe` und der Daemon laden Parakeet
+und erkennen einen Satz auf einem Rechner ohne NVIDIA-Treiber; README, Abschnitt AUR: beide Pakete und wann welches;
+`.SRCINFO` nur aus `makepkg --printsrcinfo`. Release-Regel unverändert (`CLAUDE.md`, „Release und AUR“): Tag, GitHub-Release
+und AUR-Upload nur mit Daniels Freigabe je Schritt, Bau-Test unter dem Host-Lock. **Aufwand:** 2 bis 3 Tage.
 
 **E4 Modellkatalog mit Metadaten.**
 `src/models.rs` hat `CATALOG` (`id`, `file`, `url`, `sha256`, `size`, `note`) für Whisper-Dateien; er wird um `engine`,
@@ -302,12 +340,15 @@ model“, feste Sprache „detected automatically“).
 *Abnahme:* Profil mit eigenem Modell schaltet beim Fensterwechsel sauber um, ohne ein Diktat zu verlieren; Speicher- und
 VRAM-Grenzen eingehalten (Test mit Attrappe); Einstellungsseite im Schritt `gui` (Lage-Log); Datei speichert nur Abweichungen. **Aufwand:** 2 bis 3 Tage.
 
-**E6 Automatischer Rückfall auf die CPU.**
-Findet der Start keine CUDA-Karte (oder scheitert das Laden auf der GPU), wählt der Daemon die CPU-Fassung: das
-installierte Parakeet-int8-Modell, sonst eine Meldung im Overlay mit dem Weg zum Herunterladen. **Nie stillschweigend
-Whisper-turbo auf der CPU** (RTF 4,3). Die Wahl und der Grund stehen in den Einstellungen und im Log (ohne Inhalte).
-*Abnahme:* Test mit versteckter GPU (`CUDA_VISIBLE_DEVICES=`) wählt die CPU-Engine; fehlt auch sie, kommt eine klare
-Meldung statt eines Absturzes; die GPU-Fassung bleibt, wenn sie lädt. **Aufwand:** 1 bis 2 Tage.
+**E6 Automatischer Rückfall ohne CUDA.**
+Mit der Entscheidung vom 26.11.2026 ist **Parakeet in `dictate-cpu` von Anfang an die Vorgabe** (E3a); dort wird keine
+Karte gesucht. Für die CUDA-Fassung `dictate` gilt: findet der Start keine CUDA-Karte (oder scheitert das Laden auf der
+GPU), wählt der Daemon, **wenn die ONNX-Engine eingebaut und das Parakeet-int8-Modell installiert ist**, dieses; sonst eine
+Meldung im Overlay, die auf `dictate-cpu` und den Weg zum Modell hinweist. **Nie stillschweigend Whisper-turbo auf der
+CPU** (RTF 4,3). Die Wahl und der Grund stehen in den Einstellungen und im Log (ohne Inhalte).
+*Abnahme:* Test mit versteckter GPU (`CUDA_VISIBLE_DEVICES=`) wählt in `dictate` die CPU-Engine; fehlt sie oder das Modell,
+kommt eine klare Meldung statt eines Absturzes; die GPU-Fassung bleibt, wenn sie lädt; `dictate-cpu` startet mit Parakeet
+ohne weitere Wahl. **Aufwand:** 1 bis 2 Tage.
 
 **E7 `dictate bench <Modell>`.**
 Ein Befehl misst ein Modell auf den **eigenen Testsätzen** des Nutzers (Ordner mit `<id>.wav` und `<id>.txt`, wie
@@ -324,11 +365,23 @@ Fähigkeiten des Traits (E1) genügen; Aufnahme nur mit eigener Messung nach E7 
 `cudnn_conv_algo_search = HEURISTIC` (Standard war langsamer); VRAM-Spitze von 3,6 GiB (ungetunt) gegen 1,15 GiB bei
 Whisper beachten. Nutzen gering, solange Whisper auf der GPU gleich schnell im Takt bleibt.
 
-### 3.4 Offene Entscheidungen für Daniel
+### 3.4 Entschieden am 26.11.2026 (Daniel)
 
-1. Bibliothek für E3 (nach E0): `ort` gegen `sherpa-onnx`; Umgang mit vorkompilierten Bibliotheken im AUR-Bau.
-2. Eine oder zwei Paketfassungen (mit und ohne CUDA) im AUR (E2).
-3. Lebensdauer des gemerkten Diktats (F1), Vorgabe von `features.pause_media` (F2), Vorgabe der Aufbewahrung (F3).
-4. Taste für „letztes Diktat erneut einfügen“ (F1), geprüft gegen espanso und niri-coach.
-5. Ob die Whisper-Vorgabe für Deutsch nach E7 an Nutzern ohne GPU anders gewählt wird (Vorschlag: Rückfall nur für
-   Nutzer ohne CUDA, die Vorgabe mit GPU bleibt Whisper).
+Daniel hat alle fünf Punkte entschieden; die Spalte „Wo“ nennt, wo der Plan sie trägt.
+
+| Nr. | Entscheidung | Wo |
+|---|---|---|
+| 1 | **Bibliothek für E3:** E0 baut und misst `ort` **und** `sherpa-onnx` an einem Satz; danach wählt Daniels Assistent nach den Kriterien AUR-Bau ohne fremde Binärdateien, Aufwand für den Decoder, Latenz (in dieser Reihenfolge) | E0 |
+| 2 | **Zwei AUR-Pakete:** `dictate` (CUDA, wie heute) und `dictate-cpu` (ohne CUDA, Parakeet über ONNX auf der CPU) | E2, E3a, E6 |
+| 3 | **F1** letztes Diktat: nur im Arbeitsspeicher, 30 Minuten, nie auf der Platte. **F2** `features.pause_media`: Vorgabe **an** (pausiert nur, was spielt, setzt danach fort). **F3** Verlauf: Vorgabe **aus**; eingeschaltet 7 Tage Aufbewahrung, lokal | F1, F2, F3 |
+| 4 | **F1-Kürzel:** `Mod+Alt+E` (beim Bau gegen espanso und niri-coach prüfen) | F1, Abnahme 6 |
+| 5 | **Vorgabe-Modell:** ohne CUDA automatisch Parakeet (`dictate-cpu`), mit GPU bleibt Whisper; nach E7 mit mehr Sprechern prüfen | Abschnitt 3, E3a, E6 |
+
+**Daraus folgt, beim Bau festzulegen (keine neue Entscheidung, nur Einzelheiten):**
+- Ob die CUDA-Fassung `dictate` die ONNX-Engine ebenfalls mitbaut. Wahl je Profil (E5) und Rückfall (E6) brauchen beide
+  Engines in einer Fassung; dafür bekäme `dictate` die Abhängigkeit `onnxruntime-cpu`. Zu klären in E3a mit dem Ergebnis von E0.
+- Ob `dictate-cpu` `provides=('dictate')` trägt (Pakete, die von `dictate` abhängen) und wie beide Pakete im README
+  beschrieben werden.
+- Maßstab der Prüfung nach E7 (Punkt 5): die **vorher festgelegten** Sichten der Messung (alle Sätze streng; ohne die
+  Sätze mit gesprochenen Daten und Satzzeichenbefehlen), mit weiteren Sprechern; nie eine nachträglich gewählte Sicht.
+  Solange Parakeet auf der GPU dort nicht gleich gut oder besser ist, bleibt Whisper mit GPU die Vorgabe.

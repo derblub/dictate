@@ -67,7 +67,8 @@ des GlobalShortcuts-Portals: `PLAN-features.md`.
    (Sperre über logind, Zwischenablage, Emoji, Gruppe „Clipboard and emoji“) ist am 23.11. von Daniel abgenommen.
 3. Baustein 5 (Kontext-Workspaces) ist nicht begonnen (`ROADMAP.md`).
    **Bausteine 7 und 8** (kleine Funktionen, Modellwahl mit CPU-Weg) sind am 26.11.2026 geplant, nichts ist gebaut
-   (`PLAN-features.md`); Reihenfolge, Abnahme und die offenen Entscheidungen für Daniel stehen dort. **GlobalShortcuts-Portal:**
+   (`PLAN-features.md`); Reihenfolge, Abnahme und Daniels Entscheidungen vom 26.11. (Abschnitt 3.4: zwei AUR-Pakete `dictate` und
+   `dictate-cpu`, `Mod+Alt+E`, Vorgaben je Funktion, Vorgabe-Modell) stehen dort. **GlobalShortcuts-Portal:**
    auf blub mit niri 26.04 nicht nutzbar (`BindShortcuts` scheitert, gemessen 26.11.: der Provider
    `org.gnome.Settings.GlobalShortcutsProvider` fehlt); niri hat am 07.11.2026 nur die Tastenbelegung gemergt (#4744), noch in
    keinem Release: Wiedervorlage K1b beim nächsten niri-Release (erst ohne, dann mit `gnome-control-center`), bis dahin
