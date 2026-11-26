@@ -38,6 +38,11 @@ On top of dictation, dictate brings text actions on the selection, a command pal
 each optional.
 
 <p align="center">
+  <img src="docs/assets/dictate-en.gif" alt="Animated demo: in a notes field, a key is held and a sentence is spoken; the overlay below the field shows the words as they are recognized, the uncertain last words dimmed, and when the key is released the final text appears in the field" width="720"><br>
+  <sub>Hold the key, speak, let go. Also in German: <a href="docs/assets/dictate-de.gif">German dictation demo</a>.</sub>
+</p>
+
+<p align="center">
   <img src="docs/assets/overlay.png" alt="The dictate overlay at the bottom of the screen while speaking: a level meter and the sentence so far, the confirmed words bright and the uncertain last words dimmed" width="720">
 </p>
 
