@@ -5,7 +5,7 @@ Repository (unten mit **gemessen** gekennzeichnet). Geschäftliche Teile (Abschn
 Punkte unter „Später“) stehen seit Block H2 privat, nicht im Repo; hier bleibt die Lizenztechnik. **Kein Rechtsrat:**
 Zitate aus Lizenztexten und der FAQ der FSF belegen, was dort steht; ob es im Einzelfall so gilt, ist mit einem Anwalt
 zu prüfen. Seit U1 (23.11.2026) stehen LICENSE, `license`-Felder und Lizenzköpfe im Repository (Abschnitt 6);
-Abschnitt 1 beschreibt den Stand davor.
+Abschnitt 1 beschreibt den Stand davor. **U5 ist seit 26.11.2026 abgeschlossen** (Abschnitt 6, U5 Schritt 8).
 Jede Umsetzung ist ein eigener Schritt nach Daniels Entscheidung (Abschnitt 5).
 
 Kennzeichnung je Befund: **gemessen** (im Repository oder an den Binaries geprüft), **belegt** (Quelle zitiert),
@@ -273,7 +273,7 @@ und stehen seit Block H2 privat, nicht im Repo; die Nummern bleiben, damit Verwe
   Tailscale-Adressen, -Namen und das Tailnet, GPU-UUID, Seriennummern der Platten, Namen der NetworkManager-Verbindungen)
   und 151 Ordnernamen unter `/home/git` (zwei Ebenen, dazu Repositories auf der dritten; Treffer nur die eigenen
   Projekte und der eine Name aus P2). Rohdaten unter `/home/data/stt-test/logs/u3/` (nicht im Repo,
-  enthält Kopien aller Blobs; nach U5 löschen).
+  enthielt Kopien aller Blobs; am 26.11.2026 gelöscht, O5).
 
 | Nr. | Art | Wo (Pfad, ab Commit) | Befund | Vorschlag |
 |---|---|---|---|---|
@@ -462,7 +462,8 @@ Hinweis, dass sie allgemein werden (O3).
   `abd6607` ändern sich, Hash-Verweise in Plänen und `CLAUDE.md` danach veraltet, `main` auf dem GitLab per
   Force-Push, offene Branches neu aufsetzen. Danach diese Prüfung über den neuen Verlauf wiederholen (Skripte und
   Muster wie oben; der Name darf in keinem Blob mehr stehen).
-- O5 Rohdaten unter `/home/data/stt-test/logs/u3/` nach U5 löschen.
+- O5 **Erledigt am 26.11.2026 (U5 Schritt 8):** die Rohdaten unter `/home/data/stt-test/logs/` (`u3/`, `u3b/`, `u5/`,
+  `aur/`) sind gelöscht, die Werkzeuge privat gesichert.
 - O7 **Erledigt am 23.11.2026** (Branch `lizenz-o7` von `main` `6c93012`; Commit `a2d626c`, danach Plan und
   `CLAUDE.md`). Umsetzung:
   - **Ein Auflöser je Sprache, eine Regel:** `scripts/test-root.sh` (`dictate_test_root`, eingebunden von `check.sh`,
@@ -607,8 +608,8 @@ Hinweis, dass sie allgemein werden (O3).
     Commit-Nachrichten: 0 Funde. Eigene Muster: nur Testwerte und Doku-Adressen. Exakter Abgleich ohne Ausgabe der
     Werte (machine-id, 21 Boot-IDs, 36 MACs, 39 IPs, Tailscale, GPU-UUID, Seriennummern, Namen der
     NetworkManager-Verbindungen, Schlüsseldatei): 0 Treffer. Ordnernamen aus `/home/git`: nur eigene Projekte (wie P2),
-    der Name mit Kundenbezug ist nicht dazugekommen. Rohdaten unter `/home/data/stt-test/logs/u3b/` (nicht im Repo; nach
-    U5 mit `u3/` löschen, O5).
+    der Name mit Kundenbezug ist nicht dazugekommen. Rohdaten unter `/home/data/stt-test/logs/u3b/` (nicht im Repo; mit
+    `u3/` am 26.11.2026 gelöscht, O5).
   - **Warum neu entschieden:** Muster finden nur Geheimnisse. Der Verlauf enthält auch, was kein Muster findet
     (Geschäftliches, Einrichtung von blub, einen Ordnernamen mit möglichem Kundenbezug, die E-Mail in allen Commits);
     alle Fassungen der Doku sind 405 Blobs mit 26 MB. Die GPL verlangt für ausgelieferte Binaries den Quelltext, keinen
@@ -726,7 +727,8 @@ Hinweis, dass sie allgemein werden (O3).
     umlizenzieren lässt).
   - **Offen:** O7 als nächster Block (G3); eine Adresse für Sicherheitsmeldungen fehlt in CONTRIBUTING (mit U5, wenn es
     ein öffentliches Repository gibt).
-- **U5 Release** (begonnen am 23.11.2026, Branch `lizenz-u5` von `main` `849bdcd`): GitHub-Repository, Sponsors oder
+- **U5 Release** (begonnen am 23.11.2026, abgeschlossen am 26.11.2026 (Schritt 8), Branch `lizenz-u5` von `main`
+  `849bdcd`): GitHub-Repository, Sponsors oder
   Liberapay, Download-Seite, AUR-PKGBUILD (Quelltext, CUDA vom System). Alles außenwirksam: nur mit Daniels
   ausdrücklicher Freigabe je Schritt. Erster Schritt ist der Umzug nach H1.
 
@@ -764,8 +766,8 @@ Hinweis, dass sie allgemein werden (O3).
 
   **U5a Prüfung des Baums für den Start-Commit (23.11.2026, gemessen, nur lesend).** Geprüft wird ein mit `git archive`
   exportierter Baum (nie das Arbeitsverzeichnis), zuerst der von `849bdcd` als Probe, vor dem echten Start-Commit
-  noch einmal dessen Baum. Rohdaten und Skript außerhalb des Repos (unter dem Testordner, `logs/u5/`; nach U5 mit
-  `u3/` und `u3b/` löschen, O5). Ergebnis für `849bdcd` (294 Dateien, 6 binär):
+  noch einmal dessen Baum. Rohdaten und Skript außerhalb des Repos (unter dem Testordner, `logs/u5/`; am 26.11.2026 mit
+  `u3/` und `u3b/` gelöscht, das Skript privat gesichert, O5). Ergebnis für `849bdcd` (294 Dateien, 6 binär):
   - **gitleaks** über den Baum: 52 Treffer, alle in den bekannten Dateien aus S1 und S2 (Testmuster in
     `src/actions/secrets.rs`, `src/diagnose/ai.rs`, `src/diagnose/probes/text.rs`, `src/palette/ai.rs`; synthetische
     Logs in `tests/diagnose/corpus/`), keine neue Datei.
@@ -966,8 +968,8 @@ Hinweis, dass sie allgemein werden (O3).
      U5a über diesen Nachtrag: gleiche Treffer wie `24d8966`, neu nur der Ordnername `dictate-archiv` (steht schon in V7).
   5. **Entschieden am 24.11.2026** (V19–V22): GitHub Sponsors in eigener Sitzung, Download-Seite erst mit Builds,
      AUR als nächste Sitzung, Ankündigung danach. Social Preview lädt Daniel selbst hoch.
-     Aufgeräumt nach V16–V18 (Bundle, Branches gelöscht, Läufe stehen). Offen: O5 (Rohdaten `logs/u3/`, `u3b/`,
-     `u5/` löschen) nach Abschluss von U5.
+     Aufgeräumt nach V16–V18 (Bundle, Branches gelöscht, Läufe stehen). Offen war O5 (Rohdaten `logs/u3/`,
+     `u3b/`, `u5/` löschen) nach Abschluss von U5; erledigt am 26.11.2026 (Schritt 8).
   6. **AUR (V21), vorbereitet am 24.11.2026** auf Branch `aur` (lokal, von `main` `f5f4f50`). Entscheidungen vom
      24.11.2026, alle wie empfohlen: W1–W3 hat Daniels Assistent in seinem Auftrag beantwortet, W4 (rechtlich) Daniel
      selbst; Version, Paketname und Adresse stehen darum in den Freigabeanfragen für Push und Tag noch einmal:
@@ -1075,8 +1077,8 @@ Hinweis, dass sie allgemein werden (O3).
        22:12 und 22:13 MEZ `resultcount: 0`, um 22:20 dann `dictate 0.1.0-1`, Maintainer `derblub`, angelegt laut RPC
        um 21:10:58 UTC (22:10 MEZ, also nur Minuten vor den leeren Abfragen); die Ursache der Verzögerung ist nicht
        belegt. Damit finden AUR-Helfer das Paket.
-     - **Aufräumen (O5):** `$DICTATE_TEST_ROOT/logs/aur/` enthält zwei Testpakete von 47 MB aus nicht finalen Tarballs
-       (keine Release-Artefakte); mit `u3/`, `u3b/`, `u5/` nach Abschluss von U5 löschen.
+     - **Aufräumen (O5):** `$DICTATE_TEST_ROOT/logs/aur/` enthielt zwei Testpakete von 47 MB aus nicht finalen Tarballs
+       (keine Release-Artefakte); mit `u3/`, `u3b/`, `u5/` am 26.11.2026 gelöscht (Schritt 8).
   7. **Nach dem AUR, Entscheidungen Daniels vom 24.11.2026** (über seinen Assistenten, je wörtlich weitergegeben):
      - **GitHub Sponsors (V19):** Die API zeigte für `derblub` kein Profil (`hasSponsorsListing: false`). Daniel
        entschied „einrichten“. Am 24.11. hat sein Assistent das Profil per GitHub-API als Entwurf angelegt
@@ -1091,5 +1093,20 @@ Hinweis, dass sie allgemein werden (O3).
      - **O5:** Die Werkzeuge (Prüfskript der U5a, Bau-Test im Container) und die Vergleichsbasis der letzten U5a sind
        privat außerhalb des Repos gesichert; `logs/u3/`, `u3b/`, `u5/`, `aur/` werden gelöscht, wenn U5 abgeschlossen
        ist (Sponsors erledigt, Ankündigung veröffentlicht).
+  8. **U5 abgeschlossen am 26.11.2026.** Alle Schritte aus V1–V22 sind umgesetzt; was danach offen bleibt, steht in
+     `CLAUDE.md` („Offen“ 1).
+     - **Sponsors (V19):** Die API meldet für `derblub` `sponsorsListing.isPublic: true` (geprüft am 26.11.2026);
+       `.github/FUNDING.yml` und der englische README-Link stehen seit PR #7 auf `main`.
+     - **Ankündigung (V22):** Daniel hat die Ankündigung von 0.1.0 am 26.11.2026 veröffentlicht: in den GitHub
+       Discussions von niri, im Arch-Forum, auf r/niri, im wöchentlichen Thread von r/rust und als Show HN. Verweise auf
+       die Beiträge stehen nicht im Repo.
+     - **README (PR #9, 26.11.2026):** die englische und die deutsche Demo als GIF (`docs/assets/dictate-en.gif`,
+       `docs/assets/dictate-de.gif`).
+     - **O5 erledigt am 26.11.2026:** `logs/u3/` (69 MB), `u3b/` (3 MB), `u5/` (166 MB) und `aur/` (112 MB) unter dem
+       Testordner sind gelöscht: Rohdaten der Verlaufs- und Baumprüfungen, Testpakete und Baulogs. Vorher waren das
+       Prüfskript der U5a samt Vergleichsbasis, der Bau-Test des PKGBUILD und kleine Hilfen (lokaler CI-Lauf, Erzeuger
+       der Social-Preview-Grafik, ein Namensabgleich) byte-gleich privat gesichert (`cmp`, Prüfsummen). Skript- und Rohdatenpfade in
+       den Schritten oben gelten damit nicht mehr; die Ergebnisse stehen im Plan. Nicht angefasst: `logs/hardening/`
+       (nicht Teil der Entscheidung).
 - **Später (Auslöser „bezahlte Builds“):** Schätzung und Plan für Hyprland, sway und Vulkan (Nr. 3); die
   geschäftlichen und rechtlichen Punkte des Verkaufs stehen privat, nicht im Repo.

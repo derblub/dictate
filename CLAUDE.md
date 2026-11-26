@@ -11,7 +11,7 @@ historisch `PLAN.md` (v1) und `SPEC-v2.md` (Einstellungsfenster, Pipeline, KI; b
 Aufgabe), Messung der Modelle `diagnose-ai.md`. Diese drei Pläne beschreiben den Stand unter AwesomeWM (Archiv-Vermerk);
 Protokoll und Daemon-Teile gelten weiter.
 
-## Stand (23.11.2026)
+## Stand (26.11.2026)
 
 - **Phase 6 (Wayland unter niri) abgeschlossen:** W0–W7 samt W6-Nachzug gemergt (`main` `6863c6a`), gepusht,
   installiert und am 23.11. von Daniel live abgenommen (Entscheidung 23). Geschichte, Entscheidungen 1–23 und die
@@ -40,70 +40,23 @@ Protokoll und Daemon-Teile gelten weiter.
   Verlauf beginnt mit einem Start-Commit (H1). Der Verlauf davor liegt privat im archivierten GitLab-Projekt
   (`git@git.pushingpixels.at:daniel/dictate.git`, nur lesen); Commit-Hashes aus der Zeit vor U5 in Plänen, `SPEC-v2.md`
   und dieser Datei gelten nur dort.
+- **Lizenz und Veröffentlichung (U1–U5) abgeschlossen** (26.11.2026; Geschichte, Entscheidungen und Belege:
+  `PLAN-lizenz.md`): GPL-3.0-or-later mit Zusatzerlaubnis für NVIDIA CUDA (LICENSE, Lizenzkopf in jeder `.rs`-Datei,
+  `THIRD-PARTY-LICENSES.txt`), `CONTRIBUTING.md`, `CLA.md`, `SECURITY.md`, CI auf GitHub. Öffentlich seit 24.11.;
+  Tag `v0.1.0` mit GitHub-Release und `dictate 0.1.0-1` im AUR (Konto `derblub`) am 24.11.; GitHub Sponsors mit
+  `FUNDING.yml` und README-Link (PR #7); README mit Demo-GIFs (PR #9); Ankündigung am 26.11. von Daniel veröffentlicht.
+  Die Rohdaten der Prüfläufe (O5) sind am 26.11. gelöscht, die Werkzeuge privat gesichert. Der U5c-Verlauf
+  (`u5-stand`) liegt nur als Bundle unter `/home/data/archiv/`.
 - Getestet: Mock-Tests, `dictate-ui` im verschachtelten niri (`tests/wayland/run.sh`), Einstellungsfenster gegen den
   Mock im verschachtelten niri (`tests/gui/`), Ende-zu-Ende über eine virtuelle Pulse-Quelle, Claude API live.
 
 ## Offen
 
-1. **Lizenz und Veröffentlichung** (Branches `lizenz` bis `lizenz-h2`): `PLAN-lizenz.md` (Befunde, Belege,
-   Entscheidungen 1–14 vom 23.11.: GPL-3.0-or-later für alles mit CUDA-Zusatzerlaubnis, niri-ipc bleibt, GitHub, AUR,
-   CUDA nie mitliefern; Nr. 5–8 und 12 sind geschäftlich und stehen privat, nicht im Repo). U1 erledigt am 23.11.
-   (LICENSE, `license`-Felder, Lizenzkopf mit CUDA-Erlaubnis in jeder `.rs`-Datei, Kurzkopf in Skripten, Test
-   `tests/license_headers.rs`, README). U2 erledigt am 23.11. (`THIRD-PARTY-LICENSES.txt` aus
-   `scripts/third-party-licenses.py`, `licenses/`, `deny.toml`, Prüfschritt `licenses`, `default_fonts` aus;
-   Kompatibilität in Abschnitt 2: CC BY 4.0, Unicode-3.0, LGPL-2.1 belegt, OFL/UFL/Vera entfallen; Fassung von CC BY
-   der EFF-Liste in O1 geklärt, CDLA-Permissive-2.0 in O2 für U5 entschieden, Anwaltsfrage offen). U3 erledigt am 23.11. (Branch `lizenz-u3`): ganzer Verlauf geprüft
-   (alle Refs, jeder Blob, Commit-Nachrichten; gitleaks, eigene Muster, exakter Abgleich mit Schlüsseln und Kennungen
-   des Rechners), kein Geheimnis; Fundliste, Entscheidungen F1–F4 und „Offen vor U5“ in `PLAN-lizenz.md` 6.
-   `README.md` ist **nur englisch** (Daniel, F4). **Alles im Repo wird öffentlich** (auch Pläne und diese Datei):
-   keine Geheimnisse, fremden Namen, Kennungen oder geschäftlichen Angaben (Preise, Zahlungsanbieter, Steuern)
-   hineinschreiben; Geschäftliches gehört in die private Datei außerhalb des Repos. **H1** (23.11.): öffentlich wird
-   nur ein neuer Start-Commit, der alte Verlauf bleibt privat auf dem GitLab (Umzug in ein neues Repo ist der erste
-   Schritt von U5). O3 erledigt am 23.11. (Branch `lizenz-o3`, Entscheidungen E1–E6 in `PLAN-lizenz.md` U3d): keine
-   Vorgaben des Rechners des Autors mehr (`project_roots` = `~`, `temp_log_dir` leer = kein Logger), Türkamera
-   entfernt, Terminal (`palette.terminal`, leer = automatisch) und Befehl im Projekt (`palette.project_command`, leer =
-   Shell) einstellbar, `.cargo/config.toml` entfällt. U4 erledigt am 23.11. (Branch `lizenz-u4`, Entscheidungen G1–G6
-   in `PLAN-lizenz.md` U4): `CONTRIBUTING.md`, `CLA.md` (nach Harmony 1.0 Option 5, österreichisches Recht, CC BY 3.0,
-   Fassung 1.0 ohne Anwalt, G6), `CLA-SIGNATURES.md` (Zustimmung per eigenem Commit, Annahme per Merge), KI-Beiträge
-   mit Offenlegung. O7 erledigt am 23.11. (Branch `lizenz-o7`: Testordner über `DICTATE_TEST_ROOT`, siehe „Bauen und
-   installieren“). **H2 erledigt am 23.11.** (Branch `lizenz-h2`, `PLAN-lizenz.md` U3e): geschäftliche Teile des Plans
-   privat, nicht im Repo; in dieser Datei ist der Rechnername neutral gefasst, Einrichtungsdetails bleiben wörtlich
-   (Daniels Wahl). **O6 erledigt am 23.11.** (Branch `lizenz-o6`, Entscheidungen K1–K3 in `PLAN-lizenz.md` U3d): Sperre
-   der Palette über `loginctl lock-session` (Noctalia folgt dem logind-Signal, am Quelltext belegt, Handtest am 23.11.
-   abgenommen),
-   Zwischenablage und Emoji einstellbar (`palette.clipboard_command`, `palette.emoji_command`, leer = Noctalia bzw.
-   rofi-emoji) und nur angeboten, wenn das Programm im `PATH` der Sitzung gefunden wird (`src/palette/widgets.rs`).
-   **O1 erledigt, O2 für U5 entschieden am 23.11.** (Branch `lizenz-o1o2`, `PLAN-lizenz.md` U3d): EFF-Liste unter CC BY 4.0
-   festgelegt; CDLA-Permissive-2.0 genügt für U5 (Daniel), die Anwaltsfrage steht im Plan und bleibt offen;
-   `THIRD-PARTY-LICENSES.txt` nennt bei webpki-roots die CCADB (`NOTES` im Skript). **U5 läuft** (außenwirksam, nur mit Daniels Freigabe je
-   Schritt; `PLAN-lizenz.md` U5): Entscheidungen V1–V14 vom 23.11. (GitHub `derblub/dictate` direkt als Arbeitsort
-   statt Spiegel vom GitLab, ändert Nr. 14; erst privat, nach Prüfung öffentlich; altes GitLab-Projekt archiviert;
-   Sicherheitsmeldungen über GitHub Private Reporting, `SECURITY.md`; Start-Commit englisch; Checkouts tauschen).
-   Baum geprüft (U5a), Start-Commit gepusht und auf GitHub geprüft. **U5c umgesetzt am 23.11.** (Aufmachung nach
-   Daniels Repo-Vorgabe: README-Kopf und -Fuß, `docs/assets/` mit Bildern aus `tests/wayland/readme-shots.sh`,
-   CHANGELOG, CODE_OF_CONDUCT, SECURITY mit Adresse nach V10, `.github/` mit CI im Arch-Container nach V12,
-   `scripts/ci-setup-arch.sh`; Pushing-Pixels-Zeichen nicht unter der GPL, V14); der Start-Commit ist damit neu
-   gebaut und per Force-Push ersetzt (V8, 24.11.), CI auf GitHub grün (59 min ohne Cache), Homepage, Topics und
-   Dependabot gesetzt; ein zweiter Neubau bringt den CI-Badge. **Öffentlich seit 24.11.** (U5 Schritt 3: Baum vorher
-   erneut geprüft, Secret Scanning mit Push Protection und Private Reporting an); GitLab-Projekt archiviert, Checkouts
-   getauscht (Schritt 4: dieser Checkout ist der von GitHub, der alte liegt unter `/home/git/blub/dictate-archiv` mit
-   Remote `archiv`). Secret-Scanning-Alerts am 24.11. abends: 0. **Schritt 5 entschieden** (V15–V22 in
-   `PLAN-lizenz.md`): nächste Sitzung AUR (Version, PKGBUILD aus dem Quelltext, CUDA vom System; Tag, Release und
-   Upload je mit Freigabe), danach GitHub Sponsors (eigene Sitzung), Ankündigung nach AUR; Download-Seite erst mit
-   Builds. **AUR vorbereitet am 24.11.** (Branch `aur`, `PLAN-lizenz.md` U5 Schritt 6, W1–W4): Version 0.1.0, Paket
-   `dictate` aus dem Tag-Tarball, `packaging/aur/` (PKGBUILD, `.SRCINFO` nur aus `makepkg --printsrcinfo`,
-   `dictate.install`, LICENSE 0BSD), Bau im Arch-Container grün (66 min mit allen Standardarchitekturen, 44 min mit
-   86). Tag `v0.1.0` und GitHub-Release am 24.11. veröffentlicht, Prüfsumme im PKGBUILD. **Im AUR seit 24.11.**:
-   `dictate 0.1.0-1` (Konto `derblub`, AUR-Commit `4472128`, Arbeitsklon außerhalb des Repos unter
-   `/home/git/blub/aur-dictate`; neue Fassung = neuer Tag, `updpkgsums`, `.SRCINFO` neu, dort committen). Nächste
-   Punkte (`PLAN-lizenz.md` U5 Schritt 7): GitHub Sponsors (V19; Daniel richtet das Profil ein, `FUNDING.yml` und
-   README-Link erst, wenn die API `sponsorsListing.isPublic: true` meldet; Profil seit 24.11. als Entwurf), Ankündigung (V22; Entwürfe privat, veröffentlichen
-   tut Daniel), danach O5 (Werkzeuge privat gesichert, Rohdaten löschen, wenn U5 fertig ist).
-   Ein Bau-Test des PKGBUILD mit allen Architekturen belegt den Host über eine Stunde: Wiederholungen mit
-   `CMAKE_CUDA_ARCHITECTURES=86` und unter dem gemeinsamen Host-Lock (Datei in `~/.cache`, Vorgabe der Sitzungen). Der nächste Dependabot-PR (cargo, monatlich) braucht auf seinem Branch eine neu erzeugte
-   `THIRD-PARTY-LICENSES.txt`. Der U5c-Verlauf (`u5-stand`) liegt nur noch als Bundle unter `/home/data/archiv/`.
-   Die unversionierten Ordner `reports/` und
-   `research_notes/` im Archiv-Checkout sind Daniels private Recherche: nicht anfassen, nie committen.
+1. **Lizenz und Veröffentlichung, Reste** (U1–U5 sind abgeschlossen, siehe „Stand“; `PLAN-lizenz.md`): Die
+   Anwaltsfragen bleiben ohne Termin offen: CDLA-Permissive-2.0 von webpki-roots neben GPL-3.0 (O2), CLA 1.0 ohne
+   anwaltliche Prüfung (G6), Kopplung von `dictate-ui` und niri-ipc (Abschnitt 2 des Plans). Eine Download-Seite gibt es
+   erst mit Releases und Builds (V20); bis dahin sind die GitHub-Releases mit Quelltext-Tarball der Download-Ort. Der
+   nächste Release folgt „Release und AUR“ unter „Fallen“.
 2. **Beobachten** (aus der Live-Abnahme, Liste in `PLAN-wayland.md` 6h): mehrere Monitore, fullscreen/maximized,
    Sperre im Abgang und Weg „Frame gemeldet“ (nur Unit-Test), Hinweis nach echtem unsauberem Boot-Ende, Schwelle
    `CONFIDENT_*` (`src/palette/resolve.rs`) nach einigen Wochen, `ASK_FRAME` live, Diagnose-Messung mit Symptom und
@@ -339,7 +292,22 @@ die Schritte laufen, die ihre Änderung berührt; die volle Suite (ca. 25 min, g
   Upstream am Commit aus `.cargo_vcs_info.json` nach `licenses/upstream/` legen, `UPSTREAM` und `SOURCES.md`
   ergänzen. Eine neue Lizenz in `deny.toml` nur mit Beleg der GPL-Kompatibilität (Abschnitt 2 des Plans).
   `default_fonts` von egui/eframe bleibt aus (Daniel, 23.11.: keine fremde Schrift im GPL-Binary; `deny.toml` lässt
-  OFL und Ubuntu Font Licence absichtlich nicht zu); Schriften nur vom System (`gui::fonts`).
+  OFL und Ubuntu Font Licence absichtlich nicht zu); Schriften nur vom System (`gui::fonts`). Das gilt auch für den
+  Dependabot-PR (cargo, monatlich): auf seinem Branch neu erzeugen und mitcommitten.
+- **Das Repo ist öffentlich** (seit 24.11.2026, U5): Alles darin, auch die Pläne und diese Datei, steht im Netz. Keine
+  Geheimnisse, fremden Namen, Kennungen oder geschäftlichen Angaben (Preise, Zahlungsanbieter, Steuern) hineinschreiben;
+  Geschäftliches gehört in die private Datei außerhalb des Repos. `README.md` ist nur englisch (Daniel, F4). Vor einem
+  Push, der nach außen wirkt, wird der Baum mit `git archive` exportiert und mit gitleaks und dem Prüfskript der U5a
+  gelesen (das Skript enthält Suchmuster für Geschäftliches und liegt darum privat gesichert, nicht im Repo; es
+  gibt nie einen gefundenen Wert aus). Secret Scanning mit Push Protection und Private Reporting sind auf GitHub an.
+  Die unversionierten Ordner `reports/` und `research_notes/` im Archiv-Checkout (`/home/git/blub/dictate-archiv`)
+  sind Daniels private Recherche: nicht anfassen, nie committen.
+- **Release und AUR** (U5 Schritt 6, `packaging/aur/`): Eine neue Fassung ist ein neuer Tag; Tag, GitHub-Release und
+  AUR-Upload nur mit Daniels Freigabe je Schritt. Danach `updpkgsums`, `.SRCINFO` nur aus `makepkg --printsrcinfo`, im
+  Arbeitsklon außerhalb des Repos (`/home/git/blub/aur-dictate`, AUR-Konto `derblub`) committen und pushen. Der
+  Bau-Test des PKGBUILD im Container `archlinux:latest` (Skript privat gesichert) belegt mit allen
+  Standardarchitekturen den Host über eine Stunde: Wiederholungen mit `CMAKE_CUDA_ARCHITECTURES=86` und unter dem
+  gemeinsamen Host-Lock (Datei in `~/.cache`, Vorgabe der Sitzungen).
 - Mehrere Agents im selben Repo: nur eigene Pfade stagen, nie `git add -A`. Keine Attributionszeilen in Commits.
 - Große Logs nach `$DICTATE_TEST_ROOT/logs/`, Testaudio unter `$DICTATE_TEST_ROOT/audio/` (von Tests benutzt; auf
   dem Rechner des Autors `/home/data/stt-test`).
