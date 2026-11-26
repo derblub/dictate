@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Copyright (C) 2026 Daniel Kurdoghlian
+# Pushing Pixels, Vienna <https://pushingpixels.at>
+# SPDX-License-Identifier: GPL-3.0-or-later
 # sequential runs under the host lock; results in res2/
 cd /home/data/stt-test/parakeet-bench
 B=/home/data/stt-test/target-bench/release/bench-whisper

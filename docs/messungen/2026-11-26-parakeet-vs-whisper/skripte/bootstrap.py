@@ -1,3 +1,6 @@
+# Copyright (C) 2026 Daniel Kurdoghlian
+# Pushing Pixels, Vienna <https://pushingpixels.at>
+# SPDX-License-Identifier: GPL-3.0-or-later
 """Paired bootstrap over clips: difference of pooled WER (b) Parakeet fp32 GPU minus Whisper (positive = Parakeet worse). 10000 resamples, seed 1.
 usage: bootstrap.py A.json B.json   (A = Parakeet, B = Whisper)"""
 import json, re, sys, unicodedata, random, jiwer

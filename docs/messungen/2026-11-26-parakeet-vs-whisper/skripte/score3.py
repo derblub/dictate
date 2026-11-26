@@ -1,3 +1,6 @@
+# Copyright (C) 2026 Daniel Kurdoghlian
+# Pushing Pixels, Vienna <https://pushingpixels.at>
+# SPDX-License-Identifier: GPL-3.0-or-later
 """WER in three variants + latency table for the Parakeet-vs-Whisper measurement.
 usage: score3.py OUT.json label=result.json ...   (run with the venv python: `python -I score3.py ...`)
 (a) raw: whitespace tokens, nothing normalised (punctuation and case count)

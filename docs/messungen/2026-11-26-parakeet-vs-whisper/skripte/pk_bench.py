@@ -1,3 +1,6 @@
+# Copyright (C) 2026 Daniel Kurdoghlian
+# Pushing Pixels, Vienna <https://pushingpixels.at>
+# SPDX-License-Identifier: GPL-3.0-or-later
 """Parakeet TDT 0.6B v3 (ONNX, via onnx-asr) measurement: one load, one full warm-up pass, one measured pass, partial prefixes.
 usage: pk_bench.py LABEL OUT.json DEVICE(gpu|cpu) QUANT(fp32|int8) THREADS
 """

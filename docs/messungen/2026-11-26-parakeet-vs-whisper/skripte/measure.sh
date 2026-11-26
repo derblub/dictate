@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+# Copyright (C) 2026 Daniel Kurdoghlian
+# Pushing Pixels, Vienna <https://pushingpixels.at>
+# SPDX-License-Identifier: GPL-3.0-or-later
 # usage: measure.sh OUTPREFIX cmd args...   (run under: flock ~/.cache/blub-heavy.lock nice -n 10 ...)
 # Runs the command, samples per-PID VRAM (nvidia-smi compute-apps) and RSS every 0.5 s, records loadavg before/after.
 prefix="$1"; shift
