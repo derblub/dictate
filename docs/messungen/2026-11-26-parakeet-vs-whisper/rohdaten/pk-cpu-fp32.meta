@@ -1,0 +1,7 @@
+loadavg_before: 2.08 2.03 2.71 1/3254 2457446
+exit: 0
+gpu_used_baseline_mib: 3911
+gpu_total_used_max_mib: 3911
+pid_vram_max_mib: 0
+rss_sampled_max_mib: 2794
+loadavg_after: 3.59 2.41 2.81 1/3370 2459241
