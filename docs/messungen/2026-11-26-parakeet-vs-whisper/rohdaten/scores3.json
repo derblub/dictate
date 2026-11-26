@@ -1,0 +1,520 @@
+{
+ "Whisper turbo q5_0 GPU": {
+  "wer": {
+   "all 18|a_raw": [
+    33,
+    216,
+    0.1527777777777778
+   ],
+   "all 18|b_norm": [
+    15,
+    221,
+    0.06787330316742081
+   ],
+   "all 18|c_case": [
+    20,
+    221,
+    0.09049773755656108
+   ],
+   "without format clips (13)|a_raw": [
+    12,
+    169,
+    0.07100591715976332
+   ],
+   "without format clips (13)|b_norm": [
+    2,
+    174,
+    0.011494252873563218
+   ],
+   "without format clips (13)|c_case": [
+    6,
+    174,
+    0.034482758620689655
+   ],
+   "German only, without t06 (17)|a_raw": [
+    31,
+    203,
+    0.15270935960591134
+   ],
+   "German only, without t06 (17)|b_norm": [
+    15,
+    208,
+    0.07211538461538461
+   ],
+   "German only, without t06 (17)|c_case": [
+    19,
+    208,
+    0.09134615384615384
+   ],
+   "German only, without t06 and format clips (12)|a_raw": [
+    10,
+    156,
+    0.0641025641025641
+   ],
+   "German only, without t06 and format clips (12)|b_norm": [
+    2,
+    161,
+    0.012422360248447204
+   ],
+   "German only, without t06 and format clips (12)|c_case": [
+    5,
+    161,
+    0.031055900621118012
+   ]
+  },
+  "lat": {
+   "n": 21,
+   "median_ms": 357.50775400000003,
+   "p90_ms": 405.706892,
+   "mean_ms": 388.84930104761906,
+   "rtf_sum": 0.05263187445697711,
+   "x_realtime": 18.99989332163023,
+   "load_ms": 298.69138899999996,
+   "warmup_ms": 405.610551
+  }
+ },
+ "Whisper turbo f16 GPU": {
+  "wer": {
+   "all 18|a_raw": [
+    34,
+    216,
+    0.1574074074074074
+   ],
+   "all 18|b_norm": [
+    15,
+    221,
+    0.06787330316742081
+   ],
+   "all 18|c_case": [
+    19,
+    221,
+    0.08597285067873303
+   ],
+   "without format clips (13)|a_raw": [
+    13,
+    169,
+    0.07692307692307693
+   ],
+   "without format clips (13)|b_norm": [
+    2,
+    174,
+    0.011494252873563218
+   ],
+   "without format clips (13)|c_case": [
+    5,
+    174,
+    0.028735632183908046
+   ],
+   "German only, without t06 (17)|a_raw": [
+    32,
+    203,
+    0.15763546798029557
+   ],
+   "German only, without t06 (17)|b_norm": [
+    15,
+    208,
+    0.07211538461538461
+   ],
+   "German only, without t06 (17)|c_case": [
+    18,
+    208,
+    0.08653846153846154
+   ],
+   "German only, without t06 and format clips (12)|a_raw": [
+    11,
+    156,
+    0.07051282051282051
+   ],
+   "German only, without t06 and format clips (12)|b_norm": [
+    2,
+    161,
+    0.012422360248447204
+   ],
+   "German only, without t06 and format clips (12)|c_case": [
+    4,
+    161,
+    0.024844720496894408
+   ]
+  },
+  "lat": {
+   "n": 21,
+   "median_ms": 381.413761,
+   "p90_ms": 450.53394000000003,
+   "mean_ms": 418.5865769999999,
+   "rtf_sum": 0.05665690052852077,
+   "x_realtime": 17.650100705678483,
+   "load_ms": 564.288902,
+   "warmup_ms": 397.698715
+  }
+ },
+ "Whisper large-v3 f16 GPU": {
+  "wer": {
+   "all 18|a_raw": [
+    44,
+    216,
+    0.2037037037037037
+   ],
+   "all 18|b_norm": [
+    27,
+    221,
+    0.12217194570135746
+   ],
+   "all 18|c_case": [
+    34,
+    221,
+    0.15384615384615385
+   ],
+   "without format clips (13)|a_raw": [
+    23,
+    169,
+    0.13609467455621302
+   ],
+   "without format clips (13)|b_norm": [
+    13,
+    174,
+    0.07471264367816093
+   ],
+   "without format clips (13)|c_case": [
+    19,
+    174,
+    0.10919540229885058
+   ],
+   "German only, without t06 (17)|a_raw": [
+    31,
+    203,
+    0.15270935960591134
+   ],
+   "German only, without t06 (17)|b_norm": [
+    16,
+    208,
+    0.07692307692307693
+   ],
+   "German only, without t06 (17)|c_case": [
+    19,
+    208,
+    0.09134615384615384
+   ],
+   "German only, without t06 and format clips (12)|a_raw": [
+    10,
+    156,
+    0.0641025641025641
+   ],
+   "German only, without t06 and format clips (12)|b_norm": [
+    2,
+    161,
+    0.012422360248447204
+   ],
+   "German only, without t06 and format clips (12)|c_case": [
+    4,
+    161,
+    0.024844720496894408
+   ]
+  },
+  "lat": {
+   "n": 21,
+   "median_ms": 597.1819029999999,
+   "p90_ms": 932.69592,
+   "mean_ms": 716.4582102857142,
+   "rtf_sum": 0.09697468524653562,
+   "x_realtime": 10.311969535737417,
+   "load_ms": 941.874284,
+   "warmup_ms": 497.45243
+  }
+ },
+ "Whisper turbo q5_0 CPU (Lauf 11:13)": {
+  "wer": {
+   "all 18|a_raw": [
+    37,
+    216,
+    0.1712962962962963
+   ],
+   "all 18|b_norm": [
+    16,
+    221,
+    0.07239819004524888
+   ],
+   "all 18|c_case": [
+    21,
+    221,
+    0.09502262443438914
+   ],
+   "without format clips (13)|a_raw": [
+    15,
+    169,
+    0.08875739644970414
+   ],
+   "without format clips (13)|b_norm": [
+    3,
+    174,
+    0.017241379310344827
+   ],
+   "without format clips (13)|c_case": [
+    7,
+    174,
+    0.040229885057471264
+   ],
+   "German only, without t06 (17)|a_raw": [
+    35,
+    203,
+    0.1724137931034483
+   ],
+   "German only, without t06 (17)|b_norm": [
+    16,
+    208,
+    0.07692307692307693
+   ],
+   "German only, without t06 (17)|c_case": [
+    20,
+    208,
+    0.09615384615384616
+   ],
+   "German only, without t06 and format clips (12)|a_raw": [
+    13,
+    156,
+    0.08333333333333333
+   ],
+   "German only, without t06 and format clips (12)|b_norm": [
+    3,
+    161,
+    0.018633540372670808
+   ],
+   "German only, without t06 and format clips (12)|c_case": [
+    6,
+    161,
+    0.037267080745341616
+   ]
+  },
+  "lat": {
+   "n": 21,
+   "median_ms": 27469.536745999998,
+   "p90_ms": 42366.571538000004,
+   "mean_ms": 32047.61650452381,
+   "rtf_sum": 4.337737329004189,
+   "x_realtime": 0.23053493657016091,
+   "load_ms": 157.925805,
+   "warmup_ms": 39740.093752999994
+  }
+ },
+ "Parakeet fp32 GPU": {
+  "wer": {
+   "all 18|a_raw": [
+    34,
+    216,
+    0.1574074074074074
+   ],
+   "all 18|b_norm": [
+    17,
+    221,
+    0.07692307692307693
+   ],
+   "all 18|c_case": [
+    22,
+    221,
+    0.09954751131221719
+   ],
+   "without format clips (13)|a_raw": [
+    16,
+    169,
+    0.09467455621301775
+   ],
+   "without format clips (13)|b_norm": [
+    7,
+    174,
+    0.040229885057471264
+   ],
+   "without format clips (13)|c_case": [
+    11,
+    174,
+    0.06321839080459771
+   ],
+   "German only, without t06 (17)|a_raw": [
+    32,
+    203,
+    0.15763546798029557
+   ],
+   "German only, without t06 (17)|b_norm": [
+    17,
+    208,
+    0.08173076923076923
+   ],
+   "German only, without t06 (17)|c_case": [
+    21,
+    208,
+    0.10096153846153846
+   ],
+   "German only, without t06 and format clips (12)|a_raw": [
+    14,
+    156,
+    0.08974358974358974
+   ],
+   "German only, without t06 and format clips (12)|b_norm": [
+    7,
+    161,
+    0.043478260869565216
+   ],
+   "German only, without t06 and format clips (12)|c_case": [
+    10,
+    161,
+    0.062111801242236024
+   ]
+  },
+  "lat": {
+   "n": 21,
+   "median_ms": 91.84858400840312,
+   "p90_ms": 108.95453499688301,
+   "mean_ms": 96.02214885706503,
+   "rtf_sum": 0.012996874805016859,
+   "x_realtime": 76.94157364768914,
+   "load_ms": 1228.1974380020984,
+   "warmup_ms": 2864.333138000802
+  }
+ },
+ "Parakeet fp32 CPU": {
+  "wer": {
+   "all 18|a_raw": [
+    34,
+    216,
+    0.1574074074074074
+   ],
+   "all 18|b_norm": [
+    17,
+    221,
+    0.07692307692307693
+   ],
+   "all 18|c_case": [
+    22,
+    221,
+    0.09954751131221719
+   ],
+   "without format clips (13)|a_raw": [
+    16,
+    169,
+    0.09467455621301775
+   ],
+   "without format clips (13)|b_norm": [
+    7,
+    174,
+    0.040229885057471264
+   ],
+   "without format clips (13)|c_case": [
+    11,
+    174,
+    0.06321839080459771
+   ],
+   "German only, without t06 (17)|a_raw": [
+    32,
+    203,
+    0.15763546798029557
+   ],
+   "German only, without t06 (17)|b_norm": [
+    17,
+    208,
+    0.08173076923076923
+   ],
+   "German only, without t06 (17)|c_case": [
+    21,
+    208,
+    0.10096153846153846
+   ],
+   "German only, without t06 and format clips (12)|a_raw": [
+    14,
+    156,
+    0.08974358974358974
+   ],
+   "German only, without t06 and format clips (12)|b_norm": [
+    7,
+    161,
+    0.043478260869565216
+   ],
+   "German only, without t06 and format clips (12)|c_case": [
+    10,
+    161,
+    0.062111801242236024
+   ]
+  },
+  "lat": {
+   "n": 21,
+   "median_ms": 421.1689549993025,
+   "p90_ms": 703.8680179975927,
+   "mean_ms": 557.5784265709531,
+   "rtf_sum": 0.07546984826290695,
+   "x_realtime": 13.250324772303735,
+   "load_ms": 1542.6788629993098,
+   "warmup_ms": 11509.60098899668
+  }
+ },
+ "Parakeet int8 CPU": {
+  "wer": {
+   "all 18|a_raw": [
+    41,
+    216,
+    0.18981481481481483
+   ],
+   "all 18|b_norm": [
+    20,
+    221,
+    0.09049773755656108
+   ],
+   "all 18|c_case": [
+    23,
+    221,
+    0.10407239819004525
+   ],
+   "without format clips (13)|a_raw": [
+    26,
+    169,
+    0.15384615384615385
+   ],
+   "without format clips (13)|b_norm": [
+    13,
+    174,
+    0.07471264367816093
+   ],
+   "without format clips (13)|c_case": [
+    15,
+    174,
+    0.08620689655172414
+   ],
+   "German only, without t06 (17)|a_raw": [
+    39,
+    203,
+    0.1921182266009852
+   ],
+   "German only, without t06 (17)|b_norm": [
+    20,
+    208,
+    0.09615384615384616
+   ],
+   "German only, without t06 (17)|c_case": [
+    22,
+    208,
+    0.10576923076923077
+   ],
+   "German only, without t06 and format clips (12)|a_raw": [
+    24,
+    156,
+    0.15384615384615385
+   ],
+   "German only, without t06 and format clips (12)|b_norm": [
+    13,
+    161,
+    0.08074534161490683
+   ],
+   "German only, without t06 and format clips (12)|c_case": [
+    14,
+    161,
+    0.08695652173913043
+   ]
+  },
+  "lat": {
+   "n": 21,
+   "median_ms": 362.340886000311,
+   "p90_ms": 511.8524710123893,
+   "mean_ms": 439.75237071225865,
+   "rtf_sum": 0.05952175175609044,
+   "x_realtime": 16.800580804439733,
+   "load_ms": 1237.9308890085667,
+   "warmup_ms": 9091.57081101148
+  }
+ }
+}
